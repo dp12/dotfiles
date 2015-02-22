@@ -43,16 +43,16 @@ EOBUNDLES
 # antigen theme arialdomartini/oh-my-git-themes arialdo-pathinline
 # antigen theme arialdomartini/oh-my-git-themes arialdo-granzestyle
 # antigen bundle sindresorhus/pure
-# antigen theme agnoster
-antigen theme muse
+antigen theme agnoster
+# antigen theme muse
+# antigen theme steeef
 # antigen theme fishy
 export DEFAULT_USER=daniel    # suppress ssh user info for agnoster
 
 antigen bundle chriskempson/base16-shell base16-colors.dark.sh
+
 antigen bundle zsh-users/zsh-syntax-highlighting
-
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-
 # Override highlighter colors
 ZSH_HIGHLIGHT_STYLES[default]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
@@ -77,6 +77,17 @@ ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[assign]=none
 
 antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zaw
+# From: http://blog.patshead.com/2013/04/more-powerful-zsh-history-search-using-zaw.html
+bindkey '^R' zaw-history
+bindkey -M filterselect '^R' down-line-or-history
+bindkey -M filterselect '^S' up-line-or-history
+bindkey -M filterselect '^E' accept-search
+
+zstyle ':filter-select:highlight' matched fg=green
+zstyle ':filter-select' max-lines 3
+zstyle ':filter-select' case-insensitive yes # enable case-insensitive 
+zstyle ':filter-select' extended-search yes # see below
 
 if is_osx; then
   # zsh-history-substring-search
@@ -107,7 +118,7 @@ fi
 antigen apply
 
 # export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/share/npm/bin
-# export VISUAL=vim
+export VISUAL=vim
 export GREP_OPTIONS='--color=always'
 
 # User ctrl-z like alt-tab
@@ -137,10 +148,6 @@ zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
 autoload select-word-style
 select-word-style shell
 
-alias ll='ls -l'
-alias la='ls -a'
-alias lsa='ls -alh'
-
 HISTFILE=~/.zhistory
 HISTSIZE=SAVEHIST=5000
 setopt incappendhistory
@@ -156,14 +163,15 @@ setopt interactivecomments # pound sign in interactive prompt
 
 setopt auto_cd
 
-# Vi mode
-bindkey -v
-bindkey '^R' history-incremental-pattern-search-backward
+# # Vi mode
+# bindkey -v
+# bindkey '^R' history-incremental-pattern-search-backward
+# bindkey -M viins "\M-." insert-last-word
 
 # Allow deleting backwards
 # http://www.zsh.org/mla/workers/2008/msg01653.html
-bindkey -M viins '^?' backward-delete-char
-bindkey -M viins '^H' backward-delete-char
+# bindkey -M viins '^?' backward-delete-char
+# bindkey -M viins '^H' backward-delete-char
 
 # 10ms for key sequences
 KEYTIMEOUT=1
@@ -173,70 +181,70 @@ if command_exists 'rvm'; then
 fi
 
 # http://vim.wikia.com/wiki/256_colors_in_vim
-# if [ "$TERM" = "xterm" ] ; then
-#     if [ -z "$COLORTERM" ] ; then
-#         if [ -z "$XTERM_VERSION" ] ; then
-#             echo "Warning: Terminal wrongly calling itself 'xterm'."
-#         else
-#             case "$XTERM_VERSION" in "XTerm(256)") TERM="xterm-256color" ;;
-#             "XTerm(88)") TERM="xterm-88color" ;;
-#             "XTerm") ;;
-#             *)
-#                 echo "Warning: Unrecognized XTERM_VERSION: $XTERM_VERSION"
-#                 ;;
-#             esac
-#         fi
-#     else
-#         case "$COLORTERM" in
-#             gnome-terminal)
-#                 # Those crafty Gnome folks require you to check COLORTERM,
-#                 # but don't allow you to just *favor* the setting over TERM.
-#                 # Instead you need to compare it and perform some guesses
-#                 # based upon the value. This is, perhaps, too simplistic.
-#                 TERM="gnome-256color"
-#                 ;;
-#             *)
-#                 echo "Warning: Unrecognized COLORTERM: $COLORTERM"
-#                 ;;
-#         esac
-#     fi
-# fi
+if [ "$TERM" = "xterm" ] ; then
+    if [ -z "$COLORTERM" ] ; then
+        if [ -z "$XTERM_VERSION" ] ; then
+            echo "Warning: Terminal wrongly calling itself 'xterm'."
+        else
+            case "$XTERM_VERSION" in "XTerm(256)") TERM="xterm-256color" ;;
+            "XTerm(88)") TERM="xterm-88color" ;;
+            "XTerm") ;;
+            *)
+                echo "Warning: Unrecognized XTERM_VERSION: $XTERM_VERSION"
+                ;;
+            esac
+        fi
+    else
+        case "$COLORTERM" in
+            gnome-terminal)
+                # Those crafty Gnome folks require you to check COLORTERM,
+                # but don't allow you to just *favor* the setting over TERM.
+                # Instead you need to compare it and perform some guesses
+                # based upon the value. This is, perhaps, too simplistic.
+                TERM="gnome-256color"
+                ;;
+            *)
+                echo "Warning: Unrecognized COLORTERM: $COLORTERM"
+                ;;
+        esac
+    fi
+fi
 
-# SCREEN_COLORS="`tput colors`"
-# if [ -z "$SCREEN_COLORS" ] ; then
-#     case "$TERM" in
-#         screen-*color-bce)
-#             echo "Unknown terminal $TERM. Falling back to 'screen-bce'."
-#             export TERM=screen-bce
-#             ;;
-#         *-88color)
-#             echo "Unknown terminal $TERM. Falling back to 'xterm-88color'."
-#             export TERM=xterm-88color
-#             ;;
-#         *-256color)
-#             echo "Unknown terminal $TERM. Falling back to 'xterm-256color'."
-#             export TERM=xterm-256color
-#             ;;
-#     esac
-#     SCREEN_COLORS=`tput colors`
-# fi
-# if [ -z "$SCREEN_COLORS" ] ; then
-#     case "$TERM" in
-#         gnome*|xterm*|konsole*|aterm|[Ee]term)
-#             echo "Unknown terminal $TERM. Falling back to 'xterm'."
-#             export TERM=xterm
-#             ;;
-#         rxvt*)
-#             echo "Unknown terminal $TERM. Falling back to 'rxvt'."
-#             export TERM=rxvt
-#             ;;
-#         screen*)
-#             echo "Unknown terminal $TERM. Falling back to 'screen'."
-#             export TERM=screen
-#             ;;
-#     esac
-#     SCREEN_COLORS=`tput colors`
-# fi
+SCREEN_COLORS="`tput colors`"
+if [ -z "$SCREEN_COLORS" ] ; then
+    case "$TERM" in
+        screen-*color-bce)
+            echo "Unknown terminal $TERM. Falling back to 'screen-bce'."
+            export TERM=screen-bce
+            ;;
+        *-88color)
+            echo "Unknown terminal $TERM. Falling back to 'xterm-88color'."
+            export TERM=xterm-88color
+            ;;
+        *-256color)
+            echo "Unknown terminal $TERM. Falling back to 'xterm-256color'."
+            export TERM=xterm-256color
+            ;;
+    esac
+    SCREEN_COLORS=`tput colors`
+fi
+if [ -z "$SCREEN_COLORS" ] ; then
+    case "$TERM" in
+        gnome*|xterm*|konsole*|aterm|[Ee]term)
+            echo "Unknown terminal $TERM. Falling back to 'xterm'."
+            export TERM=xterm
+            ;;
+        rxvt*)
+            echo "Unknown terminal $TERM. Falling back to 'rxvt'."
+            export TERM=rxvt
+            ;;
+        screen*)
+            echo "Unknown terminal $TERM. Falling back to 'screen'."
+            export TERM=screen
+            ;;
+    esac
+    SCREEN_COLORS=`tput colors`
+fi
 
 
 # # Prediction
@@ -254,6 +262,21 @@ source ~/.system_aliases
 source ~/.iro_aliases
 export TERM=xterm-256color
 # eval "$(fasd --init posix-alias zsh-hook)"
+
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
+# jump to recently used items
+alias a='fasd -a' # any
+alias s='fasd -si' # show / search / select
+alias d='fasd -d' # directory
+alias f='fasd -f' # file
+alias z='fasd_cd -d' # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # interactive directory jump
+
 
 # TMUX Launch
 alias tmux='tmux -2'
