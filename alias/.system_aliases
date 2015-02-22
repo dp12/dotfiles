@@ -1,0 +1,63 @@
+# Aliases
+#
+#
+alias l="ls"
+alias la="ls -a"
+alias ll="ls -l"
+alias lal="ls -la"
+alias lla="ls -la"
+alias lf="ls *(.)"
+alias ld="ls *(/)"
+alias .="cd .."
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias cpr="cp -r"
+alias ec="emacsclient"
+alias dae="emacs --daemon"
+alias em="emacs -nw"
+
+alias pu="pushd"
+alias pu="popd"
+alias t="tar xvfz "
+alias h="history"
+
+alias brc="em ~/.bashrc"
+alias zrc="em ~/.zshrc"
+alias vib="vim ~/.bashrc"
+alias viz="vim ~/.zshrc"
+alias emb="b"
+alias emz="b"
+alias .b="source ~/.bashrc"
+alias .z="source ~/.zshrc"
+alias emd="cd ~/.emacs.d"
+alias dot="cd ~/dotfiles"
+
+alias emm="em Makefile"
+alias emc="em main.c"
+alias mcm="make clean && make"
+alias gdbtui="gdb -tui"
+
+# Git aliases
+alias gs="git status"
+alias gl="git log"
+alias gln="git log --name-only"
+alias gb="git branch"
+alias ga="git add"
+alias gd="git diff"
+alias gd~="git diff HEAD~..HEAD"
+alias gdc="git diff --cached"
+alias gf="git fetch"
+alias gc="git checkout"
+alias gco="git checkout"
+alias gci="git commit"
+
+# Map RAlt to Ctrl
+setxkbmap -option ctrl:ralt_rctrl 
+alias sgrep="grep -rnI -C3 --color=always"
+alias dyeg="dmenu_run | ~/.cabal/bin/yeganesh -- -fn '-*-terminus-*-r-normal-*-*-200-*-*-*-*-iso8859-*' \
+    -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC'"
+alias dy="dmenu_run -fn '-*-terminus-*-r-normal-*-*-200-*-*-*-*-iso8859-*' \
+    -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC'"
+
+alias shdwn="sudo shutdown -P now"

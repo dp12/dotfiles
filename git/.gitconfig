@@ -1,0 +1,18 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+
+[merge]
+	tool = meld
+[user]
+	email = dp12@github.com 
+	name = dp12
+[color]
+	ui = auto
+[core]
+	autocrlf = input
