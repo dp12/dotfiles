@@ -258,6 +258,8 @@ fi
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
 AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=magenta'
 
+# Remap RAlt to Ctrl
+setxkbmap -option ctrl:ralt_rctrl 
 source ~/.system_aliases
 source ~/.iro_aliases
 export TERM=xterm-256color

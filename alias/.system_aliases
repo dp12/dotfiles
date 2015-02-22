@@ -1,6 +1,5 @@
 # Aliases
-#
-#
+
 alias l="ls"
 alias la="ls -a"
 alias ll="ls -l"
@@ -8,7 +7,6 @@ alias lal="ls -la"
 alias lla="ls -la"
 alias lf="ls *(.)"
 alias ld="ls *(/)"
-alias .="cd .."
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -35,7 +33,8 @@ alias dot="cd ~/dotfiles"
 
 alias emm="em Makefile"
 alias emc="em main.c"
-alias mcm="make clean && make"
+# && makes fish unhappy
+# alias mcm="make clean && make"
 alias gdbtui="gdb -tui"
 
 # Git aliases
@@ -53,7 +52,6 @@ alias gco="git checkout"
 alias gci="git commit"
 
 # Map RAlt to Ctrl
-setxkbmap -option ctrl:ralt_rctrl 
 alias sgrep="grep -rnI -C3 --color=always"
 alias dyeg="dmenu_run | ~/.cabal/bin/yeganesh -- -fn '-*-terminus-*-r-normal-*-*-200-*-*-*-*-iso8859-*' \
     -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC'"

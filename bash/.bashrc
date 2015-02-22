@@ -1,7 +1,3 @@
-#export PATH=$PATH:/cygdrive/c/Users/Daniel/Downloads/Utilities/
-# $PATH=/cygdrive/c/Users/Daniel/Downloads/Utilities/:$PATH
-# export PATH
-# export PATH=$( cygpath "$PATH")
 export CYGWIN="${CYGWIN} nodosfilewarning"
 
 alias l="ls -h"
@@ -17,11 +13,12 @@ alias .b="source ~/.bashrc"
 alias mcm="make clean && make"
 alias gdbtui="gdb -tui"
 
+# Remap RAlt to Ctrl
+setxkbmap -option ctrl:ralt_rctrl 
 source ~/.system_aliases
-source ~/.cmu_aliases
-#source /home/danielti0/busybox-1.21.0/busybox-configure
+source ~/.iro_aliases
+eval "$(fasd --init auto)"
 
-# Launch zsh as default shell
-# zsh
 export HARCH=`echo $(uname -m) | sed "s/i./x/g"`
 export PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
+export TERM=xterm-256color
