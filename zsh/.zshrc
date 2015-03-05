@@ -49,7 +49,7 @@ antigen theme agnoster
 # antigen theme fishy
 export DEFAULT_USER=daniel    # suppress ssh user info for agnoster
 
-antigen bundle chriskempson/base16-shell base16-colors.dark.sh
+antigen bundle sorin-ionescu/prezto modules/completion
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -162,6 +162,8 @@ unsetopt nomatch 2>/dev/null
 setopt interactivecomments # pound sign in interactive prompt
 
 setopt auto_cd
+autoload -U promptinit && promptinit
+# echo -ne "\033]12;Green\007"
 
 # # Vi mode
 # bindkey -v

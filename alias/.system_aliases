@@ -50,6 +50,10 @@ alias gf="git fetch"
 alias gc="git checkout"
 alias gco="git checkout"
 alias gci="git commit"
+alias gsl="git stash list"
+alias gsa="git stash apply"
+alias gsA="git stash pop"
+alias gss="git stash save"
 
 # Map RAlt to Ctrl
 alias sgrep="grep -rnI -C3 --color=always"
