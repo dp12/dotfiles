@@ -1,4 +1,6 @@
 # Aliases
+# To load, put "source ~/.system_aliases" in your .bashrc, .zshrc, or config.fish
+# Works (supposedly) with bash, zsh, and fish
 
 alias l="ls"
 alias la="ls -a"
@@ -11,6 +13,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias cpr="cp -r"
+alias refloc="sudo updatedb"
 alias ec="emacsclient"
 alias dae="emacs --daemon"
 alias em="emacs -nw"
@@ -50,16 +53,12 @@ alias gf="git fetch"
 alias gc="git checkout"
 alias gco="git checkout"
 alias gci="git commit"
+alias gpreb="git pull --rebase"
 alias gsl="git stash list"
 alias gsa="git stash apply"
-alias gsA="git stash pop"
+alias gsP="git stash pop"
 alias gss="git stash save"
 
-# Map RAlt to Ctrl
+# Misc
 alias sgrep="grep -rnI -C3 --color=always"
-alias dyeg="dmenu_run | ~/.cabal/bin/yeganesh -- -fn '-*-terminus-*-r-normal-*-*-200-*-*-*-*-iso8859-*' \
-    -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC'"
-alias dy="dmenu_run -fn '-*-terminus-*-r-normal-*-*-200-*-*-*-*-iso8859-*' \
-    -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC'"
-
 alias shdwn="sudo shutdown -P now"
