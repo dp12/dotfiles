@@ -182,35 +182,7 @@ if command_exists 'rvm'; then
   source /usr/local/rvm/scripts/rvm
 fi
 
-# http://vim.wikia.com/wiki/256_colors_in_vim
-if [ "$TERM" = "xterm" ] ; then
-    if [ -z "$COLORTERM" ] ; then
-        if [ -z "$XTERM_VERSION" ] ; then
-            echo "Warning: Terminal wrongly calling itself 'xterm'."
-        else
-            case "$XTERM_VERSION" in "XTerm(256)") TERM="xterm-256color" ;;
-            "XTerm(88)") TERM="xterm-88color" ;;
-            "XTerm") ;;
-            *)
-                echo "Warning: Unrecognized XTERM_VERSION: $XTERM_VERSION"
-                ;;
-            esac
-        fi
-    else
-        case "$COLORTERM" in
-            gnome-terminal)
-                # Those crafty Gnome folks require you to check COLORTERM,
-                # but don't allow you to just *favor* the setting over TERM.
-                # Instead you need to compare it and perform some guesses
-                # based upon the value. This is, perhaps, too simplistic.
-                TERM="gnome-256color"
-                ;;
-            *)
-                echo "Warning: Unrecognized COLORTERM: $COLORTERM"
-                ;;
-        esac
-    fi
-fi
+TERM="xterm-256color"
 
 SCREEN_COLORS="`tput colors`"
 if [ -z "$SCREEN_COLORS" ] ; then
@@ -263,7 +235,10 @@ AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=magenta'
 # Remap RAlt to Ctrl
 setxkbmap -option ctrl:ralt_rctrl 
 source ~/.system_aliases
-source ~/.iro_aliases
+if [ -f ~/.personal_aliases ]; then
+source ~/.personal_aliases
+fi
+
 export TERM=xterm-256color
 # eval "$(fasd --init posix-alias zsh-hook)"
 
@@ -284,19 +259,21 @@ alias zz='fasd_cd -d -i' # interactive directory jump
 
 # TMUX Launch
 alias tmux='tmux -2'
-if [[ -z $TMUX ]]; then
-  # Attempt to discover a detached session and attach it, else create a new session
-  # CURRENT_USER=$(whoami)
-  TMUX_CON_SESSION=__dev__
-  if tmux has-session -t $TMUX_CON_SESSION 2>/dev/null; then
-    tmux -2 attach-session -t $TMUX_CON_SESSION
-  else
-    tmux -2 new-session -s $TMUX_CON_SESSION
-  fi
-else
-  # If inside tmux session then print MOTD
-  MOTD=/etc/motd.tcl
-  if [ -f $MOTD ]; then
-    $MOTD
-  fi
-fi
+function m {
+    if [[ -z $TMUX ]]; then
+        # Attempt to discover a detached session and attach it, else create a new session
+        # CURRENT_USER=$(whoami)
+        TMUX_CON_SESSION=__dev__
+        if tmux has-session -t $TMUX_CON_SESSION 2>/dev/null; then
+            tmux -2 attach-session -t $TMUX_CON_SESSION
+        else
+            tmux -2 new-session -s $TMUX_CON_SESSION
+        fi
+    else
+        # If inside tmux session then print MOTD
+        MOTD=/etc/motd.tcl
+        if [ -f $MOTD ]; then
+            $MOTD
+        fi
+    fi
+}

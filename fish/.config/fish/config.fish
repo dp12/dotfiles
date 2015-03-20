@@ -14,6 +14,9 @@ set fish_plugins theme
 
 # Load aliases
 . ~/.system_aliases
+if [ -f ~/.personal_aliases ]; then
+source ~/.personal_aliases
+fi
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
