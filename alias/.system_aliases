@@ -2,11 +2,13 @@
 # To load, put "source ~/.system_aliases" in your .bashrc, .zshrc, or config.fish
 # Works (supposedly) with bash, zsh, and fish
 
+alias ali="alias"
 alias l="ls"
 alias la="ls -a"
 alias ll="ls -l"
 alias lal="ls -la"
 alias lla="ls -la"
+alias lah="ls -lah"
 alias lf="ls *(.)"
 alias ld="ls *(/)"
 alias ..="cd .."

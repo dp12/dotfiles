@@ -47,7 +47,7 @@ antigen theme agnoster
 # antigen theme muse
 # antigen theme steeef
 # antigen theme fishy
-export DEFAULT_USER=daniel    # suppress ssh user info for agnoster
+export DEFAULT_USER=$USER    # suppress ssh user info for agnoster
 
 antigen bundle sorin-ionescu/prezto modules/completion
 
@@ -118,6 +118,7 @@ fi
 antigen apply
 
 # export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/share/npm/bin
+export PATH=$PATH:/opt/emacs/bin
 export VISUAL=vim
 export GREP_OPTIONS='--color=always'
 
@@ -238,6 +239,7 @@ source ~/.system_aliases
 if [ -f ~/.personal_aliases ]; then
 source ~/.personal_aliases
 fi
+alias mcm="make clean && make"
 
 export TERM=xterm-256color
 # eval "$(fasd --init posix-alias zsh-hook)"
