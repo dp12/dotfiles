@@ -16,6 +16,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias cpr="cp -r"
 alias rmd="rm -rf"
+alias nox="chmod 664 -R *"
 alias refloc="sudo updatedb"
 alias ec="emacsclient"
 alias dae="emacs --daemon"
@@ -34,6 +35,7 @@ alias emb="b"
 alias emz="b"
 alias .b="source ~/.bashrc"
 alias .z="source ~/.zshrc"
+alias .s="source ~/.system_aliases"
 alias emd="cd ~/.emacs.d"
 alias dot="cd ~/dotfiles"
 
@@ -42,6 +44,10 @@ alias emc="em main.c"
 # && makes fish unhappy
 # alias mcm="make clean && make"
 alias gdbtui="gdb -tui"
+
+# Package management
+alias agi="sudo apt-get install"
+alias acs="sudo apt-cache search"
 
 # Git aliases
 alias gs="git status"
