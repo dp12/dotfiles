@@ -1,0 +1,44 @@
+#run in console out of X
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+
+#behaviour
+update_interval 1.0
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+#font
+use_xft yes
+xftfont tamsyn:size=8
+
+# JSON for i3bar
+# Stuff after 'TEXT' will be formatted on screen
+
+TEXT
+
+# [ { "full_text" : "" , "instance" : "${mpd_status}" },
+  # { "full_text" : "${mpd_status}" , "color" : "\#C8C039" },
+  # { "full_text" : "${if_mpd_playing}♪ ${mpd_artist} -${endif}" , "color" : "\#AAC1DE" } , { "full_text" : "${if_mpd_playing}${mpd_title} |${endif}" , "color" : "\#AAC1DE" },
+  # [{ "full_text" : "RAM: ${mem} -" , "color" : "\#C89BDC" },
+  [{ "full_text" : "≣ MEM: ${mem} -" , "color" : "\#C8C039" },
+  { "full_text" : "■ CPU: ${cpu}% " , "color" : "\#C89BDC" },
+  # {"full_text": " ❤ $acpitemp°C [$cpu%] ","color": "\#DC322F"},
+  { "full_text" : "VOL: ${exec amixer get Speaker | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% " , "color" : "\#F26C91"},
+  { "full_text":"❤ BAT: ${battery_percent BAT0}%", "color" : "\#DC322F" },
+  # { "full_text" : " ▲ [${upspeed}] ", "color" : "\#ff0000"},
+  # {"full_text": " ▼ [${downspeed}] ", "color":"\#00fff2"},
+  { "full_text" : "${time %F - %H:%M} " , "color" : "\#95FC7B"},
+  {"full_text": " :::${exec whoami}::: ", "color":"\#ff00f3"}
+],
