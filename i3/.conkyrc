@@ -33,12 +33,16 @@ TEXT
   # { "full_text" : "${if_mpd_playing}♪ ${mpd_artist} -${endif}" , "color" : "\#AAC1DE" } , { "full_text" : "${if_mpd_playing}${mpd_title} |${endif}" , "color" : "\#AAC1DE" },
   # [{ "full_text" : "RAM: ${mem} -" , "color" : "\#C89BDC" },
   [{ "full_text" : "≣ MEM: ${mem} -" , "color" : "\#C8C039" },
-  { "full_text" : "■ CPU: ${cpu}% " , "color" : "\#C89BDC" },
+  { "full_text" : "■ CPU: ${cpu}% " , "color" : "\#F26C91" },
   # {"full_text": " ❤ $acpitemp°C [$cpu%] ","color": "\#DC322F"},
-  { "full_text" : "VOL: ${exec amixer get Speaker | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% " , "color" : "\#F26C91"},
+  #{ "full_text" : "♪ VOL: ${exec amixer get Speaker | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% " , "color" : "\#00c0ef"},
+  { "full_text" : "♪ VOL: ${exec amixer get Speaker | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% " , "color" : "\#A4DDED"},
+  # { "full_text" : "♪ VOL: ${exec amixer get Speaker | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% " , "color" : "\#B2FFFF"},
   { "full_text":"❤ BAT: ${battery_percent BAT0}%", "color" : "\#DC322F" },
   # { "full_text" : " ▲ [${upspeed}] ", "color" : "\#ff0000"},
   # {"full_text": " ▼ [${downspeed}] ", "color":"\#00fff2"},
-  { "full_text" : "${time %F - %H:%M} " , "color" : "\#95FC7B"},
-  {"full_text": " :::${exec whoami}::: ", "color":"\#ff00f3"}
+  { "full_text" : " ${time %F - %I:%M %P} " , "color" : "\#95FC7B"},
+  {"full_text": " ${exec whoami} ↵", "color":"\#ff00f3"}
 ],
+# ◀ 3a95ff ▶ ✜ ⚅ ⌚
+# lightpurple C89BDC

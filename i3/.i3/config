@@ -191,6 +191,14 @@ bindsym $mod+r mode "resize"
 #         statusline #DCDCDC
 #     }
 # }
+# colors
+#class				    border	backgr.	text
+client.focused          #171717 #171717 #a6e22e
+client.focused_inactive	#2e3436 #2e3436 #b9c8d1
+client.unfocused		#2e3436 #2e3436 #999999
+client.urgent			#cd989a #cd989a #2e3436
+
+client.background			#121212
 
 bar {
         #status_command i3status
@@ -198,7 +206,8 @@ bar {
 #	status_command i3status
 	position top
 	#font -misc-tamsyn.icons-medium-*-normal-*-14-*-*-*-*-*-iso8859-*
-	font xft: tamsynmod 8
+	font xft: tamsynmod 9
+	# font xft: couriernew 10
 
 colors {
         background #171717
@@ -206,6 +215,7 @@ colors {
 ########################## border # back ## text ##################################################
         # focused_workspace  #4c7899 #171717 #a6e22e
         focused_workspace  #171717 #171717 #a6e22e
+        # focused_workspace  #b22222 #171717 #a6e22e
         # focused_workspace  #171717 #285577 #a6e22e
         active_workspace   #333333 #5f676a #ffffff
         # inactive_workspace #333333 #222222 #888888
