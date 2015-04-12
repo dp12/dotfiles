@@ -44,7 +44,8 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+Shift+e exec emacs
+# bindsym $mod+Shift+e exec emacs
+bindsym $mod+e exec emacs
 
 # change focus
 bindsym $mod+j focus left
@@ -84,7 +85,7 @@ bindsym $mod+f fullscreen
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -102,16 +103,18 @@ bindsym $mod+a focus parent
 workspace_auto_back_and_forth yes
 
 # name workspaces
-set $tag1 "1:emacs"
-set $tag2 "2:term"
-set $tag3 "3:roboscope"
-
+# set $tag1 "1: ξ"
+set $tag1 "1: λ"  # EMACS
+set $tag2 "2: >_" # TERM
+set $tag3 "3: 🔎" # SCOPE
+set $tag4 "4: 🌎" # WEB
+set $tag5 "5: 💬" # CHAT
 # switch to workspace
 bindsym $mod+1 workspace $tag1
 bindsym $mod+2 workspace $tag2
 bindsym $mod+3 workspace $tag3
-bindsym $mod+4 workspace 4 
-bindsym $mod+5 workspace 5
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -168,7 +171,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Wallpaper
-# exec --no-startup-id feh --bg-fill ~/Pictures/Droplets.png
+exec --no-startup-id feh --bg-fill ~/Pictures/cube.png
 
 # Startup Programs
 # exec --no-startup-id gnome-settings-daemon
@@ -207,21 +210,18 @@ bar {
 	position top
 	#font -misc-tamsyn.icons-medium-*-normal-*-14-*-*-*-*-*-iso8859-*
 	font xft: tamsynmod 9
+	# font xft: tewi 11
+	# font xft: neep 11
 	# font xft: couriernew 10
 
 colors {
         background #171717
         statusline #171717
 ########################## border # back ## text ##################################################
-        # focused_workspace  #4c7899 #171717 #a6e22e
-        focused_workspace  #171717 #171717 #a6e22e
-        # focused_workspace  #b22222 #171717 #a6e22e
-        # focused_workspace  #171717 #285577 #a6e22e
+        # focused_workspace  #171717 #171717 #a6e22e
+        focused_workspace  #171717 #171717 #FD9D0D
         active_workspace   #333333 #5f676a #ffffff
-        # inactive_workspace #333333 #222222 #888888
         urgent_workspace   #2f343a #900000 #ffffff
-        # focused_workspace  #171717 #d26ef6 #a6e22e
-	    # active_workspace   #ffffff #333333
         inactive_workspace #171717 #171717 #9c9c9c
         # urgent_workspace   #ffffff #900000
     }
