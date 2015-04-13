@@ -47,6 +47,7 @@ alias emc="em main.c"
 alias gdbtui="gdb -tui"
 
 # Package management
+alias agu="sudo apt-get update"
 alias agi="sudo apt-get install"
 alias acs="sudo apt-cache search"
 

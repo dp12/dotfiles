@@ -38,6 +38,8 @@ TEXT
   { "full_text" : "■ DISK: ${fs_used /} - [${fs_bar}]" , "color" : "\#00A9B5"},
   ## Battery Percentage
   { "full_text":"❤ BAT: ${battery_percent BAT0}%", "color" : "\#DC322F" },
+  ## Weather Info
+  { "full_text" : "☁ ${exec weather --headers="Temperature" -q | awk '/Temperature/ {print $2}'} °F ➜ *${exec weather --headers="Sky conditions" -q | awk '/Sky conditions/ {print $3 " " $4}'}*", "color" : "\#F26C91"},
   ## Date-Time
   # { "full_text" : " ${time %F - %I:%M %P} " , "color" : "\#95FC7B"},
   { "full_text" : "🕑 ${time %Y-%B-%d - %I:%M %P} " , "color" : "\#95FC7B"},
@@ -50,9 +52,8 @@ TEXT
   # { "full_text" : " ▲ [${upspeed}] ", "color" : "\#ff0000"},
   # {"full_text": " ▼ [${downspeed}] ", "color":"\#00fff2"},
   # Weather data
-  # { "full_text" : "${exec weather --headers="Temperature" -q | awk '/Temperature/ {print $2}'}C ${exec weather --headers="Sky conditions" -q | awk '/Sky conditions/ {print $3 " " $4}'}", "color" : "\#DC322F"},
 ],
-# ◀ ▶ ✜ ⚅ ⌚ ↑ ≈ ≣ ⏸ ¦¦ Ξ ◈ ◉ ◇ ◆ ◩ ◰ ◱ ◳ ♥ ❤ 💓
+# ◀ ▶ ✜ ⚅ ⌚ ↑ ≈ ≣ ⏸ ¦¦ Ξ ◈ ◉ ◇ ◆ ◩ ◰ ◱ ◳ ♥ ❤ 💓 ☂
 # Colors from NorthAntrim
 # lightpink #F26C91
 # lightpurple #C89BDC
