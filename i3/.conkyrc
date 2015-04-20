@@ -45,6 +45,7 @@ TEXT
   { "full_text" : "🕑 ${time %Y-%B-%d - %I:%M %P} " , "color" : "\#95FC7B"},
   ## Display Username 
   {"full_text": " ${exec whoami} ↵", "color":"\#ff00f3"}
+  # {"full_text": " i3wm-of-jeannie ↵", "color":"\#ff00f3"}
   ## Unused
   # { "full_text" : "♪ VOL: ${mixer}% " , "color" : "\#C89BDC"},
   # { "full_text" : "HDD: $diskio_read :Read $diskio_write :Write" , "color" : "\#A4DDED"},
