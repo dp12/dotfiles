@@ -16,7 +16,9 @@ alias gdbtui="gdb -tui"
 # Remap RAlt to Ctrl
 setxkbmap -option ctrl:ralt_rctrl 
 source ~/.system_aliases
-source ~/.iro_aliases
+if [ -f ~/.personal_aliases ]; then
+source ~/.personal_aliases
+fi
 eval "$(fasd --init auto)"
 
 export HARCH=`echo $(uname -m) | sed "s/i./x/g"`
