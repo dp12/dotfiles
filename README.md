@@ -6,12 +6,14 @@ Configs for zsh/bash/fish, git, tmux, i3, awesome, and vim, plus some handy alia
 system_aliases is compatible with zsh, bash, and fish shells. Features handy aliases for commands like ls, cd, emacs, apt-get, and git. Why `cd ..` when you can `..` instead?
 
 ## i3 Window Manager
-"i3m-of-jeannie" is my personal configuration with conky and rofi, representing my best efforts to "de-uglify" i3. It features CPU, RAM, disk usage, battery, weather, and date/time, using the unicode symbol glyph hack first demonstrated by [ivyl](https://github.com/ivyl/i3-config). All common commands are designed to be issued with two keys (mod4 + a letter). For displaying weather on Debian/Ubuntu, run `sudo apt-get install weather-utils` and add the line `id = <your_zipcode>` to /etc/weatherrc.
+![i3wm-of-jeannie](/../master/screenshots/i3wm-of-jeannie.png?raw=true)
+i3m-of-jeannie is my personal i3wm theme with conky and rofi, representing my best efforts to "de-uglify" i3. It features CPU, RAM, disk usage, battery, weather, and date/time, using the unicode symbol glyph hack first demonstrated by [ivyl](https://github.com/ivyl/i3-config). All common commands are designed to be issued with two keys (mod4 + a letter). For displaying weather on Debian/Ubuntu, run `sudo apt-get install weather-utils` and add the line `id = <your_zipcode>` to /etc/weatherrc.
 
 ##Tmux
 Features extremely quick pane and window spawn/kill/switching, using ctrl-arrows and shift-arrows, respectively. The prefix key is set to C-t, in order to reduce friction with emacs. Requires tmux 1.9 in order to support tmux-resurrect and tmux-yank plugins (but you can disable them, if desired).
 
-Keybinding         | Description -------------------|------------------------------------------------------------
+Keybinding         | Description
+-------------------|------------------------------------------------------------
 <kbd>C-t t</kbd>   | Change to last-window by pressing Ctrl-t, letting go, and pressing t again.
 <kbd>C-tt...</kbd> | By holding down Ctrl and pressing t repeatedly, you can cycle through panes with this chained command.
 <kbd>S-up</kbd>    | Create new-window.
