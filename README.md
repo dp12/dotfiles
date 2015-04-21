@@ -24,7 +24,7 @@ Keybinding         | Description
 <kbd>C-down</kbd>  | Select pane below.
 <kbd>C-left</kbd>  | Select pane to the left.
 <kbd>C-right</kbd> | Select pane to the right.
-<kbd>C-t |</kbd>   | Split the window into smaller panes vertically.
+<kbd>C-t \|</kbd>   | Split the window into smaller panes vertically.
 <kbd>C-t =</kbd>   | Split the window into smaller panes horizontally.
 <kbd>C-t r</kbd>   | Reload the .tmux.conf file.
 
