@@ -17,11 +17,15 @@ alias ....="cd ../../.."
 alias cpr="cp -r"
 alias rmrf="rm -rf"
 alias rmd="rm -rf"
+alias sus="sudo -s"
 alias nox="chmod 664 -R *"
 alias refloc="sudo updatedb"
+
+# Programs
 alias ec="emacsclient"
 alias dae="emacs --daemon"
 alias em="emacs -nw"
+alias py="python"
 
 alias pu="pushd"
 alias pu="popd"
@@ -37,6 +41,7 @@ alias emz="b"
 alias .b="source ~/.bashrc"
 alias .z="source ~/.zshrc"
 alias .s="source ~/.system_aliases"
+alias .x="xrdb ~/.Xresources"
 alias emd="cd ~/.emacs.d"
 alias dot="cd ~/dotfiles"
 
