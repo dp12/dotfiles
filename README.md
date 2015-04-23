@@ -7,7 +7,7 @@ system_aliases is compatible with zsh, bash, and fish shells. Features handy ali
 
 ## i3 Window Manager
 ![i3wm-of-jeannie](/../master/screenshots/i3wm-of-jeannie.png?raw=true)
-i3m-of-jeannie is my personal i3wm theme with conky and rofi, representing my best efforts to "de-uglify" i3. It features CPU, RAM, disk usage, battery, weather, and date/time, using the unicode symbol glyph hack first demonstrated by [ivyl](https://github.com/ivyl/i3-config). All common commands are designed to be issued with two keys (mod4 + a letter). Some features are still in progress. Requires rofi, conky, and Tamsynmod font to be installed, as well as Droid Sans Mono for Powerline.
+i3m-of-jeannie is my personal i3wm theme with conky and rofi, representing my best efforts to "de-uglify" i3. It features CPU, RAM, disk usage, battery, weather, and date/time, using the unicode symbol glyph hack first demonstrated by [ivyl](https://github.com/ivyl/i3-config). All common commands are designed to be issued with two keys (mod4 + a letter). Some features are still in progress. Requires rofi, conky, and tamsynmod font to be installed, as well as Droid Sans Mono for Powerline.
 
 For displaying weather on Debian/Ubuntu, run `sudo apt-get install weather-utils` and add the line `id = <your_zipcode>` to /etc/weatherrc.
 
@@ -20,7 +20,7 @@ Keybinding            | Description
 <kbd>mod4+Shift-r</kbd> | Reload i3 configuration.
 <kbd>mod4+Enter</kbd>   | Launch urxvt terminal.
 <kbd>mod4+Shift+Enter</kbd> | Launch terminator terminal.
-<kbd>mod4+DEL</kbd>   | Launch system shutdown/reboot/logoff/reload menu (compatible with Ubuntu).
+<kbd>mod4+Delete</kbd> | Launch system shutdown/reboot/logoff/reload menu (compatible with Ubuntu).
 <kbd>mod4+Left</kbd>  | Move to workspace on the left.
 <kbd>mod4+Right</kbd> | Move to workspace on the right.
 
@@ -39,12 +39,14 @@ Keybinding         | Description
 <kbd>C-down</kbd>  | Select pane below.
 <kbd>C-left</kbd>  | Select pane to the left.
 <kbd>C-right</kbd> | Select pane to the right.
-<kbd>C-t \|</kbd>   | Split the window into smaller panes vertically.
+<kbd>C-t SPC </kbd> | Auto-rearrange the pane configuration.
+<kbd>C-t \|</kbd>  | Split the window into smaller panes vertically.
 <kbd>C-t =</kbd>   | Split the window into smaller panes horizontally.
+<kbd>C-t ,</kbd>   | Rename current window.
 <kbd>C-t r</kbd>   | Reload the .tmux.conf file.
 
 ## Zsh
-My zsh configuration uses antigen and agnoster as the prompt, which requires a special powerline-patched font. Completion functions are provided through zprezto modules, and zaw is included for helm-like history search with `C-r`.
+My zsh configuration uses [antigen](https://github.com/zsh-users/antigen) for package management and [agnoster](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster) as the prompt, which requires a powerline-patched font. Completion functions are provided through zprezto modules, and zaw is included for helm-like history search with `C-r`.
 
 ## Miscellaneous Thoughts
-* After trying xmonad and awesome, I found that while I enjoyed the power of tiling window managers, I had no earthly idea what to do when they broke, which they did often and horribly. Then I found i3, a tiling window manager written in plain English that instantly prints out the location of any errors when you load it. It's probably the one of the best tiling window managers out there in terms of readability.
+* After trying xmonad and awesome, I found that while I enjoyed the power of tiling window managers, I had no earthly idea what to do when they broke, which they did often and horribly. Then I found i3, a tiling window manager configurable in plain English, which instantly prints out the location of any errors when you load it. It's probably one of the best tiling window managers in terms of readability.
