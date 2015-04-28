@@ -26,7 +26,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+Return exec i3-sensible-terminal
 
 # kill focused window
@@ -145,6 +145,17 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+x exec ~/.i3/i3-exit
 
+set $sysmenu "system:  [p]oweroff  re[b]oot  [r]eload  [l]ogout  "
+bindsym $mod+Delete      mode $sysmenu
+mode $sysmenu {
+    bindsym r         restart
+    bindsym l         exit
+    bindsym p         exec shutdown -P now
+    bindsym b         exec shutdown -r now
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+}
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -178,21 +189,6 @@ exec --no-startup-id ~/.i3startup.sh
 # Startup Programs
 exec --no-startup-id "rofi &"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#     # status_command i3status
-#     i3bar_command ~/.i3/bar/i3_bar.sh
-# }
-# bar {
-#     position top
-#     status_command i3status
-#     tray_output LVDS
-#     colors{
-#         background #232323
-#         statusline #DCDCDC
-#     }
-# }
 # colors
 #class				    border	backgr.	text
 client.focused          #171717 #171717 #a6e22e
@@ -203,13 +199,12 @@ client.urgent			#cd989a #cd989a #2e3436
 client.background			#121212
 
 bar {
-        #status_command i3status
 	status_command $HOME/.scripts/conky-i3bar
-#	status_command i3status
 	position top
-	#font -misc-tamsyn.icons-medium-*-normal-*-14-*-*-*-*-*-iso8859-*
 	font xft: tamsynmod 9
+	# font xft: profont 11
 	# font xft: tewi 11
+	# font xft: bitocra 11
 	# font xft: neep 11
 	# font xft: couriernew 10
 

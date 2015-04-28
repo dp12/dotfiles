@@ -7,7 +7,7 @@ system_aliases is compatible with zsh, bash, and fish shells. Features handy ali
 
 ## i3 Window Manager
 ![i3wm-of-jeannie](/../master/screenshots/i3wm-of-jeannie.png?raw=true)
-i3m-of-jeannie is my personal i3wm theme with conky and rofi, representing my best efforts to "de-uglify" i3. It features CPU, RAM, disk usage, battery, weather, and date/time, using the unicode symbol glyph hack first demonstrated by [ivyl](https://github.com/ivyl/i3-config). All common commands are designed to be issued with two keys (mod4 + a letter). Some features are still in progress. Requires rofi, conky, and tamsynmod font to be installed, as well as Droid Sans Mono for Powerline.
+i3wm-of-jeannie is my personal i3wm theme with conky and rofi, representing my best efforts to "de-uglify" i3. It features CPU, RAM, disk usage, battery, weather, and date/time, using the unicode symbol glyph hack first demonstrated by [ivyl](https://github.com/ivyl/i3-config). All common commands are designed to be issued with two keys (mod4 + a letter). Some features are still in progress. Requires rofi, conky, and tamsynmod font to be installed, as well as Droid Sans Mono for Powerline.
 
 For displaying weather on Debian/Ubuntu, run `sudo apt-get install weather-utils` and add the line `id = <your_zipcode>` to /etc/weatherrc.
 
@@ -49,4 +49,4 @@ Keybinding         | Description
 My zsh configuration uses [antigen](https://github.com/zsh-users/antigen) for package management and [agnoster](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster) as the prompt, which requires a powerline-patched font. Completion functions are provided through zprezto modules, and zaw is included for helm-like history search with `C-r`.
 
 ## Miscellaneous Thoughts
-* After trying xmonad and awesome, I found that while I enjoyed the power of tiling window managers, I had no earthly idea what to do when they broke, which they did often and horribly. Then I found i3, a tiling window manager configurable in plain English, which instantly prints out the location of any errors when you load it. It's probably one of the best tiling window managers in terms of readability.
+* After trying xmonad and awesome, I found that while I enjoyed the power of tiling window managers, I had no earthly idea what to do when they broke, which they did often and horribly. The amount of time spent fixing them was just not commensurate to the amount of functionality I was gaining. Then I found i3, a tiling window manager configurable in plain English, which instantly prints out the location of any errors when you load it. It's probably one of the best tiling window managers out there in terms of readability.
