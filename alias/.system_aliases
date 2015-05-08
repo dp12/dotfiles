@@ -32,7 +32,7 @@ alias pc="percol"
 alias psg="ps -ax | grep"
 alias psp="ps -ax | percol"
 alias pu="pushd"
-alias pu="popd"
+alias po="popd"
 alias t="tar xvfz "
 alias h="history"
 

@@ -21,6 +21,7 @@ Keybinding            | Description
 <kbd>mod4+Enter</kbd>   | Launch urxvt terminal.
 <kbd>mod4+Shift+Enter</kbd> | Launch terminator terminal.
 <kbd>mod4+Delete</kbd> | Launch system shutdown/reboot/logoff/reload menu (compatible with Ubuntu).
+<kbd>mod4+Shift+x</kbd> | Launch a prettier, but slightly buggy system shutdown/reboot/logoff/reload menu using dzen2 (compatible with Ubuntu).
 <kbd>mod4+Left</kbd>  | Move to workspace on the left.
 <kbd>mod4+Right</kbd> | Move to workspace on the right.
 
