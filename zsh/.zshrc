@@ -257,7 +257,8 @@ alias d='fasd -d' # directory
 alias f='fasd -f' # file
 alias z='fasd_cd -d' # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # interactive directory jump
-
+alias ka='k -a'
+alias kd='k -d'
 
 # TMUX Launch
 alias tmux='tmux -2'

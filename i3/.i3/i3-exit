@@ -17,6 +17,7 @@
 import i3
 import shlex
 from subprocess import Popen, PIPE
+import os
 
 l_reboot =   "Reboot   (r)"
 l_shutdown = "Shutdown (s)"
@@ -70,6 +71,7 @@ def exec_dzen (rect):
                                keyl,keyL,keys,keyS,keyc,keyC)) +\
           "\""
     cmd = cmd % locals ()
+    # os.system(cmd)
     args = shlex.split (cmd);
 
     p = Popen (args, stdin=PIPE, stdout=PIPE)
@@ -89,16 +91,13 @@ def exec_dzen (rect):
 
 def action (cmd):
     if cmd == l_reboot:
-        cmd = "sudo shutdown -r now"
+        os.system("shutdown -r now")
     elif cmd == l_shutdown:
-        cmd = "sudo shutdown -h now"
+        os.system("shutdown -h now")
     elif cmd == l_logout:
-        cmd = "i3-msg exit"
+        os.system("i3-msg exit")
     else:
         return
-
-    args = shlex.split (cmd)
-    Popen  (args)
 
 if __name__ == "__main__":
     ws = i3.get_workspaces ()
