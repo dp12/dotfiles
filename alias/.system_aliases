@@ -28,14 +28,16 @@ alias dae="emacs --daemon"
 alias em="emacs -nw"
 alias py="python"
 alias pc="percol"
-
+alias dush="du -sh"
 alias psg="ps -ax | grep"
 alias psp="ps -ax | percol"
 alias pu="pushd"
 alias po="popd"
 alias t="tar xvfz "
 alias h="history"
+alias gdbtui="gdb -tui"
 
+# Dotfiles
 alias brc="em ~/.bashrc"
 alias zrc="em ~/.zshrc"
 alias vib="vim ~/.bashrc"
@@ -49,11 +51,11 @@ alias .x="xrdb ~/.Xresources"
 alias emd="cd ~/.emacs.d"
 alias dot="cd ~/dotfiles"
 
+
 alias emm="em Makefile"
 alias emc="em main.c"
 # && makes fish unhappy
 # alias mcm="make clean && make"
-alias gdbtui="gdb -tui"
 
 # Package management
 alias agu="sudo apt-get update"
@@ -76,8 +78,12 @@ alias gdc="git diff --cached"
 alias gf="git fetch"
 alias gc="git checkout"
 alias gco="git checkout"
+alias gc~="git checkout HEAD~"
+alias gc~~="git checkout HEAD~~"
+alias gcb="git checkout -b"
 alias gci="git commit"
 alias gcv="git cherry -v"
+alias gcp="git cherry-pick"
 alias gt="git tag"
 alias gpreb="git pull --rebase"
 alias gcm="git checkout master"
@@ -87,6 +93,8 @@ alias gsl="git stash list"
 alias gsa="git stash apply"
 alias gsP="git stash pop"
 alias gss="git stash save"
+alias grH="git reset HEAD --hard"
+alias grM="git reset HEAD --mixed"
 
 # Misc
 alias sgrep="grep -rnI -C3 --color=always"
