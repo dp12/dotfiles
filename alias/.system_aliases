@@ -2,14 +2,14 @@
 # To load, put "source ~/.system_aliases" in your .bashrc, .zshrc, or config.fish
 # Works (supposedly) with bash, zsh, and fish
 
-alias ali="alias"
+alias a="alias"
 alias l="ls"
 alias la="ls -a"
 alias ll="ls -l"
 alias lal="ls -la"
 alias lla="ls -la"
 alias lah="ls -lah"
-alias lsp="ls | percol"
+alias lsp="ls | peco"
 alias lf="ls *(.)"
 alias ld="ls *(/)"
 alias ..="cd .."
@@ -27,10 +27,10 @@ alias ec="emacsclient"
 alias dae="emacs --daemon"
 alias em="emacs -nw"
 alias py="python"
-alias pc="percol"
+alias pc="peco"
 alias dush="du -sh"
 alias psg="ps -ax | grep"
-alias psp="ps -ax | percol"
+alias psp="ps -ax | peco"
 alias pu="pushd"
 alias po="popd"
 alias t="tar xvfz "
@@ -50,6 +50,7 @@ alias .s="source ~/.system_aliases"
 alias .x="xrdb ~/.Xresources"
 alias emd="cd ~/.emacs.d"
 alias dot="cd ~/dotfiles"
+alias sp="cd ~/spacemacs"
 
 
 alias emm="em Makefile"
@@ -59,6 +60,7 @@ alias emc="em main.c"
 
 # Package management
 alias agu="sudo apt-get update"
+alias agupg="sudo apt-get upgrade"
 alias agi="sudo apt-get install"
 alias acs="sudo apt-cache search"
 alias agr="sudo apt-get --purge remove"
@@ -95,6 +97,7 @@ alias gsP="git stash pop"
 alias gss="git stash save"
 alias grH="git reset HEAD --hard"
 alias grM="git reset HEAD --mixed"
+alias grS="git reset HEAD --soft"
 
 # Misc
 alias sgrep="grep -rnI -C3 --color=always"
