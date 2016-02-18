@@ -29,23 +29,34 @@ xftfont tamsyn:size=8
 
 TEXT
   ## CPU Info
-  [{ "full_text" : "▣ CPU: ${cpu}% - [$cpubar] " , "color" : "\#ff0000" },
+  [{ "full_text" : ":${cpu}% " , "color" : "\#e33a6e" },
+
   ## RAM Info
-  # { "full_text" : "≣ MEM: ${mem} - [$membar]" , "color" : "\#B58900" },
-  { "full_text" : "≣ MEM: ${mem} " , "color" : "\#C8C039" },
+  { "full_text" : ":${mem} " , "color" : "\#e0da37" },
+
   ## Disk Space
-  # { "full_text" : "■ DISK: ${fs_used /}/${fs_size /} - [${fs_bar}]" , "color" : "\#00A9B5"},
-  { "full_text" : "■ DISK: ${fs_used /} - [${fs_bar}]" , "color" : "\#00A9B5"},
+  { "full_text" : ": ${fs_used /} - [${fs_bar}]" , "color" : "\#80d9d8"},
+
   ## Battery Percentage
-  { "full_text":"❤ BAT: ${battery_percent BAT0}%", "color" : "\#DC322F" },
+  { "full_text":": ${battery_percent BAT0}%", "color" : "\#DC322F" },
+
   ## Weather Info
-  { "full_text" : "☁ ${exec weather --headers="Temperature" -q | awk '/Temperature/ {print $2}'} °F ➜ *${exec weather --headers="Sky conditions" -q | awk '/Sky conditions/ {print $3 " " $4}'}*", "color" : "\#F26C91"},
-  ## Date-Time
-  # { "full_text" : " ${time %F - %I:%M %P} " , "color" : "\#95FC7B"},
-  { "full_text" : "🕑 ${time %Y-%B-%d - %I:%M %P} " , "color" : "\#95FC7B"},
+  { "full_text" : " *${exec weather --headers="Sky conditions" -q | awk '/Sky conditions/ {print $3 " " $4}'}*", "color" : "\#eca4c4"},
+
+  ## Temperature
+  { "full_text" : "${exec weather --headers="Temperature" -q | awk '/Temperature/ {print $2}'} °F", "color" : "\#ffaf5f"},
+
+  ## Date
+  { "full_text" : "  ${time %Y %B %d} " , "color" : "\#778baf"},
+
+  ## Time
+  { "full_text" : "🕑  ${time %I:%M%P}" , "color" : "\#95fc7b" , "separator" : false},
+  # { "full_text" : "🕑  ${time %I:%M%P}" , "color" : "\#95fc7b"},
+
   ## Display Username 
-  {"full_text": " ${exec whoami} ↵", "color":"\#ff00f3"}
-  # {"full_text": " i3wm-of-jeannie ↵", "color":"\#ff00f3"}
+  # {"full_text": " ${exec whoami} ↵", "color":"\#de5e1e"}
+  {"full_text": "...ubuntu[${exec lsb_release -r | cut -f 2 | tr '[:upper:]' '[:lower:]'}]↵", "color":"\#000000" , "background":"\#FFAF00"}
+
   ## Unused
   # { "full_text" : "♪ VOL: ${mixer}% " , "color" : "\#C89BDC"},
   # { "full_text" : "HDD: $diskio_read :Read $diskio_write :Write" , "color" : "\#A4DDED"},

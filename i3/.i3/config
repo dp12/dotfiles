@@ -26,8 +26,8 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
-bindsym $mod+Shift+Return exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -99,29 +99,33 @@ bindsym $mod+a focus parent
 # Remember last workspace to jump back to
 workspace_auto_back_and_forth yes
 
-# name workspaces
-# set $tag1 "1: ξ🐚"
-# EMACS
-set $tag1 "1: (  λ  )"
-# TERM
-set $tag2 "2: >_"
-# SCOPE
-set $tag3 "3: 🔎"
-# WEB
-set $tag4 "4: 🌎"
-# CHAT
-set $tag5 "5: 💬"
+# Make programs appear in certain workspaces
+# assign [class="^Emacs"] 1
+# assign [class="X-terminal-emulator"] 2
+
+# Name workspaces
+set $tag1  "[1]"
+set $tag2  "[2]"
+set $tag3  "[3]"
+set $tag4  "[4]"
+set $tag5  "[5]"
+set $tag6  "[6]"
+set $tag7  "[7]"
+set $tag8  "[8]"
+set $tag9  "[9]"
+set $tag10 "[10]"
+
 # switch to workspace
 bindsym $mod+1 workspace $tag1
 bindsym $mod+2 workspace $tag2
 bindsym $mod+3 workspace $tag3
 bindsym $mod+4 workspace $tag4
 bindsym $mod+5 workspace $tag5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+6 workspace $tag6
+bindsym $mod+7 workspace $tag7
+bindsym $mod+8 workspace $tag8
+bindsym $mod+9 workspace $tag9
+bindsym $mod+0 workspace $tag10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $tag1
@@ -129,11 +133,11 @@ bindsym $mod+Shift+2 move container to workspace $tag2
 bindsym $mod+Shift+3 move container to workspace $tag3
 bindsym $mod+Shift+4 move container to workspace $tag4
 bindsym $mod+Shift+5 move container to workspace $tag5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+6 move container to workspace $tag6
+bindsym $mod+Shift+7 move container to workspace $tag7
+bindsym $mod+Shift+8 move container to workspace $tag8
+bindsym $mod+Shift+9 move container to workspace $tag9
+bindsym $mod+Shift+0 move container to workspace $tag10
 
 # reload the configuration file
 # bindsym $mod+Shift+c reload
@@ -182,29 +186,35 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Don't show any title bars for programs
+for_window [class="^.*"] border pixel 1
+
 # Wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/cube.png
+exec --no-startup-id feh --bg-max ~/.wallpaper/grass2.jpg
 exec --no-startup-id ~/.i3startup.sh
 
 # Startup Programs
 exec --no-startup-id "rofi &"
+assign [title="^spacemacs$"] $tag1
+exec --no-startup-id emacs -title 'spacemacs'
+exec --no-startup-id i3-msg 'workspace $tag2; exec terminator; workspace $tag1'
 
 # colors
-#class				    border	backgr.	text
+#class                  border  backgnd text
 client.focused          #171717 #171717 #a6e22e
-client.focused_inactive	#2e3436 #2e3436 #b9c8d1
-client.unfocused		#2e3436 #2e3436 #999999
-client.urgent			#cd989a #cd989a #2e3436
-
-client.background			#121212
+client.focused_inactive #2e3436 #2e3436 #b9c8d1
+client.unfocused        #2e3436 #2e3436 #999999
+client.urgent           #cd989a #cd989a #2e3436
+client.background       #121212
 
 bar {
 	status_command $HOME/.scripts/conky-i3bar
 	position top
-	font xft: tamsynmod 9
+	font xft: tamsyn, siji 11
+	# font xft: terminus 9
 	# font xft: profont 11
 	# font xft: tewi 11
-	# font xft: bitocra 11
+	# font xft: bitocra, siji 11
 	# font xft: neep 11
 	# font xft: couriernew 10
 
@@ -213,11 +223,11 @@ colors {
         statusline #171717
 ########################## border # back ## text ##################################################
         # focused_workspace  #171717 #171717 #a6e22e
-        focused_workspace  #171717 #171717 #FD9D0D
+        focused_workspace  #afd700 #afd700 #005f00
         # focused_workspace  #171717 #333333 #FD9D0D
         active_workspace   #333333 #5f676a #ffffff
         urgent_workspace   #2f343a #900000 #ffffff
-        inactive_workspace #171717 #171717 #9c9c9c
+        inactive_workspace #afd700 #171717 #9c9c9c
         # urgent_workspace   #ffffff #900000
     }
 }
