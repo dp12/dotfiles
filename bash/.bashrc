@@ -24,3 +24,5 @@ eval "$(fasd --init auto)"
 export HARCH=`echo $(uname -m) | sed "s/i./x/g"`
 export PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
 export TERM=xterm-256color
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

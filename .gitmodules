@@ -1,6 +1,3 @@
-[submodule "vim/.vim"]
-	path = vim/.vim
-	url = https://github.com/redguardtoo/vimrc.git
-[submodule "awesome/.config/awesome"]
-	path = awesome/.config/awesome
-	url = https://github.com/copycat-killer/awesome-copycats
+# [submodule "vim/.vim"]
+	# path = vim/.vim
+	# url = https://github.com/redguardtoo/vimrc.git

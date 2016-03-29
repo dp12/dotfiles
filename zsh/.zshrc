@@ -20,14 +20,17 @@ antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
 command-not-found
-colored-man
+colored-man-pages
 git
 git-extras
-fasd
+# fasd
 # last-working-dir
 pip
+z
 
 zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-syntax-highlighting
 unixorn/autoupdate-antigen.zshplugin
 # djui/alias-tips               # reminds you if you didn't use an alias
 # mfaerevaag/wd
@@ -35,6 +38,7 @@ unixorn/autoupdate-antigen.zshplugin
 unixorn/git-extra-commands
 voronkovich/gitignore.plugin.zsh
 supercrabtree/k
+tarruda/zsh-autosuggestions
 ascii-soup/zsh-url-highlighter
 EOBUNDLES
 
@@ -44,6 +48,7 @@ EOBUNDLES
 # antigen theme arialdomartini/oh-my-git-themes arialdo-granzestyle
 # antigen bundle sindresorhus/pure
 antigen theme agnoster
+# antigen theme bullet-train
 # antigen theme muse
 # antigen theme steeef
 # antigen theme fishy
@@ -51,32 +56,31 @@ export DEFAULT_USER=$USER    # suppress ssh user info for agnoster
 
 antigen bundle sorin-ionescu/prezto modules/completion
 
-antigen bundle zsh-users/zsh-syntax-highlighting
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-# Override highlighter colors
-ZSH_HIGHLIGHT_STYLES[default]=none
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
-ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=009,standout
-ZSH_HIGHLIGHT_STYLES[alias]=fg=white,bold
-ZSH_HIGHLIGHT_STYLES[builtin]=fg=white,bold
-ZSH_HIGHLIGHT_STYLES[function]=fg=white,bold
-ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
-ZSH_HIGHLIGHT_STYLES[commandseparator]=none
-ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=009
-ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
-ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
-ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=green
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=green
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=063
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
-ZSH_HIGHLIGHT_STYLES[assign]=none
+# antigen bundle zsh-users/zsh-syntax-highlighting
+# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+# # Override highlighter colors
+# ZSH_HIGHLIGHT_STYLES[default]=none
+# ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
+# ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=009,standout
+# ZSH_HIGHLIGHT_STYLES[alias]=fg=white,bold
+# ZSH_HIGHLIGHT_STYLES[builtin]=fg=white,bold
+# ZSH_HIGHLIGHT_STYLES[function]=fg=white,bold
+# ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
+# ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
+# ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+# ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=009
+# ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
+# ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
+# ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
+# ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=green
+# ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=green
+# ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
+# ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=063
+# ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
+# ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
+# ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
+# ZSH_HIGHLIGHT_STYLES[assign]=none
 
-antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zaw
 # From: http://blog.patshead.com/2013/04/more-powerful-zsh-history-search-using-zaw.html
 bindkey '^R' zaw-history
@@ -86,7 +90,7 @@ bindkey -M filterselect '^E' accept-search
 
 zstyle ':filter-select:highlight' matched fg=green
 zstyle ':filter-select' max-lines 3
-zstyle ':filter-select' case-insensitive yes # enable case-insensitive 
+zstyle ':filter-select' case-insensitive yes # enable case-insensitive
 zstyle ':filter-select' extended-search yes # see below
 
 if is_osx; then
@@ -120,7 +124,6 @@ antigen apply
 # export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/share/npm/bin
 export PATH=$PATH:/opt/emacs/bin
 export VISUAL=vim
-export GREP_OPTIONS='--color=always'
 
 # User ctrl-z like alt-tab
 fancy-ctrl-z () {
@@ -231,10 +234,29 @@ fi
 # bindkey '^X1' predict-on
 # bindkey '^X2' predict-off
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
-AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=magenta'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=128'
+bindkey '^[f' autosuggest-accept
+
+# Enable fzf fuzzy matcher
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+cdf() {
+  local file
+  local dir
+  file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+# Better z
+# z() {
+#   if [[ -z "$*" ]]; then
+#       cd "$(_z -l 2>&1 | fzf +s --tac | sed 's/^[0-9,.]* *//')"
+#   else
+#     _last_z_args="$@"
+#     _z "$@"
+#   fi
+# }
 
 # Remap RAlt to Ctrl
-setxkbmap -option ctrl:ralt_rctrl 
+setxkbmap -option ctrl:ralt_rctrl
 source ~/.system_aliases
 if [ -f ~/.personal_aliases ]; then
 source ~/.personal_aliases
@@ -244,26 +266,26 @@ alias mcm="make clean && make"
 export TERM=xterm-256color
 # eval "$(fasd --init posix-alias zsh-hook)"
 
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
+# fasd_cache="$HOME/.fasd-init-bash"
+# if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+# eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" >| "$fasd_cache"
+# fi
+# source "$fasd_cache"
+# unset fasd_cache
 # jump to recently used items
-alias a='fasd -a' # any
-alias s='fasd -si' # show / search / select
-alias d='fasd -d' # directory
-alias f='fasd -f' # file
-alias z='fasd_cd -d' # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # interactive directory jump
+# alias a='fasd -a' # any
+# alias s='fasd -si' # show / search / select
+# alias d='fasd -d' # directory
+# alias f='fasd -f' # file
+# alias z='fasd_cd -d' # cd, same functionality as j in autojump
+# alias zz='fasd_cd -d -i' # interactive directory jump
 alias k="k -h"
 alias ka='k -a'
 alias kd='k -d'
 
 # TMUX Launch
 alias tmux='tmux -2'
-function m {
+function tmux_launch {
     if [[ -z $TMUX ]]; then
         # Attempt to discover a detached session and attach it, else create a new session
         # CURRENT_USER=$(whoami)
@@ -281,3 +303,8 @@ function m {
         fi
     fi
 }
+
+alias tml='tmux_launch'
+
+# Launch TMUX
+mux start dev

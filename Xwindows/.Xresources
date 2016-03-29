@@ -1,7 +1,122 @@
-! Emacs default font
-Emacs24.font: Ubuntu Mono-13
-emacs.font: Ubuntu Mono-13
-emacs.FontBackend: xft
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
+
+! hard contrast: *background: #1d2021
+! *background: #282828
+! *background: #2b2222
+! soft contrast: *background: #32302f
+! *foreground: #ebdbb2
+*foreground: #111111
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
+
+
+
+! URxvt settings
+
+! General
+!urxvt*termName:  rxvt-256color
+urxvt*loginShell:         true
+urxvt*scrollBar:         false
+urxvt*secondaryScroll:    true
+urxvt*saveLines:         65535
+urxvt*cursorBlink:       false
+urxvt*urgentOnBell:       true
+!urxvt*override-redirect:false
+!urxvt*borderLess:       false
+!urxvt*internalBorder:       0
+!urxvt*externalBorder:       0
+
+! Extensions
+urxvt*perl-lib:        /usr/lib/urxvt/perl/
+urxvt*perl-ext-common: default,matcher,searchable-scrollback,clipboard,keyboard-select
+urxvt*urlLauncher:     /usr/bin/firefox
+urxvt*matcher.button:  1
+!  - catch ugly URLs
+urxvt.keysym.M-Escape: perl:keyboard-select:activate
+urxvt.keysym.M-c:   perl:clipboard:copy
+urxvt.keysym.C-v:   perl:clipboard:paste
+urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+urxvt.clipboard.copycmd:  xsel -ib
+urxvt.clipboard.pastecmd: xsel -ob
+
+
+URxvt*font: xft:Hermit:medium:size=12:antialiasing=true
+URxvt*boldFont: xft:Hermit:bold:size=12:antialiasing=true:style=medium
+URxvt*italicFont: xft:Hermit:medium:size=12:antialiasing=true:style=medium
+URxvt*boldItalicFont: xft:Hermit:bold:size=12:antialiasing=true:style=medium
+URxvt*loginShell:        true
+URxvt*scrollBar:         false 
+
+
+! -----------------------------------------------------------------------------
+! File: gruvbox-urxvt256.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 13 Dec 2013
+! -----------------------------------------------------------------------------
+
+URxvt*background: #282828
+URxvt*foreground: #ebdbb2
+
+URxvt.color24:  #076678
+URxvt.color66:  #427b58
+URxvt.color88:  #9d0006
+URxvt.color96:  #8f3f71
+URxvt.color100: #79740e
+URxvt.color108: #8ec07c
+URxvt.color109: #83a598
+URxvt.color130: #af3a03
+URxvt.color136: #b57614
+URxvt.color142: #b8bb26
+URxvt.color167: #fb4934
+URxvt.color175: #d3869b
+URxvt.color208: #fe8019
+URxvt.color214: #fabd2f
+URxvt.color223: #ebdbb2
+URxvt.color228: #f2e5bc
+URxvt.color229: #fbf1c7
+URxvt.color230: #f9f5d7
+URxvt.color234: #1d2021
+URxvt.color235: #282828
+URxvt.color236: #32302f
+URxvt.color237: #3c3836
+URxvt.color239: #504945
+URxvt.color241: #665c54
+URxvt.color243: #7c6f64
+URxvt.color244: #928374
+URxvt.color245: #928374
+URxvt.color246: #a89984
+URxvt.color248: #bdae93
+URxvt.color250: #d5c4a1
 
 ! Xft font configuration
 Xft.antialias:  1
@@ -11,91 +126,47 @@ Xft.lcdfilter:  lcddefault
 Xft.rgba:       rgb
 
 ! Rofi colors setup
-rofi.opacity: 85
-rofi.width: 1924
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+! Use extended color scheme
+rofi.color-enabled:                  true
+! Color scheme for normal row
+rofi.color-normal:                   argb:00000000,  #D8DEE9 , argb:00000000,  #FAC863 ,  #1B2B34
+! Color scheme for urgent row
+rofi.color-urgent:                   argb:00000000,  #F99157 , argb:00000000,  #F99157 ,  #1B2B34
+! Color scheme for active row
+rofi.color-active:                   argb:00000000,  #6699CC , argb:00000000,  #6699CC ,  #1B2B34
+! Color scheme window
+rofi.color-window:                   argb:ee222222,  #FAC863 ,  #FAC863
+! Separator style (none, dash, solid)
+rofi.separator-style: solid
+! rofi.opacity: 85
+! rofi.width: 1924
 rofi.lines: 7
 rofi.columns: 4
-rofi.font: SourceCodePro 9
-rofi.fg: #E5DBCF
-rofi.bg: #0F3B5F
-rofi.hlfg: #0F3B5F
-rofi.hlbg: #CC9752
-rofi.bc: #CC9752
-rofi.bw: 2
+rofi.font: Hermit 11
+rofi.fg: #D8DEE9
+rofi.bg: #2F2F2F
+rofi.hlfg: #303938
+rofi.hlfg-active: #50708F
+rofi.hlfg-urgent: #F99157
+! rofi.hlbg: #FAC863
+! rofi.hlbg: #F92672
+! rofi.hlbg: #778BAF
+rofi.hlbg: #FFAF00
+! rofi.bc: #91E22E
+rofi.bc: #91E22E
+rofi.bw: 0
 rofi.location: 6
 rofi.padding: 2
-rofi.yoffset: -22
-rofi.xoffset: 0
-rofi.fixed-num-lines: true
-rofi.hmode: false
-rofi.terminal: x-terminal-emulator
-rofi.ssh-set-title: true
-rofi.disable-history: true
+! rofi.yoffset: -22
+! rofi.xoffset: 0
+! rofi.fixed-num-lines: true
+! rofi.hmode: false
+! rofi.terminal: x-terminal-emulator
+! rofi.ssh-set-title: true
+! rofi.disable-history: true
 rofi.key-window: mod4+Tab
 rofi.key-run: mod4+p
 rofi.key-ssh: mod1+F3
-
-! Urxvt settings
-urxvt*font: xft:Droid Sans Mono for Powerline:size=12:antialias=true
-urxvt*boldFont: xft:Droid Sans Mono for Powerline:size=12:antialias=true
-urxvt*lineSpace: -1
-
-!! urxvt interface
-urxvt*transparent:       false
-urxvt*loginShell:         true
-urxvt*scrollBar:         false
-urxvt*secondaryScroll:    true
-urxvt*saveLines:         65535
-urxvt*cursorBlink:       false
-urxvt*urgentOnBell:       true
-
-!! urxvt clipboard
-urxvt.perl-ext-common: default,clipboard,keyboard-select
-urxvt.keysym.M-Escape: perl:keyboard-select:activate
-urxvt.keysym.M-c:   perl:clipboard:copy
-urxvt.keysym.C-v:   perl:clipboard:paste
-urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-urxvt.clipboard.copycmd:  xsel -ib
-urxvt.clipboard.pastecmd: xsel -ob
-
-!! urxvt misc
-urxvt.saveLines: 4095
-urxvt.iso14755: false
-
-! Old colors
-*.foreground:   #c0bebf
-*.background:   #2b2222
-*.cursorColor:  #F33C5B
-
-! Base-16 Solarized theme from https://github.com/chriskempson/base16-xresources
-! *.foreground:   #93a1a1
-! *.background:   #002b36
-! *.cursorColor:  #93a1a1
-
-*.color0:       #002b36
-*.color1:       #dc322f
-*.color2:       #859900
-*.color3:       #b58900
-*.color4:       #268bd2
-*.color5:       #6c71c4
-*.color6:       #2aa198
-*.color7:       #93a1a1
-
-*.color8:       #657b83
-*.color9:       #dc322f
-*.color10:      #859900
-*.color11:      #b58900
-*.color12:      #268bd2
-*.color13:      #6c71c4
-*.color14:      #2aa198
-*.color15:      #fdf6e3
-
-! ! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
-! ! use 'shell' template to set these if necessary
-*.color16:      #cb4b16
-*.color17:      #d33682
-*.color18:      #073642
-*.color19:      #586e75
-*.color20:      #839496
-*.color21:      #eee8d5
-
