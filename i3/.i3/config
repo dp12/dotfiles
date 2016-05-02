@@ -225,7 +225,6 @@ exec --no-startup-id ~/.i3startup.sh
 # Startup
 #############################################
 exec --no-startup-id i3-msg 'workspace $tag2; exec terminator; workspace $tag1'
-assign [title="^spacemacs$"] $tag1
 exec --no-startup-id emacs -title 'spacemacs'
 exec --no-startup-id "rofi &"
 
@@ -244,6 +243,7 @@ bar {
 	position top
 	font xft: tamsyn, siji 11
   height 22
+  # Enforce window ordering, but don't show the extra numbers
   strip_workspace_numbers yes
 
   ## More fonts to try out!

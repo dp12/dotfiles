@@ -23,31 +23,29 @@ command-not-found
 colored-man-pages
 git
 git-extras
-# fasd
-# last-working-dir
 pip
 z
-
 zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-syntax-highlighting
 unixorn/autoupdate-antigen.zshplugin
-# djui/alias-tips               # reminds you if you didn't use an alias
-# mfaerevaag/wd
-# MikeDacre/cdbk                # set bookmark aliases quickly
 unixorn/git-extra-commands
 voronkovich/gitignore.plugin.zsh
 supercrabtree/k
 tarruda/zsh-autosuggestions
 ascii-soup/zsh-url-highlighter
+
+# fasd
+# last-working-dir
+# djui/alias-tips               # reminds you if you didn't use an alias
+# mfaerevaag/wd
+# MikeDacre/cdbk                # set bookmark aliases quickly
 EOBUNDLES
 
 # Theme
-# antigen-bundle arialdomartini/oh-my-git
-# antigen theme arialdomartini/oh-my-git-themes arialdo-pathinline
-# antigen theme arialdomartini/oh-my-git-themes arialdo-granzestyle
-# antigen bundle sindresorhus/pure
 antigen theme agnoster
+## Other nice themes
+# antigen bundle sindresorhus/pure
 # antigen theme bullet-train
 # antigen theme muse
 # antigen theme steeef
@@ -55,31 +53,6 @@ antigen theme agnoster
 export DEFAULT_USER=$USER    # suppress ssh user info for agnoster
 
 antigen bundle sorin-ionescu/prezto modules/completion
-
-# antigen bundle zsh-users/zsh-syntax-highlighting
-# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-# # Override highlighter colors
-# ZSH_HIGHLIGHT_STYLES[default]=none
-# ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
-# ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=009,standout
-# ZSH_HIGHLIGHT_STYLES[alias]=fg=white,bold
-# ZSH_HIGHLIGHT_STYLES[builtin]=fg=white,bold
-# ZSH_HIGHLIGHT_STYLES[function]=fg=white,bold
-# ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
-# ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
-# ZSH_HIGHLIGHT_STYLES[commandseparator]=none
-# ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=009
-# ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
-# ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
-# ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
-# ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=green
-# ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=green
-# ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
-# ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=063
-# ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
-# ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
-# ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
-# ZSH_HIGHLIGHT_STYLES[assign]=none
 
 antigen bundle zsh-users/zaw
 # From: http://blog.patshead.com/2013/04/more-powerful-zsh-history-search-using-zaw.html
@@ -121,9 +94,9 @@ fi
 
 antigen apply
 
-# export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/share/npm/bin
 export PATH=$PATH:/opt/emacs/bin
 export VISUAL=vim
+export PATH=$PATH:~/.gem/ruby/2.1.0/bin
 
 # User ctrl-z like alt-tab
 fancy-ctrl-z () {
@@ -245,15 +218,6 @@ cdf() {
   local dir
   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
-# Better z
-# z() {
-#   if [[ -z "$*" ]]; then
-#       cd "$(_z -l 2>&1 | fzf +s --tac | sed 's/^[0-9,.]* *//')"
-#   else
-#     _last_z_args="$@"
-#     _z "$@"
-#   fi
-# }
 
 # Remap RAlt to Ctrl
 setxkbmap -option ctrl:ralt_rctrl
@@ -261,9 +225,10 @@ source ~/.system_aliases
 if [ -f ~/.personal_aliases ]; then
 source ~/.personal_aliases
 fi
-alias mcm="make clean && make"
 
 export TERM=xterm-256color
+
+# Setup for fasd (broken on my system)
 # eval "$(fasd --init posix-alias zsh-hook)"
 
 # fasd_cache="$HOME/.fasd-init-bash"
@@ -305,6 +270,7 @@ function tmux_launch {
 }
 
 alias tml='tmux_launch'
+alias msd='mux start dev'
 
-# Launch TMUX
-mux start dev
+# Uncomment to launch Tmux session on every new terminal
+# mux start dev

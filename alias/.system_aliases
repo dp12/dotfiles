@@ -2,7 +2,7 @@
 # To load, put "source ~/.system_aliases" in your .bashrc, .zshrc, or config.fish
 # Works (supposedly) with bash, zsh, and fish
 
-alias a="alias"
+alias a?="alias"
 alias l="ls"
 alias la="ls -a"
 alias ll="ls -l"
@@ -17,6 +17,7 @@ alias lsp="ls | peco"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias cd-="cd -"
 alias cpr="cp -r"
 alias rmrf="rm -rf"
 alias rmd="rm -rf"
