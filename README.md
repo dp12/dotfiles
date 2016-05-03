@@ -6,8 +6,8 @@ Configs for zsh/bash/fish, git, tmux, i3, awesome, and vim, plus some handy alia
 system_aliases is compatible with zsh, bash, and fish shells. Features handy aliases for commands like ls, cd, emacs, apt-get, and git. Why `cd ..` when you can `..` instead?
 
 ## i3 Window Manager
-![i3wm-of-jeannie](/../master/screenshots/i3wm-of-jeannie.png?raw=true)
-i3wm-of-jeannie is my personal i3wm theme with conky and rofi, representing my best efforts to "de-uglify" i3. It features CPU, RAM, disk usage, battery, weather, and date/time, using the unicode symbol glyph hack first demonstrated by [ivyl](https://github.com/ivyl/i3-config). All common commands are designed to be issued with two keys (mod4 + a letter). Some features are still in progress. Requires rofi, conky, and tamsynmod font to be installed, as well as Droid Sans Mono for Powerline.
+![glowfish](/../master/screenshots/glowfish.png?raw=true)
+Glowfish is a custom i3wm theme with conky and rofi, representing my best efforts to "de-uglify" i3. It is semi-inspired by the [daylerees](https://github.com/daylerees/colour-schemes) glowfish theme and copies the [awesome copycats](https://github.com/copycat-killer/awesome-copycats) multicolor theme bar colors. Glowfish features CPU, RAM, disk usage, battery, weather, and date/time, using glyphs supplied by Siji font. All common commands are designed to be issued with two keys (mod4 + a letter). Some features are still in progress. Requires rofi, conky, and tamsyn and [Siji](https://github.com/gstk/siji) fonts to be installed, as well as Droid Sans Mono for Powerline.
 
 For displaying weather on Debian/Ubuntu, run `sudo apt-get install weather-utils` and add the line `id = <your_zipcode>` to /etc/weatherrc.
 
@@ -18,15 +18,16 @@ Keybinding            | Description
 <kbd>mod4+d</kbd>     | Launch dmenu.
 <kbd>mod4+c</kbd>     | Close application.
 <kbd>mod4+Shift-r</kbd> | Reload i3 configuration.
-<kbd>mod4+Enter</kbd>   | Launch urxvt terminal.
-<kbd>mod4+Shift+Enter</kbd> | Launch terminator terminal.
+<kbd>mod4+Enter</kbd> | Launch terminator terminal.
+<kbd>mod4+Shift+Enter</kbd>   | Launch urxvt terminal.
 <kbd>mod4+Delete</kbd> | Launch system shutdown/reboot/logoff/reload menu (compatible with Ubuntu).
 <kbd>mod4+Shift+x</kbd> | Launch a prettier, but slightly buggy system shutdown/reboot/logoff/reload menu using dzen2 (compatible with Ubuntu).
+<kbd>mod4+Shift+p</kbd> | Lock the desktop with the [py3lock script](https://gist.github.com/Airblader/3a96a407e16dae155744) from Airblader.
 <kbd>mod4+Left</kbd>  | Move to workspace on the left.
 <kbd>mod4+Right</kbd> | Move to workspace on the right.
 
 ##Tmux
-Features extremely quick pane and window spawn/kill/switching, using ctrl-arrows and shift-arrows, respectively. The prefix key is set to C-t, in order to reduce friction with emacs. Requires tmux 1.9 in order to support tmux-resurrect and tmux-yank plugins (but you can disable them, if desired).
+Features extremely quick pane and window spawn/kill/switching, using ctrl-arrows and shift-arrows, respectively. The prefix key is set to C-t, in order to reduce friction with emacs. Requires tmux 1.9 and the [tmux plugin manager](https://github.com/tmux-plugins/tpm) in order to support tmux-resurrect and tmux-yank plugins (but you can disable them, if desired).
 
 Keybinding         | Description
 -------------------|------------------------------------------------------------
