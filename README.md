@@ -44,6 +44,7 @@ Keybinding         | Description
 <kbd>C-t SPC </kbd> | Auto-rearrange the pane configuration.
 <kbd>C-t \|</kbd>  | Split the window into smaller panes vertically.
 <kbd>C-t =</kbd>   | Split the window into smaller panes horizontally.
+<kbd>C-t e</kbd>   | Synchronize panes (toggle sending commands to all panes in the current window).
 <kbd>C-t ,</kbd>   | Rename current window.
 <kbd>C-t r</kbd>   | Reload the .tmux.conf file.
 
