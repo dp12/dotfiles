@@ -34,6 +34,7 @@ voronkovich/gitignore.plugin.zsh
 supercrabtree/k
 tarruda/zsh-autosuggestions
 ascii-soup/zsh-url-highlighter
+hlissner/zsh-autopair
 
 # fasd
 # last-working-dir

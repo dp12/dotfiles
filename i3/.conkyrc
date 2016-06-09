@@ -52,7 +52,7 @@ TEXT
   { "full_text" : "  ${time %Y %B %d} " , "color" : "\#778baf"},
 
   ## Time
-  { "full_text" : "🕑  ${time %I:%M%P}" , "color" : "\#95fc7b" , "separator" : false},
+  { "full_text" : "🕑  ${time %I:%M%P}                                    " , "color" : "\#95fc7b" , "separator" : false},
   # { "full_text" : "🕑  ${time %I:%M%P}" , "color" : "\#95fc7b"},
 
   ## Display Username 
