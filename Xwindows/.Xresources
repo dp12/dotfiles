@@ -132,41 +132,25 @@ Xft.rgba:       rgb
 ! Use extended color scheme
 rofi.color-enabled:                  true
 ! Color scheme for normal row
-rofi.color-normal:                   argb:00000000,  #D8DEE9 , argb:00000000,  #FAC863 ,  #1B2B34
+rofi.color-normal:                   argb:00000000,  #D8DEE9 , argb:00000000,  #FFAF00 ,  #1B2B34
 ! Color scheme for urgent row
 rofi.color-urgent:                   argb:00000000,  #F99157 , argb:00000000,  #F99157 ,  #1B2B34
 ! Color scheme for active row
 rofi.color-active:                   argb:00000000,  #6699CC , argb:00000000,  #6699CC ,  #1B2B34
 ! Color scheme window
-rofi.color-window:                   argb:ee222222,  #FAC863 ,  #FAC863
+rofi.color-window:                   argb:ee222222,  #91E22E ,  #91E22E
 ! Separator style (none, dash, solid)
-rofi.separator-style: solid
+rofi.separator-style: dash
 ! rofi.opacity: 85
 ! rofi.width: 1924
 rofi.lines: 7
 rofi.columns: 4
 rofi.font: Hermit 11
-rofi.fg: #D8DEE9
-rofi.bg: #2F2F2F
-rofi.hlfg: #303938
-rofi.hlfg-active: #50708F
-rofi.hlfg-urgent: #F99157
-! rofi.hlbg: #FAC863
-! rofi.hlbg: #F92672
-! rofi.hlbg: #778BAF
-rofi.hlbg: #FFAF00
-! rofi.bc: #91E22E
-rofi.bc: #91E22E
 rofi.bw: 0
 rofi.location: 6
 rofi.padding: 2
-! rofi.yoffset: -22
-! rofi.xoffset: 0
-! rofi.fixed-num-lines: true
-! rofi.hmode: false
-! rofi.terminal: x-terminal-emulator
-! rofi.ssh-set-title: true
-! rofi.disable-history: true
+
+! Keybindings
 rofi.key-window: mod4+Tab
 rofi.key-run: mod4+p
 rofi.key-ssh: mod1+F3
