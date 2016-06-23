@@ -64,24 +64,39 @@ alias emc="em main.c"
 
 # Package management
 alias agu="sudo apt-get update"
-alias agupg="sudo apt-get upgrade"
+alias agup="sudo apt-get upgrade"
+alias agdup="sudo apt-get dist-upgrade"
 alias agi="sudo apt-get install"
 alias acs="sudo apt-cache search"
 alias agr="sudo apt-get --purge remove"
 alias agl="dpkg --get-selections | grep -v deinstall"
 
 # Git aliases
+##  Aliases specific to the .gitconfig include:
+##  co = checkout
+##  ci = commit
+##  st = status
+##  br = branch
+##  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+##  type = cat-file -t
+##  dump = cat-file -p
+##  dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+#
 alias gs="git status"
 alias gl="git log"
 alias glp="git log -p"
 alias gln="git log --name-only"
 alias gls="git log --stat"
+alias glS="git log -S"
 alias gl-="git log -- "
 alias gh="git hist"
 alias ghp="git hist | peco"
 alias gb="git branch"
 alias ga="git add"
 alias gd="git diff"
+alias gdf="git dsf"
+alias gdfc="git dsf --cached"
+alias gdf~="git dsf HEAD~..HEAD"
 alias gd~="git diff HEAD~..HEAD"
 alias gd~~="git diff HEAD~~..HEAD"
 alias gd~3="git diff HEAD~3..HEAD"
@@ -108,6 +123,7 @@ alias gss="git stash save"
 alias grH="git reset HEAD --hard"
 alias grM="git reset HEAD --mixed"
 alias grS="git reset HEAD --soft"
+alias grh="git reset HEAD"
 alias gr~="git reset HEAD~"
 alias grH~="git reset HEAD~ --hard"
 

@@ -35,6 +35,7 @@ supercrabtree/k
 tarruda/zsh-autosuggestions
 ascii-soup/zsh-url-highlighter
 hlissner/zsh-autopair
+b4b4r07/zsh-vimode-visual
 
 # fasd
 # last-working-dir
@@ -144,14 +145,17 @@ autoload -U promptinit && promptinit
 # echo -ne "\033]12;Green\007"
 
 # # Vi mode
-# bindkey -v
+bindkey -v
+bindkey -M viins '^f' autosuggest-accept
+bindkey -M vicmd '^f' autosuggest-accept
+bindkey -M viins 'kj' vi-cmd-mode
+bindkey -M viins '\e.' insert-last-word
 # bindkey '^R' history-incremental-pattern-search-backward
-# bindkey -M viins "\M-." insert-last-word
 
 # Allow deleting backwards
 # http://www.zsh.org/mla/workers/2008/msg01653.html
-# bindkey -M viins '^?' backward-delete-char
-# bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
 
 # 10ms for key sequences
 KEYTIMEOUT=1
