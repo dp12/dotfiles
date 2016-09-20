@@ -27,6 +27,8 @@ root: ~/
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t dev
 
+startup_window: 2
+
 windows:
   - "[#_#] quad":
       layout: 14a0,191x55,0,0{95x55,0,0[95x27,0,0,7,95x27,0,28,10],95x55,96,0[95x27,96,0,8,95x27,96,28,9]}
