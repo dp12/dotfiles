@@ -56,9 +56,12 @@ export DEFAULT_USER=$USER    # suppress ssh user info for agnoster
 
 antigen bundle sorin-ionescu/prezto modules/completion
 
-antigen bundle zsh-users/zaw
+# antigen bundle zsh-users/zaw
 # From: http://blog.patshead.com/2013/04/more-powerful-zsh-history-search-using-zaw.html
-bindkey '^R' zaw-history
+
+# Clone zaw from https://github.com/zsh-users/zaw into .zaw
+# Antigen bundling appears to be broken
+source ~/.zaw/zaw.zsh
 bindkey -M filterselect '^R' down-line-or-history
 bindkey -M filterselect '^S' up-line-or-history
 bindkey -M filterselect '^E' accept-search
@@ -67,6 +70,7 @@ zstyle ':filter-select:highlight' matched fg=green
 zstyle ':filter-select' max-lines 3
 zstyle ':filter-select' case-insensitive yes # enable case-insensitive
 zstyle ':filter-select' extended-search yes # see below
+bindkey '^R' zaw-history
 
 if is_osx; then
   # zsh-history-substring-search
@@ -83,7 +87,14 @@ elif is_linux; then
   bindkey -M emacs '^P' history-substring-search-up
   bindkey -M emacs '^N' history-substring-search-down
 
+  bindkey -M vicmd '^A' beginning-of-line
+  bindkey -M viins '^A' beginning-of-line
+  bindkey -M vicmd '^E' end-of-line
+  bindkey -M viins '^E' end-of-line
+
   # bind k and j for VI mode
+  bindkey -M vicmd '^R' zaw-history
+  bindkey -M viins '^R' zaw-history
   bindkey -M vicmd 'k' history-substring-search-up
   bindkey -M vicmd 'j' history-substring-search-down
 fi
