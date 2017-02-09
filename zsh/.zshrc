@@ -156,7 +156,7 @@ autoload -U promptinit && promptinit
 # echo -ne "\033]12;Green\007"
 
 # # Vi mode
-bindkey -v
+# bindkey -v
 bindkey -M viins '^f' autosuggest-accept
 bindkey -M vicmd '^f' autosuggest-accept
 bindkey -M viins 'kj' vi-cmd-mode
