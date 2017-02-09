@@ -37,15 +37,15 @@ windows:
         - er && clear
         - pls && clear
         - rst && clear
-  - "[o.0] gdb":
-      layout: 9160,191x55,0,0{152x55,0,0[152x27,0,0,14,152x16,0,28,17,152x10,0,45{106x10,0,45,18,45x10,107,45,19}],38x55,153,0[38x43,153,0,15,38x11,153,44,16]}
-      panes:
-        - voltron view disasm
-        - agd
-        - voltron view stack
-        - voltron view bt
-        - voltron view reg -v
-        - soh
+  # - "[o.0] gdb":
+  #     layout: 9160,191x55,0,0{152x55,0,0[152x27,0,0,14,152x16,0,28,17,152x10,0,45{106x10,0,45,18,45x10,107,45,19}],38x55,153,0[38x43,153,0,15,38x11,153,44,16]}
+  #     panes:
+  #       - voltron view disasm
+  #       - agd
+  #       - voltron view stack
+  #       - voltron view bt
+  #       - voltron view reg -v
+  #       - soh
   - "[-.-] dbg":
       layout: d777,191x55,0,0{95x55,0,0,0,95x55,96,0,3}
       panes:
