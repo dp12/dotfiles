@@ -36,6 +36,7 @@ tarruda/zsh-autosuggestions
 ascii-soup/zsh-url-highlighter
 hlissner/zsh-autopair
 b4b4r07/zsh-vimode-visual
+Vifon/deer
 
 # fasd
 # last-working-dir
@@ -106,6 +107,9 @@ fi
 # zle -N zle-line-init
 
 antigen apply
+autoload -U deer
+zle -N deer
+bindkey '\ek' deer
 
 export PATH=$PATH:/opt/emacs/bin
 export VISUAL=vim
