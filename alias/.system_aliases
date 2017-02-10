@@ -138,6 +138,9 @@ alias grS="git reset HEAD --soft"
 alias grh="git reset HEAD"
 alias gr~="git reset HEAD~"
 alias grH~="git reset HEAD~ --hard"
+alias gfp="git format-patch --stdout >"
+alias gfpm="git format-patch --stdout origin/master >"
+alias gfps="git format-patch -1"
 
 # Misc
 alias sgrep="grep -rnI -C3 --color=always"
