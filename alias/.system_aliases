@@ -68,12 +68,11 @@ alias emc="em main.c"
 # alias mcm="make clean && make"
 
 # Package management
-alias agu="sudo apt-get update"
-alias agup="sudo apt-get upgrade"
-alias agdup="sudo apt-get dist-upgrade"
-alias agi="sudo apt-get install"
-alias acs="sudo apt-cache search"
-alias agr="sudo apt-get --purge remove"
+alias agu="sudo apt update"
+alias agup="sudo apt upgrade"
+alias agi="sudo apt install"
+alias acs="sudo apt search"
+alias agr="sudo apt --purge remove"
 alias agl="dpkg --get-selections | grep -v deinstall"
 
 # Git aliases
