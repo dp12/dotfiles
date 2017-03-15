@@ -1,0 +1,23 @@
+[global_config]
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.74
+    background_image = None
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#00ff00"
+    font = Droid Sans Mono for Powerline 12
+    icon_bell = False
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#8ae234:#657b83:#729fcf:#6c71c4:#93a1a1:#fdf6e3"
+    show_titlebar = False
+    use_system_font = False
