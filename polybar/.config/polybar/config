@@ -18,6 +18,8 @@ alert = #bd2c40
 
 ;dp12
 dp12-workspace-green = #afd700
+dp12-up-green = #87af5f
+dp12-down-red = #ce5666
 dp12-cpu-red = #e33a6e
 dp12-ram-yellow= #e0da37
 dp12-fsbar-blue = #80d9d8
@@ -66,7 +68,7 @@ font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 ; font-1 = siji:size=8:heavy:fontformat=truetype;-2
 font-2 = siji:pixelsize=10;0
 
-modules-let = bspwm xwindow
+modules-left = bspwm xwindow
 modules-center = cpu memory filesystem battery date
 ; modules-right = backlight volume xkeyboard memory cpu battery temperature date powermenu
 ; modules-right = cpu memory filesystem battery date volume powermenu
@@ -135,9 +137,11 @@ label-focused = [%index%]
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 1
+label-focused-foreground = ${colors.dp12-up-green}
 
 label-occupied = %index%
 label-occupied-padding = 2
+; label-occupied-foreground = ${colors.dp12-down-red}
 
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
