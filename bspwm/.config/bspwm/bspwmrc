@@ -17,21 +17,13 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-# Startup rules
-bspc rule -a Emacs desktop=^1
-bspc rule -a Terminator desktop=^2
+# Startup programs (using one-shot rules)
+bspc rule -a Emacs desktop=^1 -o;      emacs &
+bspc rule -a Terminator desktop=^2 -o; terminator -e "mux start dev" &
+
 # bspc rule -a mplayer2 state=floating
 # bspc rule -a Kupfer.py focus=on
 # bspc rule -a Screenkey manage=off
 
-# Lauunch startup programs
-terminator -e "mux start dev" &
-emacs &
-
 # Launch bar
 $HOME/.config/polybar/launch_polybar.sh
-
-# Remove startup rules
-sleep 2s
-bspc rule -r Emacs
-bspc rule -r Terminator
