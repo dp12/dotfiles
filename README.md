@@ -1,11 +1,15 @@
 # dotfiles
 
-Configs for zsh/bash/fish, git, tmux, i3, awesome, and vim, plus some handy aliases.
+Configs for zsh/bash/fish, git, tmux, bspwm, i3, awesome, and vim, plus some handy aliases.
 
 ## Aliases
 system_aliases is compatible with zsh, bash, and fish shells. Features handy aliases for commands like ls, cd, emacs, apt-get, and git. Why `cd ..` when you can `..` instead?
 
-## i3 Window Manager
+## bspwm Window Manager
+![bspwm](/../master/screenshots/bspwm.png?raw=true)
+I'm currently using [bspwm](https://github.com/baskerville/bspwm) as my tiling window manager of choice, using [polybar](https://github.com/jaagr/polybar) for displaying CPU, RAM, disk space, battery life, and time. To install the custom bspwm badge (flipped mirror image of awesome), copy custom_bspwm_badge.png to /usr/share/unity-greeter. Keybindings configured in sxhkdrc are mostly the same as the i3 equivalents below.
+
+## i3 Window Manager (now deprecated, see bspwm above)
 ![glowfish](/../master/screenshots/glowfish.png?raw=true)
 Glowfish is a custom i3wm theme with conky and rofi, representing my best efforts to "de-uglify" i3. It is semi-inspired by the [daylerees](https://github.com/daylerees/colour-schemes) glowfish theme and copies the [awesome copycats](https://github.com/copycat-killer/awesome-copycats) multicolor theme bar colors. Glowfish features CPU, RAM, disk usage, battery, weather, and date/time, using glyphs supplied by Siji font. All common commands are designed to be issued with two keys (mod4 + a letter). Some features are still in progress. Requires rofi, conky, and tamsyn and [Siji](https://github.com/gstk/siji) fonts to be installed, as well as Droid Sans Mono for Powerline.
 
@@ -52,4 +56,4 @@ Keybinding         | Description
 My zsh configuration uses [antigen](https://github.com/zsh-users/antigen) for package management and [agnoster](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster) as the prompt, which requires a powerline-patched font. Completion functions are provided through zprezto modules, and zaw is included for helm-like history search with `C-r`.
 
 ## Miscellaneous Thoughts
-* After trying xmonad and awesome, I found that while I enjoyed the power of tiling window managers, I had no earthly idea what to do when they broke, which they did often and horribly. The amount of time spent fixing them was just not commensurate to the amount of functionality I was gaining. Then I found i3, a tiling window manager configurable in plain English, which instantly prints out the location of any errors when you load it. It's probably one of the best tiling window managers out there in terms of readability.
+* After trying xmonad and awesome, I found that while I enjoyed the power of tiling window managers, I had no earthly idea what to do when they broke, which they did often and horribly. The amount of time spent fixing them was just not commensurate to the amount of functionality I was gaining. Then I found i3, a tiling window manager configurable in plain English, which instantly prints out the location of any errors when you load it. It's probably one of the best tiling window managers out there in terms of readability. Most recently, I switched to bspwm, which is more terse, but simple to configure as well.

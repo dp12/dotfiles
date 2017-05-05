@@ -36,6 +36,7 @@ margin-bottom = 5
 
 [bar/bar1]
 ;monitor = ${env:MONITOR:HDMI-1}
+monitor = VGA-1
 width = 100%
 ; height = 27
 ; height = 20
@@ -90,6 +91,10 @@ tray-padding = 2
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
+[bar/bar2]
+inherit = bar/bar1
+monitor = VGA-2
+modules-left = bspwm
 
 [module/xwindow]
 type = internal/xwindow
@@ -134,22 +139,23 @@ label-unmounted-foreground = ${colors.foreground-alt}
 type = internal/bspwm
 ws-icon-default = x
 
-label-focused = [%index%]
+label-focused = [%name%]
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 1
 label-focused-foreground = ${colors.dp12-up-green}
 
-label-occupied = %index%
+label-occupied = %name%
 label-occupied-padding = 2
-; label-occupied-foreground = ${colors.dp12-down-red}
+; label-occupied-foreground = ${colors.dp12-temp-orange}
 
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %index%
+label-empty = %name%
 label-empty-foreground = ${colors.foreground-alt}
+; label-empty-foreground = ${colors.dp12-down-red}
 label-empty-padding = 2
 
 [module/i3]
@@ -281,9 +287,9 @@ date-alt = " %Y-%m-%d"
 time =
 time-alt = %H:%M:%S
 
-format-prefix =
-format-prefix-foreground = ${colors.dp12-date-darkblue}
-label = %date%
+; format-prefix = ✿
+; format-prefix-foreground = ${colors.dp12-date-darkblue}
+label = " %date%"
 label-foreground = ${colors.dp12-date-darkblue}
 label-underline= ${colors.primary}
 

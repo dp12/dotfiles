@@ -2,7 +2,9 @@
 
 sxhkd &
 
-bspc monitor -d i ii iii iv v vi vii
+# bspc monitor -d i ii iii iv v vi vii
+bspc monitor VGA-1 -d i ii iii iv
+bspc monitor VGA-2 -d v vi vii viii
 
 # layouts
 bspc desktop " i "      -l monocle
