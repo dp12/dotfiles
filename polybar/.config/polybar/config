@@ -70,10 +70,10 @@ font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 font-2 = siji:pixelsize=10;0
 
 modules-left = bspwm xwindow
-modules-center = cpu memory filesystem battery time
+modules-center = cpu memory filesystem battery date time
 ; modules-right = backlight volume xkeyboard memory cpu battery temperature date powermenu
 ; modules-right = cpu memory filesystem battery date volume powermenu
-modules-right = date powermenu
+modules-right = powermenu ubuntu
 
 tray-position = right
 tray-padding = 2
@@ -287,11 +287,11 @@ date-alt = " %Y-%m-%d"
 time =
 time-alt = %H:%M:%S
 
-; format-prefix = ✿
+format-prefix = ◰
 ; format-prefix-foreground = ${colors.dp12-date-darkblue}
 label = " %date%"
 label-foreground = ${colors.dp12-date-darkblue}
-label-underline= ${colors.primary}
+; label-underline= ${colors.primary}
 
 [module/volume]
 type = internal/volume
@@ -377,6 +377,15 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+
+[module/ubuntu]
+type = custom/script
+exec = lsb_release -d | cut -f 2 | tr '[:upper:]' '[:lower:]'
+label = [%output%]↵
+interval = 1000
+format-background = ${colors.dp12-name-orange}
+format-foreground = #000
+format-padding = 1
 
 [module/powermenu]
 type = custom/menu
