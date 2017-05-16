@@ -28,7 +28,7 @@ dp12-weather-pink = #eca4c4
 dp12-temp-orange = #ffaf5f
 dp12-date-darkblue = #778baf
 dp12-time-green = #95fc7b
-dp12-name-black = #ffaf00
+dp12-name-orange = #ffaf00
 
 [global/wm]
 margin-top = 5
