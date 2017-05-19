@@ -13,6 +13,8 @@ bspc desktop " iii "    -l monocle
 bspc desktop " iv "     -l monocle
 
 bspc config border_width         2
+bspc config focused_border_color "#859900"
+bspc config active_border_color  "#859900"
 bspc config window_gap          12
 
 bspc config split_ratio          0.52
