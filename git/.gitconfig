@@ -7,6 +7,7 @@
 	type = cat-file -t
 	dump = cat-file -p
 	dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+	graph = log --graph --all --decorate --stat --date=iso
 
 [merge]
 	tool = meld
