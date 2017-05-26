@@ -18,7 +18,7 @@ super + space
 
 # emacs
 super + e
-    emacs
+    emacsclient -ca emacs $1 >/dev/null 2>&1
 
 # screenshot
 Print
