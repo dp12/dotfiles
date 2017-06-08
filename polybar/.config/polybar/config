@@ -149,8 +149,8 @@ label-occupied = %name%
 label-occupied-padding = 2
 ; label-occupied-foreground = ${colors.dp12-temp-orange}
 
-label-urgent = %name%
-label-urgent-background = ${colors.alert}
+label-urgent = >%name%<
+label-urgent-foreground = ${colors.dp12-down-red}
 label-urgent-padding = 2
 
 label-empty = %name%

@@ -59,7 +59,7 @@ alias .s="source ~/.system_aliases"
 alias .x="xrdb ~/.Xresources"
 alias emd="cd ~/.emacs.d"
 alias dot="cd ~/dotfiles"
-alias sp="cd ~/spacemacs"
+alias sp="cd ~/.spacemacs.d"
 
 
 alias emm="em Makefile"
