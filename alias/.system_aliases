@@ -24,7 +24,7 @@ alias rmd="rm -rf"
 alias sus="sudo -sE"
 alias c4="chmod 664"
 alias grpwn="sudo chgrp $USER -R * && sudo chown $USER -R *"
-alias refloc="sudo updatedb"
+alias loc+="sudo updatedb"
 
 # Programs
 alias dae="emacs --daemon"
