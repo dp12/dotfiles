@@ -7,7 +7,7 @@ system_aliases is compatible with zsh, bash, and fish shells. Features handy ali
 
 ## bspwm
 ![bspwm](/../master/screenshots/bspwm.png?raw=true)
-I'm currently using [bspwm](https://github.com/baskerville/bspwm) as my tiling window manager of choice, using [polybar](https://github.com/jaagr/polybar) for displaying CPU, RAM, disk space, battery life, and time. To install the custom bspwm badge (flipped mirror image of awesome), copy custom_bspwm_badge.png to /usr/share/unity-greeter. Keybindings configured in sxhkdrc are mostly the same as the i3 equivalents below.
+I'm currently using [bspwm](https://github.com/baskerville/bspwm) as my tiling window manager of choice, using [polybar](https://github.com/jaagr/polybar) for displaying CPU, RAM, disk space, battery life, and time. To install the custom bspwm badge (modified mirror image of awesome), copy custom_bspwm_badge.png to /usr/share/unity-greeter. Keybindings configured in sxhkdrc are mostly the same as the i3 equivalents below.
 
 ## i3 (no longer maintained, see bspwm above)
 ![glowfish](/../master/screenshots/glowfish.png?raw=true)
@@ -49,11 +49,12 @@ Keybinding         | Description
 <kbd>C-t \|</kbd>  | Split the window into smaller panes vertically.
 <kbd>C-t =</kbd>   | Split the window into smaller panes horizontally.
 <kbd>C-t e</kbd>   | Synchronize panes (toggle sending commands to all panes in the current window).
+<kbd>C-t *</kbd>   | Restart a pane that is hung.
 <kbd>C-t ,</kbd>   | Rename current window.
 <kbd>C-t r</kbd>   | Reload the .tmux.conf file.
 
 ## Zsh
-My zsh configuration uses [antigen](https://github.com/zsh-users/antigen) for package management and [agnoster](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster) as the prompt, which requires a powerline-patched font. Completion functions are provided through zprezto modules, and zaw is included for helm-like history search with `C-r`.
+My zsh configuration uses [antigen](https://github.com/zsh-users/antigen) for package management and [agnoster](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster) as the prompt, which requires a powerline-patched font. Install the former to a `~/.antigen` folder. Completion functions are provided through zprezto modules, and zaw is included for helm-like history search with `C-r`. Clone the [zaw](https://github.com/zsh-users/zaw) repo to `~/.zaw`.
 
 ## Miscellaneous Thoughts
 * After trying xmonad and awesome, I found that while I enjoyed the power of tiling window managers, I had no earthly idea what to do when they broke, which they did often and horribly. The amount of time spent fixing them was just not commensurate to the amount of functionality I was gaining. Then I found i3, a tiling window manager configurable in plain English, which instantly prints out the location of any errors when you load it. It's probably one of the best tiling window managers out there in terms of readability. Most recently, I switched to bspwm, which is more terse, but simple to configure as well.
