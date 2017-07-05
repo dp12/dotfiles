@@ -110,6 +110,7 @@ antigen apply
 autoload -U deer
 zle -N deer
 bindkey '\ek' deer
+bindkey '\eD' deer
 
 export PATH=$PATH:/opt/emacs/bin
 export VISUAL=vim
