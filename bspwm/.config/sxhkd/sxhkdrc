@@ -24,6 +24,10 @@ super + e
 Print
     scrot.sh 0
 
+# Blur and lock screen
+super + b
+    python ~/.i3/py3lock.py
+
 # exit
 super + F4
     systemctl poweroff
