@@ -34,3 +34,8 @@ gsp () {
     cmd="git stash show -p stash@{$stashnum}" 
     printf "$cmd\n\n"; eval $cmd
 }
+
+gla () {
+    cmd="git log --author=$1"
+    printf "$cmd\n\n"; eval $cmd
+}
