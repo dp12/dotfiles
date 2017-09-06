@@ -36,6 +36,6 @@ gsp () {
 }
 
 gla () {
-    cmd="git log --author=$1"
+    cmd="git log --author=$@"
     printf "$cmd\n\n"; eval $cmd
 }
