@@ -16,9 +16,10 @@ if [ ]; then
 fi
 
 ### PACKAGES ###
+sudo apt install git
 if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
-    sudo apt install suckless-tools fish git subversion stow cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu sshpass socat zathura feh dmenu python-xpyb python-pip dos2unix curl
+    sudo apt install suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu sshpass socat zathura feh dmenu python-xpyb python-pip dos2unix curl
 fi
 
 ### DOTFILES ###
@@ -28,6 +29,7 @@ if [[ "$INSTALL_DOTFILES" == true ]]; then
     git clone https://github.com/dp12/dotfiles.git
     cd ~/dotfiles
     echo "Stowing dotfiles"
+    sudo apt install stow
     stow Xwindows alias bspwm fish git polybar terminator tmux tmuxinator vim zsh
 fi
 
@@ -37,7 +39,7 @@ if [[ "$INSTALL_ZSH" == true ]]; then
     cd
     sudo apt install zsh
     echo "Cloning zaw"
-    git clone git://github.com/zsh-users/zaw.git ~/.zaw
+    git clone https://github.com/zsh-users/zaw.git ~/.zaw
     echo "Installing antigen"
     mkdir .antigen
     cd .antigen
@@ -129,7 +131,13 @@ if [[ "$INSTALL_EMACS" == true ]]; then
     tar -xvzf emacs-25.2.tar.gz
     cd emacs-25.2
     echo "Building emacs"
-    ./configure --with-modules --with-x-toolkit=gtk3 --with-xwidgets
+
+    if [[ "$INSTALL_MU4E" == true ]]; then
+        sudo apt install libgtk-3-dev libwebkitgtk-3.0-dev
+        ./configure --with-modules --with-x-toolkit=gtk3 --with-xwidgets
+    else
+        ./configure --with-modules
+    fi
     make && sudo make install
 fi
 
