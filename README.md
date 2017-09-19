@@ -2,6 +2,9 @@
 
 Configs for zsh/bash/fish, git, tmux, bspwm, i3, awesome, and vim, plus some handy aliases.
 
+## Installation
+An install.sh script is provided to allow the user to choose what to install and automate the installation. Ubuntu 16.04 is assumed.
+
 ## Aliases
 system_aliases is compatible with zsh, bash, and fish shells. Features handy aliases for commands like ls, cd, emacs, apt-get, and git. Why `cd ..` when you can `..` instead?
 
