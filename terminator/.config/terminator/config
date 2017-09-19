@@ -16,8 +16,28 @@
     background_type = transparent
     cursor_blink = False
     cursor_color = "#00ff00"
-    font = Droid Sans Mono for Powerline 12
+    font = Roboto Mono Medium for Powerline Medium 14
     icon_bell = False
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#8ae234:#657b83:#729fcf:#6c71c4:#93a1a1:#fdf6e3"
     show_titlebar = False
+    use_system_font = False
+  [[doom]]
+    background_color = "#282c35"
+    background_darkness = 0.92
+    background_image = None
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#d1d4e0"
+    font = Roboto Mono for Powerline 14
+    foreground_color = "#d1d4e0"
+    palette = "#282c35:#e25a60:#8cc574:#da70d7:#0085b2:#ae9fdf:#00b8c1:#ae9fdf:#555753:#f56367:#99d881:#f7bc73:#00b0ee:#da70d7:#00b8c1:#da70d7"
+    show_titlebar = False
+    use_system_font = False
+  [[theone]]
+    background_color = "#272b33"
+    background_image = None
+    cursor_color = "#abb2c0"
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#abb2c0"
+    palette = "#272B33:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#abb2c0:#272B33:#e5c07b:#5c6370:#828997:#abb2bf:#c678dd:#abb2bf:#abb2c0"
     use_system_font = False
