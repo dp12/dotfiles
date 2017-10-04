@@ -189,5 +189,5 @@ if [[ "$INSTALL_SPACEMACS" == true ]]; then
     # Launch emacs to install spacemacs
     echo "Installing spacemacs"
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-    emacs
+    nohup emacs &
 fi
