@@ -1,3 +1,5 @@
+# To make this work, uncomment the line below and replace myprojectdir with your desired search directory
+# export SEARCH_DIR=myprojectdir
 fx () {
   file=$(find ~/$SEARCH_DIR -type f -wholename \*$1\* -not -path './.*/*' | peco)
   echo "Enter a command..."; read command
