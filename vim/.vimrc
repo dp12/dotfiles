@@ -33,7 +33,9 @@ endif
   \  'syntax-checking'
   \]
 
-  let g:dotspacevim_additional_plugins = ['morhetz/gruvbox']
+  let g:dotspacevim_additional_plugins = ['morhetz/gruvbox',
+                                        \ 'johngrib/vim-game-code-break',
+                                        \ 'terryma/vim-multiple-cursors']
   " You can also pass vim plug options like this: [{ 'name': 'Valloric/YouCompleteMe', 'option': {'do': './install.py'}}]
 
   let g:dotspacevim_excluded_plugins = []
