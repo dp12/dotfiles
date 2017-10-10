@@ -23,11 +23,10 @@
     use_system_font = False
   [[doom]]
     background_color = "#282c35"
-    background_darkness = 0.92
+    background_darkness = 0.68
     background_image = None
-    background_type = transparent
     cursor_blink = False
-    cursor_color = "#d1d4e0"
+    cursor_color = "#51aeee"
     font = Roboto Mono for Powerline 14
     foreground_color = "#d1d4e0"
     palette = "#282c35:#e25a60:#8cc574:#da70d7:#0085b2:#ae9fdf:#00b8c1:#ae9fdf:#555753:#f56367:#99d881:#f7bc73:#00b0ee:#da70d7:#00b8c1:#da70d7"
