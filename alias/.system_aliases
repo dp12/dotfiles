@@ -155,6 +155,7 @@ alias gfps="git format-patch -1"
 alias gsr="git stash save && git pull --rebase && git stash pop"
 
 # Misc
+alias p?="echo $PATH"
 alias sgrep="grep -rnI -C3 --color=always"
 alias shdwn="systemctl poweroff"
 alias logout="sudo pkill -u ${USER}"
