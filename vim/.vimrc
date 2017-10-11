@@ -41,6 +41,7 @@ endif
   let g:dotspacevim_excluded_plugins = []
 
   " let g:dotspacevim_escape_key_sequence = 'fd'
+  let g:dotspacevim_escape_key_sequence = 'kj'
 
 " }}}
 
