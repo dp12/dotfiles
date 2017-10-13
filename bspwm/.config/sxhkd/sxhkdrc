@@ -34,11 +34,11 @@ super + F4
 
 # detail panel
 super + F1
-detail_panel.sh
+    detail_panel.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
-pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
 #
 # bspwm hotkeys
