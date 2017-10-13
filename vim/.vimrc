@@ -35,7 +35,8 @@ endif
 
   let g:dotspacevim_additional_plugins = ['morhetz/gruvbox',
                                         \ 'johngrib/vim-game-code-break',
-                                        \ 'terryma/vim-multiple-cursors']
+                                        \ 'terryma/vim-multiple-cursors',
+                                        \ {'name': 'sonph/onehalf', 'option': {'rtp': 'vim'}}]
   " You can also pass vim plug options like this: [{ 'name': 'Valloric/YouCompleteMe', 'option': {'do': './install.py'}}]
 
   let g:dotspacevim_excluded_plugins = []
@@ -70,6 +71,6 @@ call spacevim#bootstrap()
 " you should place your code here."
 
   set background=dark
-  colorscheme gruvbox
+  colorscheme onehalfdark
 
 " }}}
