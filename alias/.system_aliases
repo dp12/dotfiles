@@ -152,7 +152,7 @@ alias grH~="git reset HEAD~ --hard"
 alias gfp="git format-patch --stdout >"
 alias gfpm="git format-patch --stdout origin/master >"
 alias gfps="git format-patch -1"
-alias gsur="git submodule update --recursive"
+alias gsur="git submodule update --init --recursive"
 
 alias gsr="git stash save && git pull --rebase && git stash pop"
 
