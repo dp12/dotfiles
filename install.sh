@@ -125,7 +125,7 @@ if [[ "$INSTALL_EMACS" == true ]]; then
     cd
     sudo apt install libxpm-dev libjpeg-dev libgif-dev libtiff-dev libncurses-dev
     if [[ "$INSTALL_MU4E" == true ]]; then
-        sudo apt install libgtk-3-dev libwebkitgtk-3.0-dev 
+        sudo apt install libgtk-3-dev libwebkitgtk-3.0-dev
     fi
     wget http://ftp.gnu.org/gnu/emacs/emacs-25.2.tar.gz
     tar -xvzf emacs-25.2.tar.gz
