@@ -12,6 +12,36 @@ system_aliases is compatible with zsh, bash, and fish shells. Features handy ali
 ![bspwm](/../master/screenshots/bspwm.png?raw=true)
 I'm currently using [bspwm](https://github.com/baskerville/bspwm) as my tiling window manager of choice, using [polybar](https://github.com/jaagr/polybar) for displaying CPU, RAM, disk space, battery life, and time. To install the custom bspwm badge (modified mirror image of awesome), copy custom_bspwm_badge.png to /usr/share/unity-greeter. Keybindings configured in sxhkdrc are mostly the same as the i3 equivalents below.
 
+## Tmux
+Features extremely quick pane and window spawn/kill/switching, using ctrl-arrows and shift-arrows, respectively. The prefix key is set to C-t, in order to reduce friction with emacs. Requires tmux 1.9 and the [tmux plugin manager](https://github.com/tmux-plugins/tpm) in order to support tmux-resurrect and tmux-yank plugins (but you can disable them, if desired).
+
+Keybinding            | Description
+----------------------|------------------------------------------------------------
+<kbd>C-t t</kbd>      | Change to last-window by pressing Ctrl-t, letting go, and pressing t again.
+<kbd>C-tt...</kbd>    | By holding down Ctrl and pressing t repeatedly, you can cycle through panes with this chained command.
+<kbd>S-up</kbd>       | Create new-window.
+<kbd>S-down</kbd>     | Kill window.
+<kbd>S-left</kbd>     | Previous window.
+<kbd>S-right</kbd>    | Next window.
+<kbd>C-up</kbd>       | Select pane above.
+<kbd>C-down</kbd>     | Select pane below.
+<kbd>C-left</kbd>     | Select pane to the left.
+<kbd>C-right</kbd>    | Select pane to the right.
+<kbd>C-M-up</kbd>     | Restart a pane that is hung.
+<kbd>C-M-down</kbd>   | Kill a pane
+<kbd>C-M-left</kbd>   | Swap pane left
+<kbd>C-M-right</kbd>  | Swap pane right
+<kbd>C-M-\</kbd>      | Split the window into smaller panes vertically.
+<kbd>C-M-]</kbd>      | Split the window into smaller panes horizontally.
+<kbd>C-t e</kbd>      | Synchronize panes (toggle sending commands to all panes in the current window).
+<kbd>C-t SPC </kbd>   | Auto-rearrange the pane configuration.
+<kbd>C-t \|</kbd>     | Split the window into smaller panes vertically.
+<kbd>C-t =</kbd>      | Split the window into smaller panes horizontally.
+<kbd>C-t *</kbd>      | Restart a pane that is hung.
+<kbd>C-t ,</kbd>      | Rename current window.
+<kbd>C-t r</kbd>      | Reload the .tmux.conf file.
+
+
 ## i3 (no longer maintained, see bspwm above)
 ![glowfish](/../master/screenshots/glowfish.png?raw=true)
 Glowfish is a custom i3wm theme with conky and rofi, representing my best efforts to "de-uglify" i3. It is semi-inspired by the [daylerees](https://github.com/daylerees/colour-schemes) glowfish theme and copies the [awesome copycats](https://github.com/copycat-killer/awesome-copycats) multicolor theme bar colors. Glowfish features CPU, RAM, disk usage, battery, weather, and date/time, using glyphs supplied by Siji font. All common commands are designed to be issued with two keys (mod4 + a letter). Some features are still in progress. Requires rofi, conky, and tamsyn and [Siji](https://github.com/gstk/siji) fonts to be installed, as well as Droid Sans Mono for Powerline.
@@ -32,29 +62,6 @@ Keybinding            | Description
 <kbd>mod4+Shift+p</kbd> | Lock the desktop with the [py3lock script](https://gist.github.com/Airblader/3a96a407e16dae155744) from Airblader.
 <kbd>mod4+Left</kbd>  | Move to workspace on the left.
 <kbd>mod4+Right</kbd> | Move to workspace on the right.
-
-## Tmux
-Features extremely quick pane and window spawn/kill/switching, using ctrl-arrows and shift-arrows, respectively. The prefix key is set to C-t, in order to reduce friction with emacs. Requires tmux 1.9 and the [tmux plugin manager](https://github.com/tmux-plugins/tpm) in order to support tmux-resurrect and tmux-yank plugins (but you can disable them, if desired).
-
-Keybinding         | Description
--------------------|------------------------------------------------------------
-<kbd>C-t t</kbd>   | Change to last-window by pressing Ctrl-t, letting go, and pressing t again.
-<kbd>C-tt...</kbd> | By holding down Ctrl and pressing t repeatedly, you can cycle through panes with this chained command.
-<kbd>S-up</kbd>    | Create new-window.
-<kbd>S-down</kbd>  | Kill window.
-<kbd>S-left</kbd>  | Previous window.
-<kbd>S-right</kbd> | Next window.
-<kbd>C-up</kbd>    | Select pane above.
-<kbd>C-down</kbd>  | Select pane below.
-<kbd>C-left</kbd>  | Select pane to the left.
-<kbd>C-right</kbd> | Select pane to the right.
-<kbd>C-t SPC </kbd> | Auto-rearrange the pane configuration.
-<kbd>C-t \|</kbd>  | Split the window into smaller panes vertically.
-<kbd>C-t =</kbd>   | Split the window into smaller panes horizontally.
-<kbd>C-t e</kbd>   | Synchronize panes (toggle sending commands to all panes in the current window).
-<kbd>C-t *</kbd>   | Restart a pane that is hung.
-<kbd>C-t ,</kbd>   | Rename current window.
-<kbd>C-t r</kbd>   | Reload the .tmux.conf file.
 
 ## Zsh
 My zsh configuration uses [antigen](https://github.com/zsh-users/antigen) for package management and [agnoster](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster) as the prompt, which requires a powerline-patched font. Install the former to a `~/.antigen` folder. Completion functions are provided through zprezto modules, and zaw is included for helm-like history search with `C-r`. Clone the [zaw](https://github.com/zsh-users/zaw) repo to `~/.zaw`.
