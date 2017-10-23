@@ -31,7 +31,7 @@ Keybinding            | Description
 <kbd>C-M-down</kbd>   | Kill a pane
 <kbd>C-M-left</kbd>   | Swap pane left
 <kbd>C-M-right</kbd>  | Swap pane right
-<kbd>C-M-\</kbd>      | Split the window into smaller panes vertically.
+<kbd>C-M-\\</kbd>     | Split the window into smaller panes vertically.
 <kbd>C-M-]</kbd>      | Split the window into smaller panes horizontally.
 <kbd>C-t e</kbd>      | Synchronize panes (toggle sending commands to all panes in the current window).
 <kbd>C-t SPC </kbd>   | Auto-rearrange the pane configuration.
