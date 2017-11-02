@@ -12,8 +12,11 @@ super + shift + Return
 super + shift + f
     firefox -private-window
 
-# program launcher
+# program launchers
 super + space
+    rofi -show run
+
+super + shift + space
     dmenu_run
 
 # emacs
