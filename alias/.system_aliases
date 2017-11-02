@@ -28,6 +28,7 @@ alias c4="chmod 664"
 alias grpwn="sudo chgrp $USER -R * && sudo chown $USER -R *"
 alias chux="chmod u+x"
 alias loc+="sudo updatedb"
+alias x.x="xrdb ~/.Xresources"
 
 # Programs
 alias dae="emacs --daemon"
