@@ -35,3 +35,6 @@ bspc rule -a Terminator desktop=^2 -o; terminator -e "mux start dev" &
 
 # Launch bar
 $HOME/.config/polybar/launch_polybar.sh
+
+# Launch rofi
+

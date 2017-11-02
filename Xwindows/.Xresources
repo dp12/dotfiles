@@ -147,7 +147,8 @@ rofi.lines: 7
 rofi.columns: 4
 rofi.font: Hermit 11
 rofi.bw: 0
-rofi.location: 6
+! rofi.location: 6
+rofi.location: 0
 rofi.padding: 2
 
 ! Keybindings
