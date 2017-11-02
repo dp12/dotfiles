@@ -10,6 +10,7 @@ INSTALL_POLYBAR=true
 INSTALL_EMACS=true
 INSTALL_MU4E=true
 INSTALL_SPACEMACS=true
+INSTALL_SSH_ACCESS=false
 
 if [ ]; then
     echo "This is a comment block"
@@ -31,6 +32,8 @@ if [[ "$INSTALL_DOTFILES" == true ]]; then
     echo "Stowing dotfiles"
     sudo apt install stow
     stow Xwindows alias bspwm fish git polybar terminator tmux tmuxinator vim zsh
+    rm ~/.bashrc ~/.bash_logout
+    stow bash
 fi
 
 ### Z-SHELL ###
@@ -102,6 +105,7 @@ if [[ "$INSTALL_BSPWM" == true ]]; then
     echo "Building bspwm"
     cd bspwm && make && sudo make install
     sudo cp contrib/freedesktop/bspwm.desktop /usr/share/xsessions/
+    sudo cp ~/dotfiles/bspwm/.config/bspwm/custom_bspwm_badge.png /usr/share/unity-greeter/custom_bspwm_badge.png
     echo "Building sxhkd"
     cd ../sxhkd && make && sudo make install
 fi
@@ -191,3 +195,18 @@ if [[ "$INSTALL_SPACEMACS" == true ]]; then
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
     nohup emacs &
 fi
+
+### SSH ACCESS ###
+if [[ "$INSTALL_SSH_ACCESS" == true ]]; then
+    sudo apt install openssh-server
+    sudo ufw allow 22
+fi
+
+### MANUAL STEPS ###
+# .config/polybar/config: change the setting until [bar/bar1] for monitor to
+# your display, as listed in xrandr --query
+#     monitor = VGA-1
+#
+# .config/bspwm/bspwmrc: change the workspaces listed under bspc monitor XXX to
+# your display, as listed in xrandr --query
+#     bspc monitor VGA-1 -d i ii iii iv
