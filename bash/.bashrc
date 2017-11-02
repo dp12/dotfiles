@@ -14,8 +14,9 @@ alias mcm="make clean && make"
 alias gdbtui="gdb -tui"
 
 # Remap RAlt to Ctrl
-setxkbmap -option ctrl:ralt_rctrl 
+setxkbmap -option ctrl:ralt_rctrl
 source ~/.system_aliases
+source ~/.system_funcs
 if [ -f ~/.personal_aliases ]; then
 source ~/.personal_aliases
 fi

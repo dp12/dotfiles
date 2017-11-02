@@ -243,8 +243,9 @@ cdf() {
 # Remap RAlt to Ctrl
 setxkbmap -option ctrl:ralt_rctrl
 source ~/.system_aliases
+source ~/.system_funcs
 if [ -f ~/.personal_aliases ]; then
-source ~/.personal_aliases
+    source ~/.personal_aliases
 fi
 
 export TERM=xterm-256color
