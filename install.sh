@@ -129,6 +129,13 @@ if [[ "$INSTALL_POLYBAR" == true ]]; then
     sudo make install
 fi
 
+if [[ "$INSTALL_ROFI" == true ]]; then
+    echo "--> Installing rofi"
+    cd
+    wget https://launchpad.net/ubuntu/+archive/primary/+files/rofi_0.15.11-1_amd64.deb
+    sudo dpkg -i rofi_0.15.11-1_amd64.deb
+fi
+
 ### EMACS ###
 if [[ "$INSTALL_EMACS" == true ]]; then
     echo "--> Installing emacs"
@@ -204,12 +211,14 @@ fi
 
 ### SSH ACCESS ###
 if [[ "$INSTALL_SSH_ACCESS" == true ]]; then
+    echo "--> Installing openssh-server and allowing port 22 access"
     sudo apt install openssh-server
     sudo ufw allow 22
 fi
 
 ### WALLPAPER ###
 if [[ "$INSTALL_WALLPAPER" == true ]]; then
+    echo "--> Installing feh and wallpaper crontab"
     sudo apt install feh
     (crontab -l ; echo '*/1 * * * * DISPLAY=:0.0 feh --bg-max "$(find ~/.wallpaper/|shuf -n1)"') | sort - | uniq - | crontab -
 fi
