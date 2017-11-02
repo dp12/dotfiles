@@ -53,6 +53,7 @@ if [[ "$INSTALL_ZSH" == true ]]; then
     cd .antigen
     curl -L git.io/antigen > antigen.zsh
     echo "Changing default shell to zsh"
+    chsh -s `which zsh`
     sudo chsh -s `which zsh`
 fi
 
