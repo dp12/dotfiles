@@ -3,6 +3,7 @@
 # Works (supposedly) with bash, zsh, and fish
 LS_EXE=exa
 alias a?="alias"
+alias a?g="alias | grep"
 alias l="$LS_EXE"
 alias la="$LS_EXE -a"
 alias ll="$LS_EXE -lh --git"
@@ -153,6 +154,10 @@ alias gfp="git format-patch --stdout >"
 alias gfpm="git format-patch --stdout origin/master >"
 alias gfps="git format-patch -1"
 alias gsur="git submodule update --init --recursive"
+alias gbi="git bisect"
+alias gbist="git bisect start"
+alias gbisp="git bisect stop"
+alias gmb="git merge-base"
 
 alias gsr="git stash save && git pull --rebase && git stash pop"
 
