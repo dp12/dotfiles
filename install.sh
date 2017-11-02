@@ -11,6 +11,7 @@ INSTALL_EMACS=true
 INSTALL_MU4E=true
 INSTALL_SPACEMACS=true
 INSTALL_SSH_ACCESS=false
+INSTALL_WALLPAPER=false
 
 if [ ]; then
     echo "This is a comment block"
@@ -20,7 +21,7 @@ fi
 sudo apt install git
 if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
-    sudo apt install suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu sshpass socat zathura feh dmenu python-xpyb python-pip dos2unix curl
+    sudo apt install suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu sshpass socat zathura dmenu python-xpyb python-pip dos2unix curl
 fi
 
 ### DOTFILES ###
@@ -200,6 +201,12 @@ fi
 if [[ "$INSTALL_SSH_ACCESS" == true ]]; then
     sudo apt install openssh-server
     sudo ufw allow 22
+fi
+
+### WALLPAPER ###
+if [[ "$INSTALL_WALLPAPER" == true ]]; then
+    sudo apt install feh
+    (crontab -l ; echo '*/1 * * * * DISPLAY=:0.0 feh --bg-max "$(find ~/.wallpaper/|shuf -n1)"') | sort - | uniq - | crontab -
 fi
 
 ### MANUAL STEPS ###
