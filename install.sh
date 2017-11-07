@@ -36,7 +36,7 @@ if [[ "$INSTALL_DOTFILES" == true ]]; then
     cd ~/dotfiles
     echo "Stowing dotfiles"
     sudo apt install stow
-    stow Xwindows alias bspwm fish git polybar terminator tmux tmuxinator vim zsh
+    stow Xwindows alias bspwm i3 zsh fish git polybar terminator tmux tmuxinator vim
     rm ~/.bashrc ~/.bash_logout
     stow bash
 fi
@@ -114,6 +114,15 @@ if [[ "$INSTALL_BSPWM" == true ]]; then
     sudo cp ~/dotfiles/bspwm/.config/bspwm/custom_bspwm_badge.png /usr/share/unity-greeter/custom_bspwm_badge.png
     echo "Building sxhkd"
     cd ../sxhkd && make && sudo make install
+    echo "Installing i3lock"
+    sudo apt install i3lock
+    pip install i3-py
+    echo "Setting wallpaper"
+    local OVERRIDE_BACKGROUND_FILE=/usr/share/glib-2.0/schemas/10_unity_greeter_background.gschema.override
+    local BACKGROUND_FILE=/usr/share/backgrounds/yellowfield.png
+    sudo bash -c "echo '[com.canonical.unity-greeter]' > $OVERRIDE_BACKGROUND_FILE"
+    sudo bash -c "echo 'draw-user-backgrounds=false' >> $OVERRIDE_BACKGROUND_FILE"
+    sudo bash -c "echo 'background=$BACKGROUND_FILE' >> $OVERRIDE_BACKGROUND_FILE"
 fi
 
 ### POLYBAR ###
@@ -192,7 +201,7 @@ if [[ "$INSTALL_MU4E" == true ]]; then
     sudo cp $SHARED_FOLDER/.msmtprc .
     sudo chgrp $user .m* && sudo chown $user .m*
     sudo chgrp $user .authinfo* && sudo chown $user .authinfo*
-    mbsync -a
+    mbsync -Va
     mu index --maildir=~/Maildir
 fi
 
