@@ -22,6 +22,7 @@ sudo apt install git
 if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
     sudo apt install suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu sshpass socat zathura dmenu python-xpyb python-pip dos2unix curl
+    sudo apt install tty-clock htop screenfetch
     # Install exa as ls replacement
     wget https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip
     unzip exa-linux-x86_64-0.8.0.zip
@@ -122,7 +123,9 @@ if [[ "$INSTALL_BSPWM" == true ]]; then
     local BACKGROUND_FILE=/usr/share/backgrounds/yellowfield.png
     sudo bash -c "echo '[com.canonical.unity-greeter]' > $OVERRIDE_BACKGROUND_FILE"
     sudo bash -c "echo 'draw-user-backgrounds=false' >> $OVERRIDE_BACKGROUND_FILE"
-    sudo bash -c "echo 'background=$BACKGROUND_FILE' >> $OVERRIDE_BACKGROUND_FILE"
+    sudo bash -c "echo \"background='$BACKGROUND_FILE'\" >> $OVERRIDE_BACKGROUND_FILE"
+    sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+    sudo service lightdm restart
 fi
 
 ### POLYBAR ###
