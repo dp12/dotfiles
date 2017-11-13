@@ -22,8 +22,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 # Mouse control
-# bspc config focus_follows_pointer true
-bspc config click_to_focus true
+#bspc config focus_follows_pointer true
+bspc config click_to_focus button1
 
 # Startup programs (using one-shot rules)
 bspc rule -a Emacs desktop=^1 state=tiled -o; emacs &
@@ -34,7 +34,5 @@ bspc rule -a Terminator desktop=^2 -o; terminator -e "mux start dev" &
 # bspc rule -a Screenkey manage=off
 
 # Launch bar
-$HOME/.config/polybar/launch_polybar.sh
-
-# Launch rofi
+HOME/.config/polybar/launch_polybar.sh
 
