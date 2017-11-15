@@ -29,7 +29,7 @@ Print
 
 # Blur and lock screen
 super + b
-    python ~/.i3/py3lock.py
+    ~/.i3/py3lock.py
 
 # exit
 super + F4
