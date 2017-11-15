@@ -13,12 +13,10 @@ system_aliases is compatible with zsh, bash, and fish shells. Features handy ali
 I'm currently using [bspwm](https://github.com/baskerville/bspwm) as my tiling window manager of choice, using [polybar](https://github.com/jaagr/polybar) for displaying CPU, RAM, disk space, battery life, and time. To install the custom bspwm badge (modified mirror image of awesome), copy custom_bspwm_badge.png to /usr/share/unity-greeter. Keybindings configured in sxhkdrc are mostly the same as the i3 equivalents below.
 
 ## Tmux
-Features extremely quick pane and window spawn/kill/switching, using ctrl-arrows and shift-arrows, respectively. The prefix key is set to C-t, in order to reduce friction with emacs. Requires tmux 1.9 and the [tmux plugin manager](https://github.com/tmux-plugins/tpm) in order to support tmux-resurrect and tmux-yank plugins (but you can disable them, if desired).
+Features extremely quick and intuitive pane and window spawn/kill/switching, using ctrl-arrows and shift-arrows, respectively. Even more functions are provided with ctrl-alt combinations, such as window splitting. These fast bindings do not require use of the prefix key. The prefix key is set to C-t, in order to reduce friction with emacs. Requires tmux 1.9 and the [tmux plugin manager](https://github.com/tmux-plugins/tpm) in order to support tmux-resurrect and tmux-yank plugins (but you can disable them, if desired).
 
 Keybinding            | Description
 ----------------------|------------------------------------------------------------
-<kbd>C-t t</kbd>      | Change to last-window by pressing Ctrl-t, letting go, and pressing t again.
-<kbd>C-tt...</kbd>    | By holding down Ctrl and pressing t repeatedly, you can cycle through panes with this chained command.
 <kbd>S-up</kbd>       | Create new-window.
 <kbd>S-down</kbd>     | Kill window.
 <kbd>S-left</kbd>     | Previous window.
@@ -35,9 +33,6 @@ Keybinding            | Description
 <kbd>C-M-]</kbd>      | Split the window into smaller panes horizontally.
 <kbd>C-t e</kbd>      | Synchronize panes (toggle sending commands to all panes in the current window).
 <kbd>C-t SPC </kbd>   | Auto-rearrange the pane configuration.
-<kbd>C-t \|</kbd>     | Split the window into smaller panes vertically.
-<kbd>C-t =</kbd>      | Split the window into smaller panes horizontally.
-<kbd>C-t *</kbd>      | Restart a pane that is hung.
 <kbd>C-t ,</kbd>      | Rename current window.
 <kbd>C-t r</kbd>      | Reload the .tmux.conf file.
 
