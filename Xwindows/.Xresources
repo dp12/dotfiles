@@ -129,16 +129,31 @@ Xft.rgba:       rgb
 ! ------------------------------------------------------------------------------
 ! ROFI Color theme
 ! ------------------------------------------------------------------------------
+
 ! Use extended color scheme
 rofi.color-enabled:                  true
+
+! DOOM Theme
 ! Color scheme for normal row
-rofi.color-normal:                   argb:00000000,  #D8DEE9 , argb:00000000,  #FFAF00 ,  #1B2B34
+rofi.color-normal:                   argb:00000000,  #D8DEE9 , argb:00000000,  #51afef ,  #1B2B34
 ! Color scheme for urgent row
-rofi.color-urgent:                   argb:00000000,  #F99157 , argb:00000000,  #F99157 ,  #1B2B34
+rofi.color-urgent:                   argb:00000000,  #51afef , argb:00000000,  #51afef ,  #1B2B34
 ! Color scheme for active row
 rofi.color-active:                   argb:00000000,  #6699CC , argb:00000000,  #6699CC ,  #1B2B34
 ! Color scheme window
-rofi.color-window:                   argb:ee222222,  #91E22E ,  #91E22E
+rofi.color-window:                   argb:ee222222,  #a9a1e1 ,  #a9a1e1
+
+! GREEN-ORANGE Theme
+! Color scheme for normal row
+! rofi.color-normal:                   argb:00000000,  #D8DEE9 , argb:00000000,  #FFAF00 ,  #1B2B34
+! Color scheme for urgent row
+! rofi.color-urgent:                   argb:00000000,  #F99157 , argb:00000000,  #F99157 ,  #1B2B34
+! Color scheme for active row
+! rofi.color-active:                   argb:00000000,  #6699CC , argb:00000000,  #6699CC ,  #1B2B34
+! Color scheme window
+! rofi.color-window:                   argb:ee222222,  #91E22E ,  #91E22E
+
+
 ! Separator style (none, dash, solid)
 rofi.separator-style: dash
 ! rofi.opacity: 85
@@ -146,7 +161,8 @@ rofi.separator-style: dash
 rofi.lines: 7
 rofi.columns: 4
 rofi.font: Hermit 11
-rofi.bw: 0
+! Whether to have border around rofi window
+! rofi.bw: 0
 ! rofi.location: 6
 rofi.location: 0
 rofi.padding: 2
@@ -155,3 +171,7 @@ rofi.padding: 2
 rofi.key-window: mod4+Tab
 rofi.key-run: mod4+p
 rofi.key-ssh: mod1+F3
+rofi.kb-move-char-back: Control+b
+rofi.kb-move-char-forward: Control+f
+rofi.kb-row-left: Left
+rofi.kb-row-right: Right
