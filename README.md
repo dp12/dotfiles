@@ -13,7 +13,7 @@ system_aliases is compatible with zsh, bash, and fish shells. Features handy ali
 I'm currently using [bspwm](https://github.com/baskerville/bspwm) as my tiling window manager of choice, using [polybar](https://github.com/jaagr/polybar) for displaying CPU, RAM, disk space, battery life, and time. To install the custom bspwm badge (modified mirror image of awesome), copy custom_bspwm_badge.png to /usr/share/unity-greeter. Keybindings configured in sxhkdrc are mostly the same as the i3 equivalents below.
 
 ## Tmux
-Features extremely quick and intuitive pane and window spawn/kill/switching, using ctrl-arrows and shift-arrows, respectively. Even more functions are provided with ctrl-alt combinations, such as window splitting. These fast bindings do not require use of the prefix key. The prefix key is set to C-t, in order to reduce friction with emacs. Requires tmux 1.9 and the [tmux plugin manager](https://github.com/tmux-plugins/tpm) in order to support tmux-resurrect and tmux-yank plugins (but you can disable them, if desired).
+Features a novel new keybinding scheme that is extremely quick and doesn't require use of the prefix key. Fast and intuitive pane and window spawn/kill/switching operations are done with ctrl-arrows and shift-arrows, respectively. Even more functions are provided with ctrl-alt combinations, such as window splitting. The prefix key is set to C-t, in order to reduce friction with emacs. Requires tmux 1.9 and the [tmux plugin manager](https://github.com/tmux-plugins/tpm) in order to support tmux-resurrect and tmux-yank plugins (but you can disable them, if desired).
 
 Keybinding            | Description
 ----------------------|------------------------------------------------------------
