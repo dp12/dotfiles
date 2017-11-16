@@ -1,6 +1,6 @@
 # dotfiles
 
-Configs for zsh/bash/fish, git, tmux, bspwm, i3, awesome, and vim, plus some handy aliases.
+Configs for zsh/bash/fish, git, tmux, bspwm, i3, awesome, and vim, plus some deadly aliases.
 
 ## Installation
 An install.sh script is provided to allow the user to choose what to install and automate the installation. Ubuntu 16.04 is assumed.
