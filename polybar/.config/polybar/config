@@ -402,7 +402,7 @@ menu-0-0-exec = menu-open-1
 menu-0-1 = shutdown
 menu-0-1-exec = menu-open-2
 menu-0-2 = logoff
-menu-0-2-exec = dm-tool switch-to-greeter
+menu-0-2-exec = pkill -u ${USER}
 
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
