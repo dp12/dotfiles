@@ -34,5 +34,5 @@ bspc rule -a Terminator desktop=^2 -o; terminator -e "mux start dev" &
 # bspc rule -a Screenkey manage=off
 
 # Launch bar
-HOME/.config/polybar/launch_polybar.sh
+$HOME/.config/polybar/launch_polybar.sh
 
