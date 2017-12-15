@@ -24,8 +24,9 @@ super + e
     emacsclient -ca emacs $1 >/dev/null 2>&1
 
 # screenshot
-Print
-    scrot.sh 0
+super + p
+    scrot
+
 
 # Blur and lock screen
 super + b
