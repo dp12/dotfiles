@@ -241,6 +241,11 @@ cdf() {
 }
 
 # Remap RAlt to Ctrl
+# See options at /usr/share/X11/xkb/rules/evdev.lst
+## For Mac keyboard
+# setxkbmap -option altwin:swap_lalt_lwin
+# setxkbmap -option ctrl:swap_rwin_rctl
+# For Windows keyboard
 setxkbmap -option ctrl:ralt_rctrl
 source ~/.system_aliases
 source ~/.system_funcs
