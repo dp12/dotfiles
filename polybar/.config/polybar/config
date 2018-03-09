@@ -58,7 +58,7 @@ border-bottom = 2
 border-bottom-color = #333
 
 spacing = 1
-padding-left = 2
+padding-left = 0
 padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
@@ -73,12 +73,14 @@ font-1 = FontAwesome:pixelsize=12;1
 font-2 = siji:pixelsize=10;0
 
 ; Original layout
-; modules-left = bspwm xwindow
-; modules-center = cpu memory filesystem date time
+modules-left = bspwm xwindow
+modules-center = cpu memory filesystem date time
 
 ; Application center layout
-modules-left = cpu memory filesystem date time xwindow
-modules-center = bspwm
+; modules-left = cpu memory filesystem date time xwindow
+; modules-center = bspwm
+
+; All options
 ; modules-center = cpu memory filesystem battery date time
 ; modules-right = backlight volume xkeyboard memory cpu battery temperature date powermenu
 ; modules-right = cpu memory filesystem battery date volume powermenu
