@@ -36,7 +36,8 @@ margin-bottom = 5
 
 [bar/bar1]
 ;monitor = ${env:MONITOR:HDMI-1}
-monitor = VGA-1
+;monitor = VGA-1
+monitor = DP2
 width = 100%
 ; height = 27
 ; height = 20
@@ -57,7 +58,7 @@ border-bottom = 2
 border-bottom-color = #333
 
 spacing = 1
-padding-left = 0
+padding-left = 2
 padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
@@ -65,12 +66,20 @@ module-margin-right = 2
 ; font-0 = fixed:pixelsize=10;0
 font-0 = tamsynmod:pixelsize=14;0
 ; font-0 = bitocra:pixelsize=14;0
-font-1 = unifont:size=6:heavy:fontformat=truetype;-2
+; font-1 = unifont:size=6:heavy:fontformat=truetype;-2
+; font-1 = FontAwesome:pixelsize=9;1
+font-1 = FontAwesome:pixelsize=12;1
 ; font-1 = siji:size=8:heavy:fontformat=truetype;-2
 font-2 = siji:pixelsize=10;0
 
-modules-left = bspwm xwindow
-modules-center = cpu memory filesystem battery date time
+; Original layout
+; modules-left = bspwm xwindow
+; modules-center = cpu memory filesystem date time
+
+; Application center layout
+modules-left = cpu memory filesystem date time xwindow
+modules-center = bspwm
+; modules-center = cpu memory filesystem battery date time
 ; modules-right = backlight volume xkeyboard memory cpu battery temperature date powermenu
 ; modules-right = cpu memory filesystem battery date volume powermenu
 modules-right = powermenu ubuntu
@@ -137,23 +146,36 @@ label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
-ws-icon-default = x
+; ws-icon-default = x
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-default = 
 
-label-focused = [%name%]
-label-focused-background = ${colors.background-alt}
+; label-focused = [%name%]
+label-focused = %icon%
+label-focused-background = ${colors.dp12-up-green}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 1
-label-focused-foreground = ${colors.dp12-up-green}
+label-focused-padding = 2
+label-focused-foreground = ${colors.background-alt}
 
-label-occupied = %name%
+; label-occupied = %name%
+label-occupied = %icon%
 label-occupied-padding = 2
 ; label-occupied-foreground = ${colors.dp12-temp-orange}
+label-occupied-foreground = ${colors.dp12-up-green}
 
-label-urgent = >%name%<
+; label-urgent = >%name%<
+label-urgent = %icon%
 label-urgent-foreground = ${colors.dp12-down-red}
 label-urgent-padding = 2
 
-label-empty = %name%
+; label-empty = %name%
+label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 ; label-empty-foreground = ${colors.dp12-down-red}
 label-empty-padding = 2
@@ -194,7 +216,8 @@ format-prefix-foreground = ${colors.dp12-cpu-red}
 ; format-underline = #f90000
 label = %percentage%%
 label-foreground = ${colors.dp12-cpu-red}
-format = <label> <ramp-coreload>
+; format = <label> <ramp-coreload>
+format = <label>
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
 ramp-coreload-2 = ▃
@@ -225,7 +248,7 @@ label-foreground = ${colors.dp12-ram-yellow}
 
 [module/wlan]
 type = internal/network
-interface = 
+interface =
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -245,7 +268,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = 
+interface =
 interval = 3.0
 
 format-connected-underline = #55aa55
