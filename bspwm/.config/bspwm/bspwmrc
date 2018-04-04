@@ -4,7 +4,7 @@ sxhkd &
 
 # bspc monitor -d i ii iii iv v vi vii
 # bspc monitor DP2 -d i ii iii iv v vi vii viii
-bspc monitor DP2 -d 1 2 3 4 5 6 7
+bspc monitor DP2 -d 1 2 3 4 5 6 7 8
 # bspc monitor VGA-2 -d v vi vii viii
 
 # layouts
