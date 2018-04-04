@@ -30,7 +30,7 @@ bspc config click_to_focus button1
 bspc rule -a Emacs desktop=^1 state=tiled -o; emacs &
 bspc rule -a Terminator desktop=^2 -o; terminator -e "mux start dev" &
 bspc rule -a HipChat desktop=^3; hipchat4 &
-bspc rule -a Synergy desktop=^7; synergy &
+bspc rule -a Synergy desktop=^8; synergy &
 
 # Rules
 bspc rule -a Firefox desktop=^6
