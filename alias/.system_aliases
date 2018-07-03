@@ -109,6 +109,7 @@ alias ghp="git hist | peco"
 alias gb="git branch"
 alias gbD="git branch -D"
 alias ga="git add"
+alias gca="git commit --amend"
 alias gut="git commit --amend --date=now --no-edit"
 alias gron="git rebase --onto"
 alias grc="git rebase --continue"
@@ -142,6 +143,9 @@ alias gcm="git checkout master"
 alias gpom="git pull origin master"
 alias gprom="git pull --rebase origin master"
 alias gPom="git push origin master"
+alias gPb='git push origin $(git rev-parse --abbrev-ref HEAD)'
+alias gDb='git push origin $(git rev-parse --abbrev-ref HEAD) --delete'
+alias gDP='git push origin $(git rev-parse --abbrev-ref HEAD) --delete && git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias gp?="git log origin/master..master"
 alias gsl="git stash list"
 # alias gsa="git stash apply"
