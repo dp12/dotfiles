@@ -157,16 +157,13 @@ if [[ "$INSTALL_EMACS" == true ]]; then
     echo "--> Installing emacs"
     cd
     sudo apt install libxpm-dev libjpeg-dev libgif-dev libtiff-dev libncurses-dev
-    if [[ "$INSTALL_MU4E" == true ]]; then
-        sudo apt install libgtk-3-dev libwebkitgtk-3.0-dev
-    fi
-    wget http://ftp.gnu.org/gnu/emacs/emacs-25.2.tar.gz
-    tar -xvzf emacs-25.2.tar.gz
-    cd emacs-25.2
+    wget https://ftp.gnu.org/gnu/emacs/emacs-26.1.tar.gz
+    tar -xvzf emacs-26.1.tar.gz
+    cd emacs-26.1
     echo "Building emacs"
 
     if [[ "$INSTALL_MU4E" == true ]]; then
-        sudo apt install libgtk-3-dev libwebkitgtk-3.0-dev
+        sudo apt install libgtk-3-dev libwebkitgtk-3.0-dev libwebkit2gtk-4.0-dev libgnutls-dev
         ./configure --with-modules --with-x-toolkit=gtk3 --with-xwidgets
     else
         ./configure --with-modules
@@ -188,9 +185,9 @@ if [[ "$INSTALL_MU4E" == true ]]; then
     autoreconf -i && ./configure && make && sudo make install
     ## mbsync
     cd
-    SHARED_FOLDER=/media/sf_Shared
-    sudo cp $SHARED_FOLDER/isync-1.2.2.tar.gz .
-    sudo tar -xvzf isync-1.2.2.tar.gz
+    # SHARED_FOLDER=/media/sf_Shared
+    # sudo cp $SHARED_FOLDER/isync-1.2.2.tar.gz .
+    sudo tar -xvzf isync-1.3.0.tar.gz
     cd isync-1.2.2
     echo "Building mbsync"
     ./configure && make && sudo make install
