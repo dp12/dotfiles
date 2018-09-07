@@ -37,10 +37,10 @@ ascii-soup/zsh-url-highlighter
 hlissner/zsh-autopair
 b4b4r07/zsh-vimode-visual
 Vifon/deer
+djui/alias-tips               # reminds you if you didn't use an alias
 
 # fasd
 # last-working-dir
-# djui/alias-tips               # reminds you if you didn't use an alias
 # mfaerevaag/wd
 # MikeDacre/cdbk                # set bookmark aliases quickly
 EOBUNDLES
