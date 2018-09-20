@@ -42,7 +42,7 @@ gla () {
   printf "$cmd\n\n"; eval $cmd
 }
 
-git-tag-redo () {
+git-retag () {
   cmd="git tag -d $1 && git push origin $1 --delete && git tag $1 && git push origin $1"
   echo -n "Exec '$cmd' [y/n]? "
   read reply
