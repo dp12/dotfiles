@@ -7,43 +7,43 @@ fx () {
 }
 
 fyr() {
-   file=$(find ~/$SEARCH_DIR -type f -wholename \*$1\* -not -path '*/.*/*' -not -path "*/mason*/*" | fzy)
-   cd $(dirname "${file}")
+  file=$(find ~/$SEARCH_DIR -type f -wholename \*$1\* -not -path '*/.*/*' -not -path "*/mason*/*" | fzy)
+  cd $(dirname "${file}")
 }
 
 zv() {
-   file=$(find ~/$SEARCH_DIR -type f -wholename \*$1\* -not -path '*/.*/*' -not -path "*/mason*/*" | fzy)
-   vim "${file}"
+ file=$(find ~/$SEARCH_DIR -type f -wholename \*$1\* -not -path '*/.*/*' -not -path "*/mason*/*" | fzy)
+ vim "${file}"
 }
 
 dism () {
-     func=$(arm-none-eabi-objdump -t $1 | cut -f2 | cut -d ' ' -f2 | fzy)
-     arm-none-eabi-gdb $1 -batch -ex "disas /m $func" | less
+  func=$(arm-none-eabi-objdump -t $1 | cut -f2 | cut -d ' ' -f2 | fzy)
+  arm-none-eabi-gdb $1 -batch -ex "disas /m $func" | less
 }
 
 dwget () {
-      rm -rf $(basename "$1") && wget $1
+  rm -rf $(basename "$1") && wget $1
 }
 
 gsa () {
-    stashnum="${1:-0}"
-    cmd="git stash apply stash@{$stashnum}" 
-    printf "$cmd\n\n"; eval $cmd
+  stashnum="${1:-0}"
+  cmd="git stash apply stash@{$stashnum}"
+  printf "$cmd\n\n"; eval $cmd
 }
 
 gsp () {
-    stashnum="${1:-0}"
-    cmd="git stash show -p stash@{$stashnum}" 
-    printf "$cmd\n\n"; eval $cmd
+  stashnum="${1:-0}"
+  cmd="git stash show -p stash@{$stashnum}"
+  printf "$cmd\n\n"; eval $cmd
 }
 
 gla () {
-    cmd="git log --author=$@"
-    printf "$cmd\n\n"; eval $cmd
+  cmd="git log --author=$@"
+  printf "$cmd\n\n"; eval $cmd
 }
 
 git-tag-redo () {
-  cmd="git tag -d $1 && git push origin $1 --delete && git tag $1 && git push origin $1" 
+  cmd="git tag -d $1 && git push origin $1 --delete && git tag $1 && git push origin $1"
   echo -n "Exec '$cmd' [y/n]? "
   read reply
   echo
