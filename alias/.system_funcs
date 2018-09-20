@@ -41,3 +41,13 @@ gla () {
     cmd="git log --author=$@"
     printf "$cmd\n\n"; eval $cmd
 }
+
+git-tag-redo () {
+  cmd="git tag -d $1 && git push origin $1 --delete && git tag $1 && git push origin $1" 
+  echo -n "Exec '$cmd' [y/n]? "
+  read reply
+  echo
+  if [ $reply != "${reply#[Yy]}" ]; then
+    eval $cmd
+  fi
+}
