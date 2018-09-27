@@ -51,6 +51,7 @@ alias gdbtui="gdb -tui"
 # xclip, e.g. "pwd | c", and "cd `v`"
 alias c="xclip -sel clip"
 alias v="xclip -o"
+alias m5="md5sum"
 
 # Dotfiles
 alias brc="em ~/.bashrc"
