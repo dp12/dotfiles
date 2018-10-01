@@ -13,6 +13,7 @@ alias cd-="cd -"
 alias cpr="cp -r"
 alias rmrf="rm -rf"
 alias rmd="rm -rf"
+alias m5="md5sum"
 
 alias h="history"
 alias psg="ps -ax | grep"
