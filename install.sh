@@ -27,6 +27,8 @@ if [[ "$INSTALL_PACKAGES" == true ]]; then
     wget https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip
     unzip exa-linux-x86_64-0.8.0.zip
     sudo cp exa-linux-x86_64 /usr/local/bin/exa
+    wget https://github.com/denilsonsa/prettyping/raw/master/prettyping
+    chmod +x prettyping && mv prettyping /usr/local/bin/prettyping
 fi
 
 ### DOTFILES ###
