@@ -51,3 +51,20 @@ git-retag () {
     eval $cmd
   fi
 }
+
+gcfu () {
+  if [ "$#" -eq 2 ]; then
+    cmd1="git config --local user.name \"$1\""
+    cmd2="git config --local user.email \"$2\""
+    echo -n "Exec \n$cmd1\n$cmd2 [y/n]? "
+    read reply
+    if [ $reply != "${reply#[Yy]}" ]; then
+      eval $cmd1
+      eval $cmd2
+      echo "\ngit config --local [user] is now:"
+      git config --local --get-regexp user
+    fi
+  else
+    echo "Wrong number of args"
+  fi
+}
