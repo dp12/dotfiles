@@ -23,12 +23,6 @@ if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
     sudo apt install suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu sshpass socat zathura dmenu python-xpyb python-pip dos2unix curl
     sudo apt install tty-clock htop screenfetch
-    # Install exa as ls replacement
-    wget https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip
-    unzip exa-linux-x86_64-0.8.0.zip
-    sudo cp exa-linux-x86_64 /usr/local/bin/exa
-    wget https://github.com/denilsonsa/prettyping/raw/master/prettyping
-    chmod +x prettyping && mv prettyping /usr/local/bin/prettyping
 fi
 
 ### DOTFILES ###
@@ -91,20 +85,29 @@ fi
 if [[ "$INSTALL_UTILS" == true ]]; then
     echo "--> Installing utils"
     cd
-    ## ripgrep
+    ## ripgrep (grep replacement)
     echo "Installing ripgrep"
-    wget https://github.com/BurntSushi/ripgrep/releases/download/0.5.2/ripgrep-0.5.2-x86_64-unknown-linux-musl.tar.gz
-    tar -xvzf ripgrep-0.5.2-x86_64-unknown-linux-musl.tar.gz
-    cd ripgrep-0.5.2-x86_64-unknown-linux-musl
+    wget https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep-0.10.0-x86_64-unknown-linux-musl.tar.gz
+    tar xvzf ripgrep-0.10.0-x86_64-unknown-linux-musl.tar.gz
+    cd ripgrep-0.10.0-x86_64-unknown-linux-musl
     sudo cp rg /usr/local/bin
     ## fzy
     echo "Installing fzy"
-    wget https://github.com/jhawthorn/fzy/releases/download/0.9/fzy_0.9-1_amd64.deb
-    sudo dpkg -i fzy_0.9-1_amd64.deb
-    ## fd
+    wget https://github.com/jhawthorn/fzy/releases/download/1.0/fzy-1.0.tar.gz
+    tar xvzf fzy-1.0.tar.gz && cd fzy-1.0 && make && sudo cp fzy /usr/local/bin
+    ## fd (find replacement)
     echo "Installing fd"
-    wget https://github.com/sharkdp/fd/releases/download/v7.0.0/fd_7.0.0_amd64.deb
-    sudo dpkg -i fd_7.0.0_amd64.deb
+    wget https://github.com/sharkdp/fd/releases/download/v7.1.0/fd_7.1.0_amd64.deb
+    sudo dpkg -i fd_7.1.0_amd64.deb
+    # exa (ls replacement)
+    echo "Installing exa"
+    wget https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip
+    unzip exa-linux-x86_64-0.8.0.zip
+    sudo cp exa-linux-x86_64 /usr/local/bin/exa
+    # prettyping (ping replacement)
+    echo "Installing prettyping"
+    wget https://github.com/denilsonsa/prettyping/raw/master/prettyping
+    chmod +x prettyping && mv prettyping /usr/local/bin/prettyping
 fi
 
 ### BSPWM ###
@@ -158,14 +161,14 @@ fi
 if [[ "$INSTALL_EMACS" == true ]]; then
     echo "--> Installing emacs"
     cd
-    sudo apt install libxpm-dev libjpeg-dev libgif-dev libtiff-dev libncurses-dev
+    sudo apt install make gcc libgtk-3-dev libgnutls-dev libxpm-dev libjpeg-dev libgif-dev libtiff-dev libncurses-dev
     wget https://ftp.gnu.org/gnu/emacs/emacs-26.1.tar.gz
-    tar -xvzf emacs-26.1.tar.gz
+    tar xvzf emacs-26.1.tar.gz
     cd emacs-26.1
     echo "Building emacs"
 
     if [[ "$INSTALL_MU4E" == true ]]; then
-        sudo apt install libgtk-3-dev libwebkitgtk-3.0-dev libwebkit2gtk-4.0-dev libgnutls-dev
+        sudo apt install libwebkitgtk-3.0-dev libwebkit2gtk-4.0-dev libgnutls-dev
         ./configure --with-modules --with-x-toolkit=gtk3 --with-xwidgets
     else
         ./configure --with-modules
@@ -181,7 +184,7 @@ if [[ "$INSTALL_MU4E" == true ]]; then
     cd
     ## mu
     wget https://github.com/djcb/mu/releases/download/0.9.18/mu-0.9.18.tar.gz
-    tar -xvzf mu-0.9.18.tar.gz
+    tar xvzf mu-0.9.18.tar.gz
     cd mu-0.9.18
     echo "Building mu and mu4e"
     autoreconf -i && ./configure && make && sudo make install
@@ -189,7 +192,7 @@ if [[ "$INSTALL_MU4E" == true ]]; then
     cd
     # SHARED_FOLDER=/media/sf_Shared
     # sudo cp $SHARED_FOLDER/isync-1.2.2.tar.gz .
-    sudo tar -xvzf isync-1.3.0.tar.gz
+    sudo tar xvzf isync-1.3.0.tar.gz
     cd isync-1.2.2
     echo "Building mbsync"
     ./configure && make && sudo make install
