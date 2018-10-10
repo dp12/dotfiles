@@ -75,7 +75,7 @@ call spacevim#bootstrap()
 
   set background=dark
   " colorscheme onehalfdark
-  colorscheme onehalflight
+  colorscheme desert
   let g:airline_theme='onehalfdark'
   let g:airline_powerline_fonts = 1
 
