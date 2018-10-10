@@ -31,18 +31,18 @@ zsh-users/zsh-syntax-highlighting
 unixorn/autoupdate-antigen.zshplugin
 unixorn/git-extra-commands
 voronkovich/gitignore.plugin.zsh
-supercrabtree/k
 tarruda/zsh-autosuggestions
 ascii-soup/zsh-url-highlighter
 hlissner/zsh-autopair
 b4b4r07/zsh-vimode-visual
 Vifon/deer
-djui/alias-tips               # reminds you if you didn't use an alias
 
+# MikeDacre/cdbk                # set bookmark aliases quickly
+# djui/alias-tips               # reminds you if you didn't use an alias
 # fasd
 # last-working-dir
 # mfaerevaag/wd
-# MikeDacre/cdbk                # set bookmark aliases quickly
+# supercrabtree/k
 EOBUNDLES
 
 # Theme
@@ -271,9 +271,6 @@ export TERM=xterm-256color
 # alias f='fasd -f' # file
 # alias z='fasd_cd -d' # cd, same functionality as j in autojump
 # alias zz='fasd_cd -d -i' # interactive directory jump
-alias k="k -h"
-alias ka='k -a'
-alias kd='k -d'
 
 # TMUX Launch
 alias tmux='tmux -2'
