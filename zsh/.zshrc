@@ -180,45 +180,6 @@ if command_exists 'rvm'; then
   source /usr/local/rvm/scripts/rvm
 fi
 
-TERM="xterm-256color"
-
-SCREEN_COLORS="`tput colors`"
-if [ -z "$SCREEN_COLORS" ] ; then
-    case "$TERM" in
-        screen-*color-bce)
-            echo "Unknown terminal $TERM. Falling back to 'screen-bce'."
-            export TERM=screen-bce
-            ;;
-        *-88color)
-            echo "Unknown terminal $TERM. Falling back to 'xterm-88color'."
-            export TERM=xterm-88color
-            ;;
-        *-256color)
-            echo "Unknown terminal $TERM. Falling back to 'xterm-256color'."
-            export TERM=xterm-256color
-            ;;
-    esac
-    SCREEN_COLORS=`tput colors`
-fi
-if [ -z "$SCREEN_COLORS" ] ; then
-    case "$TERM" in
-        gnome*|xterm*|konsole*|aterm|[Ee]term)
-            echo "Unknown terminal $TERM. Falling back to 'xterm'."
-            export TERM=xterm
-            ;;
-        rxvt*)
-            echo "Unknown terminal $TERM. Falling back to 'rxvt'."
-            export TERM=rxvt
-            ;;
-        screen*)
-            echo "Unknown terminal $TERM. Falling back to 'screen'."
-            export TERM=screen
-            ;;
-    esac
-    SCREEN_COLORS=`tput colors`
-fi
-
-
 # # Prediction
 # autoload predict-on
 # autoload predict-off
@@ -252,8 +213,6 @@ source ~/.system_funcs
 if [ -f ~/.personal_aliases ]; then
     source ~/.personal_aliases
 fi
-
-export TERM=xterm-256color
 
 # Setup for fasd (broken on my system)
 # eval "$(fasd --init posix-alias zsh-hook)"
