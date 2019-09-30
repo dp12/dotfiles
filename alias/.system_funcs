@@ -56,7 +56,20 @@ gla() {
   else
     cmd="git log --author=$@"
   fi
-  printf "$cmd\n\n"; eval "$cmd"
+  echorun "$cmd"
+  # printf "$cmd\n\n"; eval "$cmd"
+}
+
+fla() {
+  if [ "$#" -eq 0 ]; then
+    cmd="fl --author=$(whoami)"
+  elif echo "$1" | grep -q "^-"; then
+    cmd="fl --author=$(whoami) $@"
+  else
+    cmd="fl --author=$@"
+  fi
+  echorun "$cmd"
+  # printf "$cmd\n\n"; eval "$cmd"
 }
 
 glSa() {
