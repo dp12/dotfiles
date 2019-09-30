@@ -201,13 +201,13 @@ alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bo
 _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
 _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always %'"
 
-# fshow_preview - git commit browser with previews
+# fl - fzf log (git commit browser with previews)
 fl() {
     glNoGraph |
         fzf --no-sort --reverse --tiebreak=index --no-multi \
             --ansi --preview="$_viewGitLogLine" \
-                --header "enter to view, alt-y to copy hash" \
+                --header "enter to view, alt-w to copy hash" \
                 --bind "enter:execute:$_viewGitLogLine   | less -R" \
-                --bind "alt-y:execute:$_gitLogLineToHash | xclip -sel clip" \
+                --bind "alt-w:execute:$_gitLogLineToHash | xclip -sel clip" \
                 --bind "ctrl-u:preview-up,ctrl-b:preview-page-up,ctrl-f:preview-page-down,ctrl-d:preview-down"
 }
