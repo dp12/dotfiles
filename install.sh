@@ -251,7 +251,6 @@ if [[ "$INSTALL_KAKOUNE" == true ]]; then
     git clone https://github.com/mawww/kakoune.git && cd kakoune/src
     CC="gcc-8" CXX="g++-8" make
     PREFIX=$HOME/.local make install
-    sudo cp kak /usr/local/bin
 fi
 
 ### CQUERY ###
