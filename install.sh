@@ -10,6 +10,7 @@ INSTALL_POLYBAR=true
 INSTALL_EMACS=true
 INSTALL_MU4E=true
 INSTALL_SPACEMACS=true
+INSTALL_KAKOUNE=false
 INSTALL_CQUERY=false
 INSTALL_SSH_ACCESS=false
 INSTALL_WALLPAPER=false
@@ -238,6 +239,19 @@ if [[ "$INSTALL_SPACEMACS" == true ]]; then
     echo "Installing spacemacs"
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
     nohup emacs &
+fi
+
+### KAKOUNE ###
+if [[ "$INSTALL_KAKOUNE" == true ]]; then
+    echo "--> Installing kakoune"
+    cd
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt update && sudo apt install gcc-8 g++-8
+    sudo apt install libncursesw5-dev pkg-config
+    git clone https://github.com/mawww/kakoune.git && cd kakoune/src
+    CC="gcc-8" CXX="g++-8" make
+    PREFIX=$HOME/.local make install
+    sudo cp kak /usr/local/bin
 fi
 
 ### CQUERY ###
