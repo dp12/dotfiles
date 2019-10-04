@@ -209,10 +209,10 @@ gFix() {
   echorun "git rebase -i --autosquash --no-edit $1~"
 }
 
-# From https://github.com/junegunn/fzf/wiki/Examples#git
+# Taken from https://github.com/junegunn/fzf/wiki/Examples#git and modified
 alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
 _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
-_viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always %'"
+_viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always --stat -p %'"
 
 # fl - fzf log (git commit browser with previews)
 fl() {
