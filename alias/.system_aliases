@@ -123,6 +123,7 @@ alias gh="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 alias ghp="git hist | peco"
 alias gb="git branch"
 alias gbb="git for-each-ref --sort='authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
+alias gbc="git branch --contains"
 alias gbD="git branch -D"
 alias gbcp="git rev-parse --abbrev-ref HEAD | xclip -sel clip"
 alias gbcpz='git branch --sort="-authordate" | fzy | xclip -sel clip'
