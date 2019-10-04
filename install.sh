@@ -24,7 +24,7 @@ fi
 sudo apt install git
 if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
-    sudo apt install suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu sshpass socat zathura dmenu python-xpyb python-pip dos2unix curl keychain stow
+    sudo apt install suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura dmenu python-xpyb python-pip dos2unix curl keychain stow
     sudo apt install tty-clock screenfetch redshift cowsay
     cd && git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop && /tmp/gotop/scripts/download.sh && sudo mv gotop /usr/local/bin
 
