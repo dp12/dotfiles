@@ -9,8 +9,20 @@
 	dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
 	graph = log --graph --all --decorate --stat --date=iso
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  bt = for-each-ref --sort='authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads
-
+	bt = for-each-ref --sort='authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads
+	fixws = !"\
+			if (! git diff-files --quiet .) && \
+				 (! git diff-index --quiet --cached HEAD) ; then \
+				git commit -m FIXWS_SAVE_INDEX && \
+				git stash save FIXWS_SAVE_TREE && \
+				git rebase --whitespace=fix HEAD~ && \
+				git stash pop && \
+				git reset --soft HEAD~ ; \
+			elif (! git diff-index --quiet --cached HEAD) ; then \
+				git commit -m FIXWS_SAVE_INDEX && \
+				git rebase --whitespace=fix HEAD~ && \
+				git reset --soft HEAD~ ; \
+			fi"
 [merge]
 	tool = meld
 [diff]
