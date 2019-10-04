@@ -2,7 +2,7 @@
 # export SEARCH_DIR=myprojectdir
 
 echorun () {
-  echo "$@\n"; eval "$@"
+  echo "$@"; eval "$@"
 }
 
 fpcp () {
