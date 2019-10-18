@@ -7,6 +7,15 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/fzf.kak"
 plug "danr/kakoune-easymotion"
 plug "h-youhei/kakoune-surround"
+plug "andreyorst/smarttab.kak" defer smarttab %{
+        # when `backspace' is pressed, 4 spaces are deleted at once
+        set-option global softtabstop 4
+        } config %{
+            # these languages will use `expandtab' behavior
+            hook global WinSetOption filetype=(rust|markdown|kak|lisp|scheme|sh|perl|c|cpp) expandtab
+            # these languages will use `noexpandtab' behavior
+            hook global WinSetOption filetype=(makefile|gas) noexpandtab
+        }
 plug "andreyorst/tagbar.kak" defer "tagbar" %{
 	set-option global tagbar_sort false
 	set-option global tagbar_size 40
