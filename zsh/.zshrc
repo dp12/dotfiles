@@ -65,7 +65,7 @@ antibody bundle bhilburn/powerlevel9k
 # antigen theme fishy
 export DEFAULT_USER=$USER    # suppress ssh user info for agnoster
 
-antibody bundle sorin-ionescu/prezto modules/completion
+antibody bundle sorin-ionescu/prezto path:modules/completion
 
 # antigen bundle zsh-users/zaw
 # From: http://blog.patshead.com/2013/04/more-powerful-zsh-history-search-using-zaw.html
