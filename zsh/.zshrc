@@ -13,6 +13,14 @@ is_osx () {
 DISABLE_AUTO_TITLE="true"
 DISABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="false"
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+POWERLEVEL9K_VI_INSERT_MODE_STRING="I"
+POWERLEVEL9K_VI_COMMAND_MODE_STRING="N"
+POWERLEVEL9K_VCS_HIDE_TAGS=true
+POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect_changes)
 
 # source "$HOME/.antigen/antigen.zsh"
 source <(antibody init)
@@ -47,7 +55,8 @@ Vifon/deer
 EOBUNDLES
 
 # Theme
-antigen theme agnoster
+# antigen theme agnoster
+antibody bundle bhilburn/powerlevel9k
 ## Other nice themes
 # antigen bundle sindresorhus/pure
 # antigen theme bullet-train
