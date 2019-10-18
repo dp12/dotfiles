@@ -116,7 +116,7 @@ fi
 # }
 # zle -N zle-line-init
 
-antigen apply
+# antigen apply
 autoload -U deer
 zle -N deer
 bindkey '\ek' deer
