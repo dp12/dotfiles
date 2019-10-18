@@ -14,17 +14,18 @@ DISABLE_AUTO_TITLE="true"
 DISABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="false"
 
-source "$HOME/.antigen/antigen.zsh"
+# source "$HOME/.antigen/antigen.zsh"
+source <(antibody init)
 
-antigen use oh-my-zsh
+# antibody use oh-my-zsh
 
-antigen bundles <<EOBUNDLES
-command-not-found
-colored-man-pages
-git
-git-extras
-pip
-z
+antibody bundle <<EOBUNDLES
+robbyrussell/oh-my-zsh path:plugins/command-not-found
+robbyrussell/oh-my-zsh path:plugins/colored-man-pages
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/git-extras
+robbyrussell/oh-my-zsh path:plugins/pip
+robbyrussell/oh-my-zsh path:plugins/z
 zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-syntax-highlighting
@@ -55,7 +56,7 @@ antigen theme agnoster
 # antigen theme fishy
 export DEFAULT_USER=$USER    # suppress ssh user info for agnoster
 
-antigen bundle sorin-ionescu/prezto modules/completion
+antibody bundle sorin-ionescu/prezto modules/completion
 
 # antigen bundle zsh-users/zaw
 # From: http://blog.patshead.com/2013/04/more-powerful-zsh-history-search-using-zaw.html
