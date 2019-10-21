@@ -182,6 +182,7 @@ bindkey -M viins '^f' autosuggest-accept
 bindkey -M vicmd '^f' autosuggest-accept
 bindkey -M viins 'kj' vi-cmd-mode
 bindkey -M viins '\e.' insert-last-word
+bindkey -M viins '^k' kill-line
 # bindkey '^R' history-incremental-pattern-search-backward
 
 # Allow deleting backwards
