@@ -224,3 +224,7 @@ fl() {
                 --bind "alt-w:execute:$_gitLogLineToHash | xclip -sel clip" \
                 --bind "ctrl-u:preview-up,ctrl-b:preview-page-up,ctrl-f:preview-page-down,ctrl-d:preview-down"
 }
+
+gpg2+() {
+  echorun "gpg2 --output $1.gpg --symmetric $1"
+}
