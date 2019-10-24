@@ -50,10 +50,12 @@ if [[ "$INSTALL_ZSH" == true ]]; then
     sudo apt install zsh
     echo "Cloning zaw"
     git clone https://github.com/zsh-users/zaw.git ~/.zaw
-    echo "Installing antigen"
-    mkdir .antigen
-    cd .antigen
-    curl -L git.io/antigen > antigen.zsh
+    echo "Installing antibody"
+    curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
+    echo "Installing nerdfont"
+    cd /usr/share/fonts
+    sudo wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Medium/complete/Roboto%20Mono%20Medium%20Nerd%20Font%20Complete.ttf
+    fc-cache -fv
     echo "Changing default shell to zsh"
     chsh -s `which zsh`
     sudo chsh -s `which zsh`
