@@ -59,7 +59,14 @@ def obscure(rects):
   image.save('/tmp/.i3lock.png')
 
 def lock_screen():
-  os.system('i3lock -u -i /tmp/.i3lock.png')
+  # Lock with nothing
+  # os.system('i3lock -u -i /tmp/.i3lock.png')
+
+  # Lock with clock and date
+  # os.system('i3lock -i /tmp/.i3lock.png --indpos="w/2:h/2+60" --timepos="w-100:h-70" --datepos="w-115:h-40" --greeterpos="w/2:h/2" --insidevercolor=fefefeff --insidewrongcolor=f82a11aa --insidecolor=fefefe00 --ringvercolor=fefefe66 --ringwrongcolor=f82a11aa --ringcolor=fefefeff --keyhlcolor=39393999 --bshlcolor=39393999 --separatorcolor=00000000 --datecolor=fefefeff --timecolor=fefefeff --greetercolor=fefefeff --timestr="%H:%M" --timesize=50 --datestr="%a, %b %d" --datesize=30 --greetertext="$full_alias" --greetersize=25 --line-uses-ring --radius 38 --ring-width 3 --indicator --veriftext=""  --wrongtext="" --noinputtext="" --clock')
+
+  # Lock with just ring
+  os.system('i3lock -i /tmp/.i3lock.png --indpos="w/2:h/2+60" --insidevercolor=fefefeff --insidewrongcolor=f82a11aa --insidecolor=fefefe00 --ringvercolor=fefefe66 --ringwrongcolor=f82a11aa --ringcolor=fefefeff --keyhlcolor=39393999 --bshlcolor=39393999 --separatorcolor=00000000 --line-uses-ring --radius 38 --ring-width 3 --indicator --veriftext=""  --wrongtext="" --noinputtext=""')
 
 if __name__ == '__main__':
   # 1: Take a screenshot.
