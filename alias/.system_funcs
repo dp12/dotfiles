@@ -27,6 +27,11 @@ zv() {
  vim "${file}"
 }
 
+fk() {
+ # file=$(find "$SEARCH_DIR" -type f -wholename \*"$1"\* -not -path '*/.*/*' -not -path "*/mason*/*" | fzy)
+ file=$(fd . "$SEARCH_DIR" -E "*.got" -E "*.pgm" | fzy)
+ kak "${file}"
+}
 dism() {
   func=$(arm-none-eabi-objdump -t "$1" | cut -f2 | cut -d ' ' -f2 | fzy)
   arm-none-eabi-gdb "$1" -batch -ex "disas /m $func" | less
