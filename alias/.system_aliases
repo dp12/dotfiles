@@ -33,6 +33,7 @@ alias grpwn="sudo chgrp $USER -R * && sudo chown $USER -R *"
 alias sx+="pkill -USR1 -x sxhkd"
 alias chux="chmod u+x"
 alias loc+="sudo updatedb"
+alias lmk="notify-send 'ALERT!'"
 alias x.x="xrdb ~/.Xresources"
 
 # Programs
