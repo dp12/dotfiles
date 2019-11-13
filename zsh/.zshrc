@@ -64,7 +64,8 @@ EOBUNDLES
 
 # Theme
 # antigen theme agnoster
-antibody bundle bhilburn/powerlevel9k
+# antibody bundle bhilburn/powerlevel9k
+antibody bundle romkatv/powerlevel10k
 ## Other nice themes
 # antigen bundle sindresorhus/pure
 # antigen theme bullet-train
