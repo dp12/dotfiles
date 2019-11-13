@@ -43,7 +43,8 @@ robbyrussell/oh-my-zsh path:plugins/pip
 robbyrussell/oh-my-zsh path:plugins/z
 zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
-zsh-users/zsh-syntax-highlighting
+zdharma/fast-syntax-highlighting
+# zsh-users/zsh-syntax-highlighting
 unixorn/autoupdate-antigen.zshplugin
 unixorn/git-extra-commands
 voronkovich/gitignore.plugin.zsh
