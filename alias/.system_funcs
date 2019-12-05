@@ -5,6 +5,10 @@ echorun () {
   echo "$@"; eval "$@"
 }
 
+mkdirc() {
+  mkdir "$1" && cd "$1"
+}
+
 fpcp () {
   local file_path="$(pwd)/$1"
   echo $file_path | tee >(xclip -sel clip)
