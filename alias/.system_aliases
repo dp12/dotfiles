@@ -37,6 +37,12 @@ alias lmk="notify-send 'ALERT!'"
 alias x.x="xrdb ~/.Xresources"
 
 # Programs
+alias doom="emacs --with-profile doom"
+alias dbd="~/doom-emacs/bin/doom"
+alias d+="~/doom-emacs/bin/doom refresh"
+alias d+upd="~/doom-emacs/bin/doom update"
+alias d+upg="~/doom-emacs/bin/doom upgrade"
+alias d?="~/doom-emacs/bin/doom doctor"
 alias dae="emacs --daemon"
 alias ec="emacsclient -ca emacs $1 >/dev/null 2>&1"
 alias em="ec"
