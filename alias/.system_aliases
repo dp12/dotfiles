@@ -65,6 +65,8 @@ alias gex="gdb --batch -ex"
 alias c="xclip -sel clip"
 alias v="xclip -o"
 alias m5="md5sum"
+alias sha2="sha256sum"
+alias sha5="sha512sum"
 alias sck="shellcheck"
 alias mcc="pmccabe -v"
 
