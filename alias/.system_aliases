@@ -3,7 +3,7 @@
 # Works (supposedly) with bash, zsh, and fish
 LS_EXE=exa
 alias a="alias"
-alias a?g="alias | grep"
+alias alg="alias | grep"
 alias l="$LS_EXE"
 alias la="$LS_EXE -a"
 alias ll="$LS_EXE -lh --git"
