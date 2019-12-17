@@ -15,6 +15,9 @@ git pull --rebase"
     fi
 }
 
+echo "Updating .doom.d"
+cd ~/.doom.d && git_save_pull_and_restore
+
 echo "Updating .spacemacs.d"
 cd ~/.spacemacs.d && git_save_pull_and_restore
 
