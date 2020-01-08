@@ -48,6 +48,7 @@ alias dae="emacs --daemon"
 alias ec="emacsclient -ca emacs $1 >/dev/null 2>&1"
 alias em="ec"
 alias emnw="emacsclient -nw"
+alias kee="pkill emacs; pkill emacs"
 alias nv="nvim"
 alias py="python"
 alias pc="peco"
@@ -64,9 +65,17 @@ alias gex="gdb --batch -ex"
 # xclip, e.g. "pwd | c", and "cd `v`"
 alias c="xclip -sel clip"
 alias v="xclip -o"
+
+# ripgrep/fd all, no exceptions
+alias rga="rg --no-ignore --hidden"
+alias fda="fd -HI"
+
+# Hashing
 alias m5="md5sum"
 alias sha2="sha256sum"
 alias sha5="sha512sum"
+
+# Static analyzers
 alias sck="shellcheck"
 alias mcc="pmccabe -v"
 
