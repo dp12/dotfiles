@@ -194,6 +194,7 @@ alias gprb='git pull --rebase origin $(git rev-parse --abbrev-ref HEAD)'
 alias gcm="git checkout master"
 alias gpom="git pull origin master"
 alias gprom="git pull --rebase origin master"
+alias gPk="git push keybase"
 alias gPom="git push origin master"
 alias gPb='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias gDP='git push origin $(git rev-parse --abbrev-ref HEAD) --delete && git push origin $(git rev-parse --abbrev-ref HEAD)'
