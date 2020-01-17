@@ -76,8 +76,8 @@ alias fda="fd -HI"
 
 # Hashing
 alias m5="md5sum"
-alias sha2="sha256sum"
-alias sha5="sha512sum"
+alias s2="sha256sum"
+alias s5="sha512sum"
 
 # Static analyzers
 alias sck="shellcheck"
