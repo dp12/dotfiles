@@ -237,3 +237,11 @@ fl() {
 gpg2+() {
   echorun "gpg2 --output $1.gpg --symmetric $1"
 }
+
+prand() {
+  # Return a random number from 1..n
+  for arg in "$@"; do
+    # python3 -c "import random; print(random.randint(1,$arg))"
+    echo $((($RANDOM % $arg) + 1))
+  done
+}
