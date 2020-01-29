@@ -238,6 +238,17 @@ gpg2+() {
   echorun "gpg2 --output $1.gpg --symmetric $1"
 }
 
+p() {
+# Probe; cd into the first directory
+  local num_dirs="$(ls -l | grep '^d' | wc -l)"
+  case $num_dirs in
+    0) echo "no directories"; ;;
+    1) cd "$(ls -d ./*/)"; ;;
+    *) cd "$(ls -d ./*/ | fzf)"; ;;
+  esac
+  "$LS_EXE"
+}
+
 prand() {
   # Return a random number from 1..n
   for arg in "$@"; do
