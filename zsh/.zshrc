@@ -91,6 +91,7 @@ zstyle ':filter-select' max-lines 3
 zstyle ':filter-select' case-insensitive yes # enable case-insensitive
 zstyle ':filter-select' extended-search yes # see below
 bindkey '^R' zaw-history
+bindkey '^[[Z' reverse-menu-complete
 
 if is_osx; then
   # zsh-history-substring-search
