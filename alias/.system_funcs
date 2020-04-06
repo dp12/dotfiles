@@ -211,6 +211,8 @@ gcrz() {
   branch="${branch//[[:space:]]/}"
   cmd="git checkout $branch"
   echo "$cmd" && eval "$cmd"
+gct() {
+  echorun "git checkout $(git tag | fzf)"
 }
 
 gFix() {
