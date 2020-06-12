@@ -273,7 +273,7 @@ function tmux_launch {
 }
 
 alias tml='tmux_launch'
-alias msd='mux start dev'
+alias msd='tmuxinator start dev'
 
 # Newest directory/file, from http://zzapper.co.uk/zshtips.html
 alias -g ND='*(/om[1])'
