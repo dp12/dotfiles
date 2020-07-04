@@ -24,7 +24,7 @@ fi
 sudo apt install git
 if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
-    sudo apt install suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura dmenu python-xpyb python-pip dos2unix curl keychain stow
+    sudo apt install curl suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura python-xpyb python-pip dos2unix keychain stow
     sudo apt install tty-clock screenfetch redshift cowsay
     cd && git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop && /tmp/gotop/scripts/download.sh && sudo mv gotop /usr/local/bin
 
@@ -51,7 +51,11 @@ if [[ "$INSTALL_ZSH" == true ]]; then
     echo "Cloning zaw"
     git clone https://github.com/zsh-users/zaw.git ~/.zaw
     echo "Installing antibody"
-    curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
+    wget https://github.com/getantibody/antibody/releases/download/v6.0.1/antibody_Linux_x86_64.tar.gz
+    tar xvzf antibody_Linux_x86_64.tar.gz
+    sudo cp antibody /usr/local/bin/antibody
+    #Seems to fail with a sha256sum error
+    #curl -sfL git.io/antibody | sudo sh -s - -b /usr/local/bin
     echo "Installing nerdfont"
     cd /usr/share/fonts
     sudo wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Medium/complete/Roboto%20Mono%20Medium%20Nerd%20Font%20Complete.ttf
@@ -95,10 +99,15 @@ if [[ "$INSTALL_UTILS" == true ]]; then
     ## ripgrep (grep replacement)
     cd
     echo "Installing ripgrep"
-    wget https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep-0.10.0-x86_64-unknown-linux-musl.tar.gz
-    tar xvzf ripgrep-0.10.0-x86_64-unknown-linux-musl.tar.gz
-    cd ripgrep-0.10.0-x86_64-unknown-linux-musl
+    wget https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep-12.1.1-x86_64-unknown-linux-musl.tar.gz
+    tar xvzf ripgrep-12.1.1-x86_64-unknown-linux-musl.tar.gz
+    cd ripgrep-12.1.1-x86_64-unknown-linux-musl
     sudo cp rg /usr/local/bin
+    ## fzf
+    cd
+    echo "Installing fzf"
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
     ## fzy
     cd
     echo "Installing fzy"
@@ -107,23 +116,23 @@ if [[ "$INSTALL_UTILS" == true ]]; then
     ## fd (find replacement)
     cd
     echo "Installing fd"
-    wget https://github.com/sharkdp/fd/releases/download/v7.1.0/fd_7.1.0_amd64.deb
-    sudo dpkg -i fd_7.1.0_amd64.deb
+    wget https://github.com/sharkdp/fd/releases/download/v8.1.1/fd_8.1.1_amd64.deb
+    sudo dpkg -i fd_8.1.1_amd64.deb
     # exa (ls replacement)
     cd
     echo "Installing exa"
-    wget https://github.com/ogham/exa/releases/download/v0.8.0/exa-linux-x86_64-0.8.0.zip
-    unzip exa-linux-x86_64-0.8.0.zip
+    wget https://github.com/ogham/exa/releases/download/v0.9.0/exa-linux-x86_64-0.9.0.zip
+    unzip exa-linux-x86_64-0.9.0.zip
     sudo cp exa-linux-x86_64 /usr/local/bin/exa
     # prettyping (ping replacement)
     cd
     echo "Installing prettyping"
     wget https://github.com/denilsonsa/prettyping/raw/master/prettyping
-    chmod +x prettyping && mv prettyping /usr/local/bin/prettyping
+    chmod +x prettyping && sudo mv prettyping /usr/local/bin/prettyping
 
-    echo "Installing hecate"
-    wget https://github.com/evanmiller/hecate/releases/download/v0.0.1/hecate_0.0.1_amd64.deb
-    sudo dpkg -i hecate_0.0.1_amd64.deb
+    #echo "Installing hecate"
+    #wget https://github.com/evanmiller/hecate/releases/download/v0.0.1/hecate_0.0.1_amd64.deb
+    #sudo dpkg -i hecate_0.0.1_amd64.deb
 fi
 
 ### BSPWM ###
@@ -156,10 +165,12 @@ fi
 ### POLYBAR ###
 if [[ "$INSTALL_POLYBAR" == true ]]; then
     echo "--> Installing polybar"
-    sudo apt install libcairo2-dev xcb-proto libxcb-util-dev libxcb-xkb-dev libxcb-image0-dev python-xcbgen
+    sudo apt install libcairo2-dev xcb-proto libxcb-util-dev libxcb-xkb-dev libxcb-image0-dev python-xcbgen libxcb-composite0-dev
     cd
     echo "Cloning polybar"
-    git clone --branch 3.0.5 --recursive https://github.com/jaagr/polybar
+    wget https://github.com/jaagr/polybar/releases/download/3.4.3/polybar-3.4.3.tar
+    tar xvf polybar-3.4.3.tar
+    #git clone --branch 3.0.5 --recursive https://github.com/jaagr/polybar
     mkdir polybar/build
     cd polybar/build
     cmake ..
@@ -169,22 +180,27 @@ fi
 if [[ "$INSTALL_ROFI" == true ]]; then
     echo "--> Installing rofi"
     cd
-    wget https://launchpad.net/ubuntu/+archive/primary/+files/rofi_0.15.11-1_amd64.deb
-    sudo dpkg -i rofi_0.15.11-1_amd64.deb
+    wget https://launchpad.net/ubuntu/+archive/primary/+files/rofi_1.5.1-1_amd64.deb
+    sudo dpkg -i rofi_1.5.1-1_amd64.deb
 fi
 
 ### EMACS ###
 if [[ "$INSTALL_EMACS" == true ]]; then
     echo "--> Installing emacs"
     cd
-    sudo apt install make gcc libgtk-3-dev libgnutls-dev libxpm-dev libjpeg-dev libgif-dev libtiff-dev libncurses-dev xorg-dev
-    wget https://ftp.gnu.org/gnu/emacs/emacs-26.1.tar.gz
-    tar xvzf emacs-26.1.tar.gz
-    cd emacs-26.1
+    sudo apt install make gcc libgtk-3-dev libxpm-dev libjpeg-dev libgif-dev libtiff-dev libncurses-dev xorg-dev texinfo
+    sudo apt install libgnutls-dev
+    sudo apt install libgnutls28-dev
+    git clone -b master git://git.sv.gnu.org/emacs.git
+    cd emacs
+    #wget https://ftp.gnu.org/gnu/emacs/emacs-26.1.tar.gz
+    #tar xvzf emacs-26.1.tar.gz
+    #cd emacs-26.1
     echo "Building emacs"
 
     if [[ "$INSTALL_MU4E" == true ]]; then
         sudo apt install libwebkitgtk-3.0-dev libwebkit2gtk-4.0-dev libgnutls-dev
+	./autogen.sh
         ./configure --with-modules --with-x-toolkit=gtk3 --with-xwidgets
     else
         ./configure --with-modules
@@ -252,7 +268,7 @@ if [[ "$INSTALL_KAKOUNE" == true ]]; then
     sudo apt install libncursesw5-dev pkg-config
     git clone https://github.com/mawww/kakoune.git && cd kakoune/src
     CC="gcc-8" CXX="g++-8" make
-    PREFIX=$HOME/.local make install
+    PREFIX=/usr/local/bin sudo make install
 fi
 
 ### CQUERY ###
