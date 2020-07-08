@@ -1,4 +1,24 @@
+alias .pwn="source ~/.pwn_funcs"
+
+1g () {
+    one_gadget $(ldd "$1" | grep libc.so | cut -d' ' -f3)
+}
 
 sec? () {
     gdb --batch "$1" -ex "gef" -ex "checksec"
 }
+
+bstr () {
+    hexnum=$1
+    echo $hexnum
+    python -c "
+# hexnum = '%x' % $1
+hexnum = $1.to_bytes(4)
+print(hexnum)
+# hexlist = [r'\x' + hexnum[i:i+2].zfill(2) for i in range(0, len(hexnum), 2)]
+# hexlist = hexlist[::-1]
+# print(hexlist)"
+#'\\x'.join(hexlist)"
+}
+
+# https://stackoverflow.com/questions/13261109/python-string-of-binary-escape-sequences-as-literal
