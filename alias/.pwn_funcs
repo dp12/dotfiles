@@ -4,8 +4,8 @@ alias .pwn="source ~/.pwn_funcs"
     one_gadget $(ldd "$1" | grep libc.so | cut -d' ' -f3)
 }
 
-sec? () {
-    gdb --batch "$1" -ex "gef" -ex "checksec"
+chks () {
+    pwn checksec "$1"
 }
 
 bstr () {
