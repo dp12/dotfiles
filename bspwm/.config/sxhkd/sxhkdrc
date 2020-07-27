@@ -128,6 +128,27 @@ super + {o,i}
 ctrl + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
+F1
+  bspc desktop -f '^1'
+F2
+  bspc desktop -f '^2'
+F3
+  bspc desktop -f '^3'
+F4
+  bspc desktop -f '^4'
+F5
+  bspc desktop -f '^5'
+F6
+  bspc desktop -f '^6'
+F7
+  bspc desktop -f '^7'
+F8
+  bspc desktop -f '^8'
+F9
+  bspc desktop -f '^9'
+F10
+  bspc desktop -f '^10'
+
 super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
