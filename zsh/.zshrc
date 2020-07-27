@@ -196,10 +196,6 @@ bindkey -M viins '^H' backward-delete-char
 # 10ms for key sequences
 KEYTIMEOUT=1
 
-if command_exists 'rvm'; then
-  source /usr/local/rvm/scripts/rvm
-fi
-
 # # Prediction
 # autoload predict-on
 # autoload predict-off
@@ -314,3 +310,6 @@ n ()
 
 # Uncomment to launch Tmux session on every new terminal
 # mux start dev
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+source ~/.rvm/scripts/rvm
