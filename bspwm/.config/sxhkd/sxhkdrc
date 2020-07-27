@@ -3,8 +3,11 @@
 #
 
 # terminal emulator
+ctrl + Return
+    terminator
+
 super + Return
-  terminator
+    terminator
 
 super + shift + Return
     urxvt
@@ -13,6 +16,9 @@ super + shift + f
     firefox -private-window
 
 # program launchers
+ctrl + shift + Tab
+    rofi -show run
+
 super + space
     rofi -show run
 
@@ -20,6 +26,9 @@ super + shift + space
     dmenu_run
 
 # emacs
+ctrl + shift + e
+    emacsclient -ca emacs $1 >/dev/null 2>&1
+
 super + e
     emacsclient -ca emacs $1 >/dev/null 2>&1
 
@@ -75,7 +84,10 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
+ctrl + alt + {t,shift + t,s,f}
+  bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + alt + {t,shift + t,s,f}
   bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
@@ -113,6 +125,9 @@ super + {o,i}
   bspc wm -h on
 
 # focus or send to the given desktop
+ctrl + {_,shift + }{1-9,0}
+  bspc {desktop -f,node -d} '^{1-9,10}'
+
 super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
