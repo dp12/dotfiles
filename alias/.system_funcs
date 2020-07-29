@@ -253,6 +253,10 @@ p() {
   "$LS_EXE"
 }
 
+bkp() {
+    cp "$1"{,-orig}
+}
+
 prand() {
   # Return a random number from 1..n
   for arg in "$@"; do
