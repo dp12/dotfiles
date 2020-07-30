@@ -3,7 +3,7 @@
 #
 
 # terminal emulator
-ctrl + Return
+ctrl + shift + Return
     terminator
 
 super + Return
@@ -67,6 +67,9 @@ super + alt + Escape
 super + {_,shift + }c
   bspc node -{c,k}
 
+ctrl + shift + c
+  bspc node -c
+
 # alternate between the tiled and monocle layout
 super + m
   bspc desktop -l next
@@ -118,6 +121,9 @@ super + bracket{left,right}
 super + {grave,Tab}
   bspc {node,desktop} -f last
 
+ctrl + Tab
+  bspc desktop -f last
+
 # focus the older or newer node in the focus history
 super + {o,i}
   bspc wm -h off; \
@@ -128,26 +134,26 @@ super + {o,i}
 ctrl + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
-F1
-  bspc desktop -f '^1'
-F2
-  bspc desktop -f '^2'
-F3
-  bspc desktop -f '^3'
-F4
-  bspc desktop -f '^4'
-F5
-  bspc desktop -f '^5'
-F6
-  bspc desktop -f '^6'
-F7
-  bspc desktop -f '^7'
-F8
-  bspc desktop -f '^8'
-F9
-  bspc desktop -f '^9'
-F10
-  bspc desktop -f '^10'
+F1 + {_,shift}
+  bspc {desktop -f,node -d} '^1'
+F2 + {_,shift}
+  bspc {desktop -f,node -d} '^2'
+F3 + {_,shift}
+  bspc {desktop -f,node -d} '^3'
+F4 + {_,shift}
+  bspc {desktop -f,node -d} '^4'
+F5 + {_,shift}
+  bspc {desktop -f,node -d} '^5'
+F6 + {_,shift}
+  bspc {desktop -f,node -d} '^6'
+F7 + {_,shift}
+  bspc {desktop -f,node -d} '^7'
+F8 + {_,shift}
+  bspc {desktop -f,node -d} '^8'
+F9 + {_,shift}
+  bspc {desktop -f,node -d} '^9'
+F10 + {_,shift}
+  bspc {desktop -f,node -d} '^10'
 
 super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
