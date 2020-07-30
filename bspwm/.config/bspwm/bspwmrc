@@ -28,12 +28,13 @@ bspc config click_to_focus button1
 
 # Startup programs (some using one-shot rules)
 bspc rule -a Emacs desktop=^1 state=tiled -o; emacs &
-bspc rule -a Terminator desktop=^2 -o; terminator -e "mux start dev" &
-bspc rule -a Slack desktop=^3; slack &
-bspc rule -a Synergy desktop=^8; synergy &
+bspc rule -a Terminator desktop=^2 state=tiled -o; terminator &
+# bspc rule -a Slack desktop=^3; slack &
+# bspc rule -a Synergy desktop=^8; synergy &
 
 # Rules
 bspc rule -a Firefox desktop=^6
+bspc rule -a Ghidra desktop=^3
 
 # bspc rule -a mplayer2 state=floating
 # bspc rule -a Kupfer.py focus=on
