@@ -277,7 +277,7 @@ alias -g ND='*(/om[1])'
 alias -g NF='*(.om[1])'
 
 # Pipe to grep
-alias -g G='| grep -'
+alias -g G='| grep '
 
 # Get nnn to cd on quit
 n ()
