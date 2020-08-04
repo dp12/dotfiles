@@ -244,7 +244,7 @@ gpg2+() {
 
 p() {
 # Probe; cd into the first directory
-  local depth=1
+  local depth=0
   if [ "$#" -gt 0 ]; then
       depth="$1"
   fi
@@ -262,7 +262,7 @@ p() {
 }
 
 pp() {
-  local depth=4
+  local depth=1
   if [ "$#" -gt 0 ]; then
       depth="$1"
   fi
@@ -271,7 +271,7 @@ pp() {
 }
 
 ppp() {
-  local depth=8
+  local depth=2
   if [ "$#" -gt 0 ]; then
       depth="$1"
   fi
