@@ -46,7 +46,7 @@ alias x.x="xrdb ~/.Xresources"
 # Programs
 alias doom="emacs --with-profile doom"
 alias c.d="cd ~/.doom.d"
-alias d+="~/doom-emacs/bin/doom refresh"
+alias d+="~/doom-emacs/bin/doom sync"
 alias d+upd="~/doom-emacs/bin/doom update"
 alias d+upg="~/doom-emacs/bin/doom upgrade"
 alias d?="~/doom-emacs/bin/doom doctor"
