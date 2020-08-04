@@ -244,12 +244,38 @@ gpg2+() {
 
 p() {
 # Probe; cd into the first directory
+  local depth=1
+  if [ "$#" -gt 0 ]; then
+      depth="$1"
+  fi
+
   local num_dirs="$(ls -l | grep '^d' | wc -l)"
   case $num_dirs in
     0) echo "no directories"; ;;
     1) cd "$(ls -d ./*/)"; ;;
-    *) cd "$(ls -d ./*/ | fzf)"; ;;
+    *) cd "$(find ./*/ -maxdepth $depth -type d -not -path '*/\.*' | fzf)"; ;;
   esac
+  "$LS_EXE"
+
+  # OLD WAY
+  # cd "$(ls -d ./*/ | fzf)"
+}
+
+pp() {
+  local depth=4
+  if [ "$#" -gt 0 ]; then
+      depth="$1"
+  fi
+  cd "$(find ./*/ -maxdepth $depth -type d -not -path '*/\.*' | fzf)"
+  "$LS_EXE"
+}
+
+ppp() {
+  local depth=8
+  if [ "$#" -gt 0 ]; then
+      depth="$1"
+  fi
+  cd "$(find ./*/ -maxdepth $depth -type d -not -path '*/\.*' | fzf)"
   "$LS_EXE"
 }
 
