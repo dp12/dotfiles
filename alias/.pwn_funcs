@@ -1,5 +1,7 @@
 alias .pwn="source ~/.pwn_funcs"
 
+alias gdbpwn="gdb -x $(ls -Art /tmp/pwn*.gdb | tail -n 1)"
+
 1g () {
     one_gadget $(ldd "$1" | grep libc.so | cut -d' ' -f3)
 }
