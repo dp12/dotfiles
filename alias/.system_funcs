@@ -283,6 +283,10 @@ bkp() {
     cp "$1"{,-orig}
 }
 
+bkpm() {
+    mv "$1"{,-orig}
+}
+
 prand() {
   # Return a random number from 1..n
   for arg in "$@"; do
