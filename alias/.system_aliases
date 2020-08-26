@@ -18,7 +18,7 @@ alias lf="ls *(.)"
 alias ld="ls *(/)"
 alias lsh="ls .*"
 alias lsd="ls -d *(/)"
-alias lsy="ls | fzy"
+alias lsy="ls | fzf"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -65,7 +65,7 @@ alias pc="peco"
 alias dush="du -sh"
 alias pat="patool extract"
 alias psg="ps -ax | grep"
-alias psy="ps -ax | fzy"
+alias psy="ps -ax | fzf"
 alias pu="pushd"
 alias po="popd"
 alias t="tar xvfz "
@@ -156,7 +156,7 @@ alias gbb="git for-each-ref --sort='authordate:iso8601' --format=' %(authordate:
 alias gbc="git branch --contains"
 alias gbD="git branch -D"
 alias gbcp="git rev-parse --abbrev-ref HEAD | xclip -sel clip"
-alias gbcpz='git branch --sort="-authordate" | fzy | xclip -sel clip'
+alias gbcpz='git branch --sort="-authordate" | fzf | xclip -sel clip'
 alias g#cp="git rev-parse HEAD | cut -c1-15 | xclip -sel clip"
 alias g##cp="git rev-parse HEAD | xclip -sel clip"
 alias ga="git add"
@@ -186,15 +186,15 @@ alias gc--="git checkout -"
 alias gc~="git checkout HEAD~"
 alias gc~~="git checkout HEAD~~"
 alias gcb="git checkout -b"
-alias glz='git log $(git branch --sort="-authordate" | fzy)'
+alias glz='git log $(git branch --sort="-authordate" | fzf)'
 alias flz='fl $(git branch --sort="-authordate" | fzf --reverse)'
-alias gcz='git checkout $(git branch --sort="-authordate" | fzy)'
-alias gczr='git checkout $(git branch -r --sort="-authordate" | fzy)'
+alias gcz='git checkout $(git branch --sort="-authordate" | fzf)'
+alias gczr='git checkout $(git branch -r --sort="-authordate" | fzf)'
 alias gci="git commit"
 alias gcv="git cherry -v"
 alias gcp="git cherry-pick"
 alias gcpx="git cherry-pick -x"
-alias gcpz='git cherry-pick $(git branch --sort="-authordate" | fzy)'
+alias gcpz='git cherry-pick $(git branch --sort="-authordate" | fzf)'
 alias gcp-="git cherry-pick @{-1}"
 alias gcp-2="git cherry-pick @{-2}"
 alias gcp-3="git cherry-pick @{-3}"
