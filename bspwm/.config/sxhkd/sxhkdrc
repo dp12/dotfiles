@@ -121,6 +121,8 @@ super + bracket{left,right}
 super + {grave,Tab}
   bspc {node,desktop} -f last
 
+Prior
+  bspc desktop -f last
 ctrl + Tab
   bspc desktop -f last
 
