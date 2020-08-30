@@ -60,6 +60,7 @@ alias kee="pkill emacs; pkill emacs"
 alias kghid='ps ax | grep GhidraRun | grep -v grep | cut -d" " -f2 | xargs kill -9'
 alias nv="nvim"
 alias py="python"
+alias pyv="python --version"
 alias dk="docker"
 alias pc="peco"
 alias dush="du -sh"
