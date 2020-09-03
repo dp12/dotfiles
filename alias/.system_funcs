@@ -10,7 +10,7 @@ mkdirc() {
 }
 
 fpcp () {
-  local file_path="$(print -P %~)/$1"
+  local file_path=${PWD/#$HOME/'~'}"/$1"
   echo $file_path | tee >(xclip -sel clip)
 }
 
