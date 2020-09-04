@@ -9,10 +9,26 @@ mkdirc() {
   mkdir "$1" && cd "$1"
 }
 
-fpcp () {
+# filepath copy
+fpcp() {
   local file_path=${PWD/#$HOME/'~'}"/$1"
   echo $file_path | tee >(xclip -sel clip)
 }
+
+# locate cd
+lcd() {
+  if [ "$#" -gt 0 ]; then
+    found="$(locate $1 | fzf)"
+    if [[ -f $found ]]; then
+        cd "$(dirname ${found})"
+    else
+        cd "${found}"
+    fi
+  else
+    echo "Usage: lcd <filename>"
+  fi
+}
+alias lcdu="sudo updatedb; lcd"
 
 fx() {
   file=$(find "$SEARCH_DIR" -type f -wholename \*$1\* -not -path './.*/*' | peco)
