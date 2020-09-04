@@ -41,6 +41,13 @@ lcd() {
 }
 alias lcdu="sudo updatedb; lcd"
 
+symbin() {
+  local link_dir="${2:-/usr/local/bin}"
+  local target_path=${PWD/#$HOME/'~'}"/$1"
+  cmd="sudo ln -s $target_path $link_dir/$1"
+  echorun_conf "$cmd"
+}
+
 fx() {
   file=$(find "$SEARCH_DIR" -type f -wholename \*$1\* -not -path './.*/*' | peco)
   echo "Enter a command..."; read command
