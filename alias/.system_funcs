@@ -5,6 +5,17 @@ echorun () {
   echo "$@"; eval "$@"
 }
 
+# echorun with confirmation
+echorun_conf() {
+  echo "$@"
+  echo -n "Execute [y/n]? "
+  read reply
+  echo
+  if [ "$reply" != "${reply#[Yy]}" ]; then
+    eval "$@"
+  fi
+}
+
 mkdirc() {
   mkdir "$1" && cd "$1"
 }
