@@ -32,6 +32,19 @@ ctrl + shift + e
 super + e
     emacsclient -ca emacs $1 >/dev/null 2>&1
 
+# chorded launching
+ctrl + shift + q; e
+    emacsclient -ca emacs $1 >/dev/null 2>&1
+
+ctrl + shift + q; f
+    firefox
+
+ctrl + shift + q; g
+    /usr/local/bin/ghidra
+
+ctrl + shift + q; t
+    terminator
+
 # screenshot
 super + p
     scrot
