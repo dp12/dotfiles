@@ -10,6 +10,7 @@ INSTALL_POLYBAR=true
 INSTALL_EMACS=true
 INSTALL_MU4E=true
 INSTALL_SPACEMACS=true
+INSTALL_ROFI=false
 INSTALL_GCCEMACS=false
 INSTALL_KAKOUNE=false
 INSTALL_CQUERY=false
@@ -178,9 +179,10 @@ fi
 
 if [[ "$INSTALL_ROFI" == true ]]; then
     echo "--> Installing rofi"
-    cd
-    wget https://launchpad.net/ubuntu/+archive/primary/+files/rofi_1.5.1-1_amd64.deb
-    sudo dpkg -i rofi_1.5.1-1_amd64.deb
+    # cd
+    # wget https://launchpad.net/ubuntu/+archive/primary/+files/rofi_1.5.1-1_amd64.deb
+    # sudo dpkg -i rofi_1.5.1-1_amd64.deb
+    sudo apt install rofi
 fi
 
 ### EMACS ###
