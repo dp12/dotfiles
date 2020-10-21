@@ -198,6 +198,18 @@ if [[ "$INSTALL_EMACS" == true ]]; then
     #cd emacs-26.1
     echo "Building emacs"
 
+    if [[ "$INSTALL_GCCEMACS" == true ]]; then
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa
+        sudo apt update -y
+        sudo apt install -y gcc-10 libgccjit0 libgccjit-10-dev
+        sudo apt install -y libjansson4 libjansson-dev
+        git clone -b feature/native-comp git://git.savannah.gnu.org/emacs.git
+        cd emacs
+        export CC=/usr/bin/gcc-10 CXX=/usr/bin/gcc-10
+        ./autogen.sh
+        ./configure --with-nativecomp --with-json CFLAGS="-O3 -mtune=native -march=native -fomit-frame-pointer"
+	make && sudo make install
+    fi
     if [[ "$INSTALL_MU4E" == true ]]; then
         sudo apt install libwebkitgtk-3.0-dev libwebkit2gtk-4.0-dev libgnutls-dev
 	./autogen.sh
