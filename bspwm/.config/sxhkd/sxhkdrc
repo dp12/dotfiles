@@ -25,6 +25,15 @@ super + space
 super + shift + space
     dmenu_run
 
+# alt + r; e
+#     emacsclient -ca emacs $1 >/dev/null 2>&1
+
+# alt + r; r
+#     robo-scope
+
+# alt + r; g
+#     ghidra
+
 # emacs
 ctrl + shift + e
     emacsclient -ca emacs $1 >/dev/null 2>&1
