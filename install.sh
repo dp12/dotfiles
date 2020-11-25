@@ -17,6 +17,7 @@ INSTALL_CQUERY=false
 INSTALL_SSH_ACCESS=false
 INSTALL_WALLPAPER=false
 INSTALL_ENV=false
+INSTALL_CTF=false
 
 if [ ]; then
     echo "This is a comment block"
@@ -331,6 +332,42 @@ if [[ "$INSTALL_ENV" == true ]]; then
     echo "systemctl --user enable ssh-agent" >> ~/.profile
     echo "systemctl --user start ssh-agent" >> ~/.profile
     echo "setxkbmap -option ctrl:ralt_rctrl" >> ~/.profile
+fi
+
+### CTF ###
+if [[ "$INSTALL_CTF" == true ]]; then
+    echo "--> Installing packages"
+    sudo apt install nasm
+
+    echo "--> Installing gef"
+    sh -c "$(wget https://tinyurl.com/gef-install -O -)"
+
+    echo "--> Installing pwndbg"
+    cd
+    git clone https://github.com/pwndbg/pwndbg.git
+    cd pwndbg
+    ./setup.sh
+
+    echo "--> Installing pwntools"
+    cd
+    sudo apt install python3 python3-pip python3-dev libssl-dev libffi-dev build-essential
+    python3 -m pip install --upgrade pip
+    python3 -m pip install --upgrade pwntools
+    python -m pip install --upgrade pwntools
+
+    echo "--> Installing ghidra"
+    cd
+    sudo add-apt-repository ppa:openjdk-r/ppa
+    sudo apt update
+    sudo apt install openjdk-11-jdk
+    sudo apt install openjdk-11-jre-headless
+    wget https://ghidra-sre.org/ghidra_9.1.2_PUBLIC_20200212.zip
+    unzip ghidra_9.1.2_PUBLIC_20200212.zip
+    sudo ln -s ~/ghidra_9.1.2_PUBLIC/ghidraRun /usr/local/bin/ghidra
+
+    echo "--> Installing pwninit"
+    sudo apt install cargo
+    cargo install pwninit
 fi
 
 ### MANUAL STEPS ###
