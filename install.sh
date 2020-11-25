@@ -272,6 +272,20 @@ if [[ "$INSTALL_SPACEMACS" == true ]]; then
     nohup emacs &
 fi
 
+### DOOM EMACS ###
+if [[ "$INSTALL_DOOM" == true ]]; then
+    cd
+    echo "--> Installing doom emacs"
+    echo "Cloning doom"
+    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+    echo "Run doom install"
+    ~/.emacs.d/bin/doom install
+    echo "Clone doom configuration"
+    git clone git@github.com:dp12/doom.git ~/.doom.d
+    echo "Sync doom"
+    ~/.emacs.d/bin/doom sync
+fi
+
 ### KAKOUNE ###
 if [[ "$INSTALL_KAKOUNE" == true ]]; then
     echo "--> Installing kakoune"
