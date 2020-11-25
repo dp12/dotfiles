@@ -361,9 +361,9 @@ if [[ "$INSTALL_CTF" == true ]]; then
     sudo apt update
     sudo apt install openjdk-11-jdk
     sudo apt install openjdk-11-jre-headless
-    wget https://ghidra-sre.org/ghidra_9.1.2_PUBLIC_20200212.zip
-    unzip ghidra_9.1.2_PUBLIC_20200212.zip
-    sudo ln -s ~/ghidra_9.1.2_PUBLIC/ghidraRun /usr/local/bin/ghidra
+    wget https://ghidra-sre.org/ghidra_9.2_PUBLIC_20201113.zip
+    unzip ghidra_9.2_PUBLIC_20201113.zip
+    sudo ln -s ~/ghidra_9.2_PUBLIC/ghidraRun /usr/local/bin/ghidra
 
     echo "--> Installing pwninit"
     sudo apt install cargo
