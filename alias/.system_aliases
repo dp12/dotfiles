@@ -161,6 +161,7 @@ alias gbc="git branch --contains"
 alias gbD="git branch -D"
 alias gbcp="git rev-parse --abbrev-ref HEAD | xclip -sel clip"
 alias gbcpz='git branch --sort="-authordate" | fzf | xclip -sel clip'
+alias gbh="git for-each-ref --sort='-authordate:iso8601' --count 20 --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
 alias g#cp="git rev-parse HEAD | cut -c1-15 | xclip -sel clip"
 alias g##cp="git rev-parse HEAD | xclip -sel clip"
 alias ga="git add"
