@@ -4,7 +4,33 @@ alias gdbpwn='gdb -x $(ls -Art /tmp/pwn*.gdb | tail -n 1)'
 alias nk="echorun 'python nkp.py'"
 alias nkg="echorun 'python nkp.py GDB'"
 alias nka="echorun 'python nkp.py GDB NOASLR'"
+alias nkaa="echorun 'python nkp.py NOASLR'"
 alias nkr="echorun 'python nkp.py REMOTE'"
+
+pwndock () {
+    if [ "$#" -ne 1 ]; then
+        echo "usage: pwndock <name>"
+    else
+        docker run -d \
+                --rm \
+                --privileged \
+                -h "$1" \
+                --name "$1" \
+                -v $(pwd):/ctf/"$1" \
+                -p 23946:23946 \
+                --cap-add=SYS_PTRACE \
+                skysider/pwndocker
+    fi
+}
+quickrop () {
+    cat gadgets | grep ': pop rdi ; ret$'
+    cat gadgets | grep ': pop rsi ; ret$'
+    cat gadgets | grep ': pop rdx ; ret$'
+    cat gadgets | grep ': pop rax ; ret$'
+    cat gadgets | grep ': ret$'
+    cat gadgets | grep ': syscall$'
+    # cat gadgets | grep ": mov dword ptr \[" | grep ret
+}
 
 1g () {
     one_gadget $(ldd "$1" | grep libc.so | cut -d' ' -f3)
