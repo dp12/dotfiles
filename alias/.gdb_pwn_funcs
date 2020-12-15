@@ -1,0 +1,75 @@
+#################
+# GDB PWN FUNCS #
+#################
+
+define rx
+  shell rax2 $arg0
+end
+
+define rs
+  shell rax2 -s $arg0
+end
+
+define cx
+  context
+end
+
+define mhook
+  p/x &__malloc_hook
+  x/10gx &__malloc_hook
+end
+
+define gb
+set $ghidra_address = $arg0
+python
+addr = gdb.convenience_variable("ghidra_address")
+# TODO: make it unset the 0x1000 that ghidra adds to PIE binaries
+gdb.execute("b *0x" + addr)
+end
+end
+
+###############
+# GDB HISTORY #
+###############
+set history save on
+set history size unlimited
+set history filename ~/.gdb_history
+
+define fzf
+  python
+import subprocess
+HISTORY_FILE = "~/.gdb_history"
+# preserve order with duplicates: uniq -u
+# destroy order and remove duplicates: sort -u
+fzf_cmd = "cat " + HISTORY_FILE + " | awk '!x[$0]++' | fzf --no-sort --tac"
+try:
+    gdb_cmd = subprocess.check_output(fzf_cmd, shell=True).rstrip().decode("utf-8")
+    print(gdb_cmd)
+    gdb.execute(gdb_cmd)
+except:
+    print("ಠ_ಠ cancel fzf cmd")
+end
+end
+
+##################
+# GDB FRAMEWORKS #
+##################
+define gef
+# Use python to access $HOME and do the following:
+# source $HOME/.gdbinit-gef.py
+python
+import os
+gdb.execute("source" + os.environ['HOME'] + '/.gdbinit-gef.py')
+end
+end
+
+define pwn
+# Use python to access $HOME and do the following:
+# source $HOME/pwndbg/gdbinit.py
+python
+import os
+gdb.execute("source" + os.environ['HOME'] + '/pwndbg/gdbinit.py')
+end
+end
+
+pwn
