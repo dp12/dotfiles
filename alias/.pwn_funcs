@@ -1,10 +1,11 @@
-alias .pwn="source ~/.pwn_funcs"
+alias .p="source ~/.pwn_funcs"
 
 alias gdbpwn='gdb -x $(ls -Art /tmp/pwn*.gdb | tail -n 1)'
 alias nk="echorun 'python nkp.py'"
 alias nkg="echorun 'python nkp.py GDB'"
 alias nka="echorun 'python nkp.py GDB NOASLR'"
-alias nkaa="echorun 'python nkp.py NOASLR'"
+alias nkaa="echorun 'python nkp.py GDB_ATTACH NOASLR'"
+alias nkna="echorun 'python nkp.py NOASLR'"
 alias nkr="echorun 'python nkp.py REMOTE'"
 
 pwndock () {
@@ -22,6 +23,17 @@ pwndock () {
                 skysider/pwndocker
     fi
 }
+
+# Get libc version
+lver () {
+    local lfile=${1:-"libc*"}
+    echorun "strings $lfile | grep version"
+}
+
+bsh () {
+    echorun "strings -tx $1 | grep /bin/sh"
+}
+
 quickrop () {
     cat gadgets | grep ': pop rdi ; ret$'
     cat gadgets | grep ': pop rsi ; ret$'

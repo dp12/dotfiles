@@ -14,6 +14,15 @@ define cx
   context
 end
 
+define shpc
+    x/10i $rip
+end
+
+define spc
+    si
+    x/10i $rip
+end
+
 define mhook
   p/x &__malloc_hook
   x/10gx &__malloc_hook
@@ -23,9 +32,24 @@ define gb
 set $ghidra_address = $arg0
 python
 addr = gdb.convenience_variable("ghidra_address")
-# TODO: make it unset the 0x1000 that ghidra adds to PIE binaries
 gdb.execute("b *0x" + addr)
 end
+end
+
+define gbr
+set $ghidra_address = $arg0
+python
+addr = gdb.convenience_variable("ghidra_address")
+# TODO: make it unset the 0x1000 that ghidra adds to PIE binaries
+if addr[0:4] == "0010":
+    addr = addr[5:]
+gdb.execute("b *0x" + addr)
+end
+end
+
+define reb
+  printf "b *$rebase($arg0)\n"
+  b *$rebase($arg0)
 end
 
 ###############
@@ -51,6 +75,14 @@ except:
 end
 end
 
+################
+# GDB SETTINGS #
+################
+set disassembly-flavor intel
+define intel
+    set disassembly-flavor intel
+end
+
 ##################
 # GDB FRAMEWORKS #
 ##################
@@ -70,6 +102,9 @@ python
 import os
 gdb.execute("source" + os.environ['HOME'] + '/pwndbg/gdbinit.py')
 end
+
+# Load pwngdb-specific aliases after pwngdb is initialized
+alias vm = vmmap
 end
 
 pwn
