@@ -24,6 +24,16 @@ pwndock () {
     fi
 }
 
+dkgcp() {
+    if [ "$#" -ne 1 ]; then
+        echo "usage: dkgcp <container id>"
+    else
+        docker cp ~/.gdbinit "$1":/root
+        docker cp ~/.gdb_history "$1":/root
+        docker cp ~/dotfiles/alias/.gdb_pwn_funcs "$1":/root
+    fi
+}
+
 # Get libc version
 lver () {
     local lfile=${1:-"libc*"}
