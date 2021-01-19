@@ -2,8 +2,13 @@
 # GDB PWN FUNCS #
 #################
 
+# TODO: get arguments passed to rax
 define rx
   shell rax2 $arg0
+end
+
+define rxk
+  shell rax2 -k $arg0
 end
 
 define rs
