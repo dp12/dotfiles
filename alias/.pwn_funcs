@@ -31,6 +31,7 @@ dkgcp() {
         docker cp ~/.gdbinit "$1":/root
         docker cp ~/.gdb_history "$1":/root
         docker cp ~/dotfiles/alias/.gdb_pwn_funcs "$1":/root
+        docker cp ~/dotfiles/tmux/.tmux.conf "$1":/root
     fi
 }
 
