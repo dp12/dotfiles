@@ -313,6 +313,17 @@ ppp() {
   "$LS_EXE"
 }
 
+dkrmg() {
+  echo "Remove the following containers? [y/n]"
+  docker ps -a | grep "$1"
+
+    # docker rmi $(docker images |grep 'imagename')
+  read reply
+  if [ $reply != "${reply#[Yy]}" ]; then
+    docker ps -a | grep "$1" | cut -d' ' -f1 | xargs docker rm
+  fi
+}
+
 bkp() {
     cp "$1"{,-orig}
 }
