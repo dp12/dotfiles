@@ -42,6 +42,7 @@ alias k15="kill -15"
 alias chux="chmod u+x"
 alias lmk="notify-send 'ALERT!'"
 alias x.x="xrdb ~/.Xresources"
+alias 2buf="tmux new-window -n '[^^] 2buf'"
 
 # Programs
 alias doom="emacs --with-profile doom"
