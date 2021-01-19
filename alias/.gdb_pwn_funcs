@@ -28,6 +28,11 @@ define mhook
   x/10gx &__malloc_hook
 end
 
+define fhook
+  p/x &__free_hook
+  x/10gx &__free_hook
+end
+
 define gb
 set $ghidra_address = $arg0
 python
