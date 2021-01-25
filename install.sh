@@ -366,7 +366,7 @@ if [[ "$INSTALL_CTF" == true ]]; then
     sudo ln -s ~/ghidra_9.2_PUBLIC/ghidraRun /usr/local/bin/ghidra
 
     echo "--> Installing pwninit"
-    sudo apt install cargo
+    sudo apt install cargo elfutils
     cargo install pwninit
 fi
 
