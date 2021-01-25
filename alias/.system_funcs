@@ -83,6 +83,13 @@ fk() {
  file=$(fd . "$SEARCH_DIR" -E "*.got" -E "*.pgm" | fzy)
  kak "${file}"
 }
+
+tmr() {
+  local seconds="${1:-60}"
+  for i in {0..$seconds}; do echo -n "$i "; sleep 1; done
+  notify-send "Timer done!"
+}
+
 dism() {
   func=$(arm-none-eabi-objdump -t "$1" | cut -f2 | cut -d ' ' -f2 | fzy)
   arm-none-eabi-gdb "$1" -batch -ex "disas /m $func" | less
