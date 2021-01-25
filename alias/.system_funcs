@@ -99,6 +99,15 @@ dwget() {
   rm -rf "$(basename "$1")" && wget "$1"
 }
 
+
+rmex() {
+    if [ "$#" -eq 1 ]; then
+      echorun "find ! -iname '$1'"
+      echorun_conf "find ! -iname '$1' -delete"
+    else
+      echo "usage: rmex <glob pattern>"
+    fi
+}
 gsa() {
   stashnum="${1:-0}"
   cmd="git stash apply stash@{$stashnum}"
