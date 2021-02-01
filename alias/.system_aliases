@@ -1,7 +1,11 @@
 # Aliases
 # To load, put "source ~/.system_aliases" in your .bashrc, .zshrc, or config.fish
 # Works (supposedly) with bash, zsh, and fish
-LS_EXE=exa
+if command -v exa &> /dev/null; then
+    LS_EXE=exa
+else
+    LS_EXE=ls
+fi
 alias a="alias"
 alias alg="alias | grep"
 alias l="$LS_EXE"
