@@ -266,6 +266,16 @@ grrauth() {
   fi
 }
 
+gcz() {
+  local branch=$(git branch --sort="-authordate" | fzf | xargs)
+  echorun "git checkout $branch"
+}
+
+glz() {
+  local branch=$(git branch --sort="-authordate" | fzf | xargs)
+  echorun "git log $branch"
+}
+
 gcrz() {
   local branch="$(git branch -r | fzy)"
   # Remove "origin/" and whitespace
