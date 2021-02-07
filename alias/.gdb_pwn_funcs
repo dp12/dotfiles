@@ -113,7 +113,8 @@ try:
     print(gdb_cmd)
     gdb.execute(gdb_cmd)
 except:
-    print("ಠ_ಠ cancel fzf cmd")
+    # print("ಠ_ಠ cancel fzf cmd")
+	print("༼ つ ◕_◕ ༽つ yeet")
 end
 end
 
