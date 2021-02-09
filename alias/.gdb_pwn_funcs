@@ -29,11 +29,13 @@ define spc
 end
 
 define mhook
+  echo "x/10gx &__malloc_hook\n"
   p/x &__malloc_hook
   x/10gx &__malloc_hook
 end
 
 define fhook
+  echo "x/10gx &__free_hook\n"
   p/x &__free_hook
   x/10gx &__free_hook
 end
@@ -54,6 +56,31 @@ addr = gdb.convenience_variable("ghidra_address")
 if addr[0:4] == "0010":
     addr = addr[5:]
 gdb.execute("b *0x" + addr)
+end
+end
+
+# Get libc offset from libc base
+define loff
+set $addr_offset = $arg0
+
+python
+import subprocess
+import re
+
+# Run vmmap to get addresses
+vmmap_output = gdb.execute("vm", from_tty = True, to_string = True)
+
+# Remove ANSI escape sequences
+ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+vmmap_output = ansi_escape.sub('', vmmap_output)
+
+# Get base address of libc
+addr_line = next(line for line in vmmap_output.split("\n") if "libc" in line)
+libc_base = int(addr_line.strip().split(" ")[0], 16)
+print("libc base: 0x%x" % libc_base)
+
+offset = gdb.convenience_variable("addr_offset")
+print("libc.address = 0x%x - 0x%x" % (libc_base, offset - libc_base))
 end
 end
 
@@ -94,6 +121,27 @@ gdb.execute(breakpoint_cmd)
 end
 end
 
+define bbase
+import subprocess
+import re
+
+# Get the name of the binary
+elf_cmd = "file * | grep ELF | cut -d':' -f1 | grep -vE 'ld|libc' | head -1"
+elf_name = subprocess.check_output(elf_cmd, shell=True).rstrip().decode("utf-8")
+
+# Run vmmap to get addresses
+vmmap_output = gdb.execute("vm", from_tty = True, to_string = True)
+
+# Remove ANSI escape sequences
+ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+vmmap_output = ansi_escape.sub('', vmmap_output)
+
+# Get base address of binary
+addr_line = next(line for line in vmmap_output.split("\n") if line.endswith(elf_name))
+base_addr = int(addr_line.strip().split(" ")[0], 16)
+print("base address: 0x%x" % base_addr)
+end
+
 ###############
 # GDB HISTORY #
 ###############
@@ -116,6 +164,10 @@ except:
     # print("ಠ_ಠ cancel fzf cmd")
 	print("༼ つ ◕_◕ ༽つ yeet")
 end
+end
+
+define g227
+    dir ~/HeapLAB/.glibc/glibc_2.27/malloc
 end
 
 ################

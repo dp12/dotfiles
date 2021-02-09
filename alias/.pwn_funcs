@@ -7,6 +7,11 @@ alias nka="echorun 'python nkp.py GDB NOASLR'"
 alias nkaa="echorun 'python nkp.py GDB_ATTACH NOASLR'"
 alias nkna="echorun 'python nkp.py NOASLR'"
 alias nkr="echorun 'python nkp.py REMOTE'"
+alias snk="echorun 'strace -f -e execve python nkp.py'"
+
+echorun () {
+  echo "$@"; eval "$@"
+}
 
 pwndock () {
     if [ "$#" -ne 1 ]; then
@@ -32,6 +37,15 @@ dkgcp() {
         docker cp ~/.gdb_history "$1":/root
         docker cp ~/dotfiles/alias/.gdb_pwn_funcs "$1":/root
         docker cp ~/dotfiles/tmux/.tmux.conf "$1":/root
+        docker cp ~/dotfiles/alias/.pwn_funcs "$1":/root
+    fi
+}
+
+dkex() {
+    if [ "$#" -ne 1 ]; then
+        echo "usage: dkex <container id>"
+    else
+        echorun "docker exec -it $1 /bin/bash"
     fi
 }
 
