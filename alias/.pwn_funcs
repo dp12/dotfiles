@@ -52,7 +52,7 @@ dkex() {
 # Get libc version
 lver () {
     local lfile=${1:-"libc*"}
-    echorun "strings $lfile | grep version"
+    echorun "./$lfile --version | head -n1"
 }
 
 bsh () {
