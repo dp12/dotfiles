@@ -88,8 +88,9 @@ alias v="xclip -o"
 alias rebar="pkill polybar; nohup polybar bar1 &"
 
 # Docker
-alias dkpa="echo 'docker ps -a'; docker ps -a"
-alias dkp="docker ps"
+alias dp="echorun 'docker ps'"
+alias dpa="echorun 'docker ps -a'"
+alias dim="docker image"
 
 # ripgrep/fd all, no exceptions
 alias rga="rg --no-ignore --hidden"
