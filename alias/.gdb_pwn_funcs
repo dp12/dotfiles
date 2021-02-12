@@ -166,8 +166,12 @@ except:
 end
 end
 
-define g227
+define g27
     dir ~/HeapLAB/.glibc/glibc_2.27/malloc
+end
+
+define g29
+    dir ~/HeapLAB/.glibc/glibc_2.29/malloc
 end
 
 ################
