@@ -61,3 +61,6 @@ windows:
         - gtop
         - tty-clock -c -t
         - ncdu
+  - "}(-__) laz":
+      panes:
+        - lazydocker
