@@ -29,6 +29,11 @@ if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
     sudo apt install curl suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura python-xpyb python-pip dos2unix keychain stow mosh cargo
     sudo apt install tty-clock screenfetch redshift cowsay
+
+    echo "--> Installing lazydocker"
+    wget https://github.com/jesseduffield/lazydocker/releases/download/v0.10/lazydocker_0.10_Linux_x86_64.tar.gz
+    tar xvzf lazydocker_0.10_Linux_x86_64.tar.gz lazydocker
+    sudo mv lazydocker /usr/local/bin
 fi
 
 ### DOTFILES ###
