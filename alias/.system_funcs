@@ -364,10 +364,14 @@ dkrmg() {
 }
 
 bkp() {
+    cp "$1"{,.bkp}
+}
+
+bkpo() {
     cp "$1"{,-orig}
 }
 
-bkpm() {
+bkpom() {
     mv "$1"{,-orig}
 }
 
