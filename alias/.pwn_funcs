@@ -3,6 +3,7 @@ alias .p="source ~/.pwn_funcs"
 alias gdbpwn='gdb -x $(ls -Art /tmp/pwn*.gdb | tail -n 1)'
 alias nk="echorun 'python nkp.py'"
 alias nkg="echorun 'python nkp.py GDB'"
+alias nkga="echorun 'python nkp.py GDB_ATTACH'"
 alias nka="echorun 'python nkp.py GDB NOASLR'"
 alias nkaa="echorun 'python nkp.py GDB_ATTACH NOASLR'"
 alias nkna="echorun 'python nkp.py NOASLR'"
