@@ -27,7 +27,7 @@ fi
 sudo apt install git
 if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
-    sudo apt install curl suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura python-xpyb python-pip dos2unix keychain stow mosh cargo
+    sudo apt install curl suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura python-xpyb python-pip dos2unix keychain stow mosh cargo curl
     sudo apt install tty-clock screenfetch redshift cowsay
 
     echo "--> Installing lazydocker"
@@ -171,7 +171,7 @@ fi
 ### POLYBAR ###
 if [[ "$INSTALL_POLYBAR" == true ]]; then
     echo "--> Installing polybar"
-    sudo apt install libcairo2-dev xcb-proto libxcb-util-dev libxcb-xkb-dev libxcb-image0-dev python-xcbgen libxcb-composite0-dev
+    sudo apt install libcairo2-dev xcb-proto libxcb-util-dev libxcb-xkb-dev libxcb-image0-dev python-xcbgen libxcb-composite0-dev cmake
     cd
     echo "Cloning polybar"
     wget https://github.com/jaagr/polybar/releases/download/3.4.3/polybar-3.4.3.tar
