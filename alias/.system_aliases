@@ -95,7 +95,7 @@ alias dpa="echorun 'docker ps -a'"
 alias dim="docker image"
 
 # ripgrep/fd all, no exceptions
-alias rga="rg --no-ignore --hidden"
+alias rga="rg --no-ignore --hidden -a"
 alias fda="fd -HI"
 
 # Hashing
