@@ -27,8 +27,10 @@ fi
 sudo apt install git
 if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
-    sudo apt install curl suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura python-xpyb python-pip dos2unix keychain stow mosh cargo curl
+    sudo apt install curl suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura dos2unix keychain stow mosh cargo curl python-xpyb python-pip
     sudo apt install tty-clock screenfetch redshift cowsay
+    cargo install tealdeer
+    cargo install hyperfine
 
     echo "--> Installing lazydocker"
     wget https://github.com/jesseduffield/lazydocker/releases/download/v0.10/lazydocker_0.10_Linux_x86_64.tar.gz
@@ -371,7 +373,7 @@ if [[ "$INSTALL_CTF" == true ]]; then
     sudo ln -s ~/ghidra_9.2_PUBLIC/ghidraRun /usr/local/bin/ghidra
 
     echo "--> Installing pwninit"
-    sudo apt install cargo elfutils
+    sudo apt install elfutils
     cargo install pwninit
 fi
 
