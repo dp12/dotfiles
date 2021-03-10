@@ -103,6 +103,10 @@ alias m5="md5sum"
 alias s2="sha256sum"
 alias s5="sha512sum"
 
+# radare2
+alias rs="rax2 -s"
+alias rS="rax2 -S"
+
 # Static analyzers
 alias sck="shellcheck"
 alias mcc="pmccabe -v"
