@@ -104,6 +104,8 @@ alias s2="sha256sum"
 alias s5="sha512sum"
 
 # radare2
+alias rx="rax2"
+alias rk="rax2 -k"
 alias rs="rax2 -s"
 alias rS="rax2 -S"
 
