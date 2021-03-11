@@ -19,7 +19,7 @@ echorun_conf() {
 mvr() {
     cd /media/sf_Shared
     local newest_file="$(pwd)/$(ls NF)"
-    cd -
+    cd - > /dev/null
     local cmd="mv $newest_file ."
     echo -n "Execute \"$cmd\" [y/n]? "
     read reply
