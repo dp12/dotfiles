@@ -16,6 +16,13 @@ echorun_conf() {
   fi
 }
 
+mvr() {
+    cd /media/sf_Shared
+    local newest_file="$(pwd)/$(ls NF)"
+    cd -
+    mv "$newest_file" .
+}
+
 mkdirc() {
   mkdir "$1" && cd "$1"
 }
