@@ -22,7 +22,7 @@ mvr() {
     cd - > /dev/null
     local cmd="mv $newest_file ."
     echo -n "Execute \"$cmd\" [y/n]? "
-    read reply
+    reply=$(bash -c "read -n 1 c; echo \$c")
     echo
     if [ "$reply" != "${reply#[Yy]}" ]; then
         eval "$cmd"
