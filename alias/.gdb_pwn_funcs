@@ -166,12 +166,24 @@ except:
 end
 end
 
-define g27
-    dir ~/HeapLAB/.glibc/glibc_2.27/malloc
-end
+# Example
+# gdir 27
+# -->
+# dir ~/HeapLAB/.glibc/glibc_2.27/malloc
+define gdir
+set $glibc_num = $arg0
 
-define g29
-    dir ~/HeapLAB/.glibc/glibc_2.29/malloc
+python
+glibc_num = str(gdb.convenience_variable("glibc_num"))
+glibc_name = "glibc_"
+if "." in glibc_num:
+    glibc_name += glibc_num
+else:
+    glibc_name += "2." + glibc_num
+gdb_cmd = "dir ~/HeapLAB/.glibc/" + glibc_name + "/malloc"
+print(gdb_cmd)
+gdb.execute(gdb_cmd)
+end
 end
 
 ################
