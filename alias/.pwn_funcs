@@ -50,6 +50,19 @@ dkex() {
     fi
 }
 
+# Run checks on the pwn binary
+pck () {
+    # TODO: colorize shell output
+    echorun "file $1"
+    echo ""
+    echorun "pwn checksec $1"
+    echo ""
+    # check for existence of lib file
+    echorun "ldd $1"
+    echo ""
+    lver
+}
+
 # Get libc version
 lver () {
     local lfile=${1:-"libc*"}
