@@ -160,6 +160,8 @@ if [[ "$INSTALL_BSPWM" == true ]]; then
     echo "Installing i3lock"
     sudo apt install i3lock
     pip install i3-py
+    echo "Installing compton"
+    sudo apt install compton
     echo "Setting wallpaper"
     local OVERRIDE_BACKGROUND_FILE=/usr/share/glib-2.0/schemas/10_unity_greeter_background.gschema.override
     local BACKGROUND_FILE=/usr/share/backgrounds/yellowfield.png
@@ -330,6 +332,18 @@ if [[ "$INSTALL_WALLPAPER" == true ]]; then
     echo "--> Installing feh and wallpaper crontab"
     sudo apt install feh
     (crontab -l ; echo '*/1 * * * * DISPLAY=:0.0 feh --bg-max "$(find ~/.wallpaper/|shuf -n1)"') | sort - | uniq - | crontab -
+fi
+
+if [[ "$INSTALL_ANIMATED_WALLPAPER" == true ]]; then
+    echo "--> Installing asetroot and animated wallpapers"
+    sudo apt install -y libimlib2-dev
+    git clone https://github.com/Wilnath/asetroot.git
+    cd asetroot
+    make
+    mkdir train_wallpaper
+    mv ~/train.gif ./
+    convert train.gif -coalesce -resize 1920x1080 train_wallpaper/%05d.gif
+    # ./asetroot ./train_wallpaper/ &
 fi
 
 ### ENVIRONMENT ###
