@@ -36,10 +36,11 @@ def obscure_image(image):
   size = image.size
   pixel_size = 9
 
-  # Prevent resize value of 0 from being handed to resize
-  if size[0] >= pixel_size and size[1] >= pixel_size:
-      image = image.resize((size[0] // pixel_size, size[1] // pixel_size), Image.NEAREST)
-      image = image.resize((size[0], size[1]), Image.NEAREST)
+  if size[0] < pixel_size or size[1] < pixel_size:
+    return image
+
+  image = image.resize((int(size[0] / pixel_size), int(size[1] / pixel_size)), Image.NEAREST)
+  image = image.resize((int(size[0]), int(size[1])), Image.NEAREST)
 
   return image
 
@@ -68,6 +69,7 @@ def lock_screen():
   # os.system('i3lock -i /tmp/.i3lock.png --indpos="w/2:h/2+60" --timepos="w-100:h-70" --datepos="w-115:h-40" --greeterpos="w/2:h/2" --insidevercolor=fefefeff --insidewrongcolor=f82a11aa --insidecolor=fefefe00 --ringvercolor=fefefe66 --ringwrongcolor=f82a11aa --ringcolor=fefefeff --keyhlcolor=39393999 --bshlcolor=39393999 --separatorcolor=00000000 --datecolor=fefefeff --timecolor=fefefeff --greetercolor=fefefeff --timestr="%H:%M" --timesize=50 --datestr="%a, %b %d" --datesize=30 --greetertext="$full_alias" --greetersize=25 --line-uses-ring --radius 38 --ring-width 3 --indicator --veriftext=""  --wrongtext="" --noinputtext="" --clock')
 
   # Lock with just ring
+  # Requires i3lock-color (https://github.com/Raymo111/i3lock-color)
   os.system('i3lock -i /tmp/.i3lock.png --indpos="w/2:h/2+60" --insidevercolor=fefefeff --insidewrongcolor=f82a11aa --insidecolor=fefefe00 --ringvercolor=fefefe66 --ringwrongcolor=f82a11aa --ringcolor=fefefeff --keyhlcolor=39393999 --bshlcolor=39393999 --separatorcolor=00000000 --line-uses-ring --radius 38 --ring-width 3 --indicator --veriftext=""  --wrongtext="" --noinputtext=""')
 
 if __name__ == '__main__':
