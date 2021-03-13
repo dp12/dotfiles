@@ -47,3 +47,4 @@ $HOME/.config/polybar/launch_polybar.sh
 # For setting animated gif wallpaper:
 # https://github.com/thomas10-10/foo-Wallpaper-Feh-Gif/tree/master/gif
 # nohup ~/feh-gif/back4.sh 0.010 ~/feh-gif/gif/train.gif &> /dev/null &
+# ~/asetroot/asetroot ~/asetroot/train_wallpaper/ &
