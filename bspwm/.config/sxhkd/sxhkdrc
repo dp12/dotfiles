@@ -104,6 +104,9 @@ super + y
 super + g
   bspc node -s biggest
 
+ctrl + shift + x
+  bspc node @/ -C {forward,backward}
+
 #
 # state/flags
 #
