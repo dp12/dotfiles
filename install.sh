@@ -342,10 +342,10 @@ if [[ "$INSTALL_ANIMATED_WALLPAPER" == true ]]; then
     git clone https://github.com/Wilnath/asetroot.git
     cd asetroot
     make
-    mkdir train_wallpaper
     mv ~/train.gif ./
+    mkdir train_wallpaper
     convert train.gif -coalesce -resize 1920x1080 train_wallpaper/%05d.gif
-    # ./asetroot ./train_wallpaper/ &
+    ~/asetroot/asetroot ~/asetroot/train_wallpaper/ &
 fi
 
 ### ENVIRONMENT ###
