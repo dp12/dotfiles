@@ -16,6 +16,7 @@ INSTALL_KAKOUNE=false
 INSTALL_CQUERY=false
 INSTALL_SSH_ACCESS=false
 INSTALL_WALLPAPER=false
+INSTALL_ANIMATED_WALLPAPER=false
 INSTALL_ENV=false
 INSTALL_CTF=false
 
@@ -336,6 +337,7 @@ fi
 
 if [[ "$INSTALL_ANIMATED_WALLPAPER" == true ]]; then
     echo "--> Installing asetroot and animated wallpapers"
+    cd
     sudo apt install -y libimlib2-dev
     git clone https://github.com/Wilnath/asetroot.git
     cd asetroot
