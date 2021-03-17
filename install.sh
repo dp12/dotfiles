@@ -360,7 +360,7 @@ fi
 ### CTF ###
 if [[ "$INSTALL_CTF" == true ]]; then
     echo "--> Installing packages"
-    sudo apt install nasm binutils-aarch64-linux-gnu
+    sudo apt install nasm binutils-aarch64-linux-gnu qemu-system
 
     echo "--> Installing gef"
     sh -c "$(wget https://tinyurl.com/gef-install -O -)"
