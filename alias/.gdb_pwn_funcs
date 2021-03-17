@@ -217,5 +217,3 @@ end
 # Load pwngdb-specific aliases after pwngdb is initialized
 alias vm = vmmap
 end
-
-pwn
