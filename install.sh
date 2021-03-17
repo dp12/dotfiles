@@ -220,11 +220,11 @@ if [[ "$INSTALL_EMACS" == true ]]; then
         export CC=/usr/bin/gcc-10 CXX=/usr/bin/gcc-10
         ./autogen.sh
         ./configure --with-nativecomp --with-json CFLAGS="-O3 -mtune=native -march=native -fomit-frame-pointer"
-	make && sudo make install
+        make && sudo make install
     fi
     if [[ "$INSTALL_MU4E" == true ]]; then
         sudo apt install libwebkitgtk-3.0-dev libwebkit2gtk-4.0-dev libgnutls-dev
-	./autogen.sh
+        ./autogen.sh
         ./configure --with-modules --with-x-toolkit=gtk3 --with-xwidgets
     else
         ./configure --with-modules
