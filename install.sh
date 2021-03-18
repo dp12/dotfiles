@@ -12,6 +12,7 @@ INSTALL_MU4E=true
 INSTALL_SPACEMACS=true
 INSTALL_ROFI=false
 INSTALL_GCCEMACS=false
+INSTALL_DOOM=false
 INSTALL_KAKOUNE=false
 INSTALL_CQUERY=false
 INSTALL_SSH_ACCESS=false
@@ -25,11 +26,12 @@ if [ ]; then
 fi
 
 ### PACKAGES ###
-sudo apt install git
+sudo apt install -y git
 if [[ "$INSTALL_PACKAGES" == true ]]; then
     echo "--> Installing packages with apt install"
-    sudo apt install curl suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura dos2unix keychain stow mosh cargo curl python-xpyb python-pip
-    sudo apt install tty-clock screenfetch redshift cowsay
+    sudo apt install -y curl suckless-tools fish subversion cmake automake npm dfu-util patool exuberant-ctags global vim xclip ncdu nnn sshpass socat zathura dos2unix keychain stow mosh cargo curl 
+    sudo apt install -y python-xpyb python-pip
+    sudo apt install -y tty-clock screenfetch redshift cowsay
     cargo install tealdeer
     cargo install hyperfine
 
@@ -46,7 +48,7 @@ if [[ "$INSTALL_DOTFILES" == true ]]; then
     git clone https://github.com/dp12/dotfiles.git
     cd ~/dotfiles
     echo "Stowing dotfiles"
-    sudo apt install stow
+    sudo apt install -y stow
     stow Xwindows alias bspwm i3 zsh fish git polybar terminator tmux tmuxinator vim
     rm ~/.bashrc ~/.bash_logout
     stow bash
@@ -56,7 +58,7 @@ fi
 if [[ "$INSTALL_ZSH" == true ]]; then
     echo "--> Installing zsh"
     cd
-    sudo apt install zsh
+    sudo apt install -y zsh
     echo "Cloning zaw"
     git clone https://github.com/zsh-users/zaw.git ~/.zaw
     echo "Installing antibody"
@@ -77,7 +79,7 @@ fi
 ### TMUX ###
 if [[ "$INSTALL_TMUX" == true ]]; then
     echo "--> Installing tmux"
-    sudo apt install tmux tmuxinator terminator
+    sudo apt install -y tmux tmuxinator terminator
     echo "Cloning tmux plugin manager"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     # TODO: copy terminator config
@@ -160,10 +162,10 @@ if [[ "$INSTALL_BSPWM" == true ]]; then
     #echo "Building sxhkd"
     #cd ../sxhkd && make && sudo make install
     echo "Installing i3lock"
-    sudo apt install i3lock
+    sudo apt install -y i3lock
     pip install i3-py
     echo "Installing compton"
-    sudo apt install compton
+    sudo apt install -y compton
     echo "Setting wallpaper"
     local OVERRIDE_BACKGROUND_FILE=/usr/share/glib-2.0/schemas/10_unity_greeter_background.gschema.override
     local BACKGROUND_FILE=/usr/share/backgrounds/yellowfield.png
@@ -198,7 +200,7 @@ if [[ "$INSTALL_ROFI" == true ]]; then
     # cd
     # wget https://launchpad.net/ubuntu/+archive/primary/+files/rofi_1.5.1-1_amd64.deb
     # sudo dpkg -i rofi_1.5.1-1_amd64.deb
-    sudo apt install rofi
+    sudo apt install -y rofi
 fi
 
 ### EMACS ###
@@ -227,7 +229,7 @@ if [[ "$INSTALL_EMACS" == true ]]; then
         make && sudo make install
     fi
     if [[ "$INSTALL_MU4E" == true ]]; then
-        sudo apt install libwebkitgtk-3.0-dev libwebkit2gtk-4.0-dev libgnutls-dev
+        sudo apt install -y libwebkitgtk-3.0-dev libwebkit2gtk-4.0-dev libgnutls-dev
         ./autogen.sh
         ./configure --with-modules --with-x-toolkit=gtk3 --with-xwidgets
     else
@@ -240,7 +242,7 @@ fi
 if [[ "$INSTALL_MU4E" == true ]]; then
     echo "--> Installing mu4e"
     echo "Installing msmtp"
-    sudo apt install msmtp libxapian-dev libgmime-2.6-dev libssl-dev libtool-bin
+    sudo apt install -y msmtp libxapian-dev libgmime-2.6-dev libssl-dev libtool-bin
     cd
     ## mu
     wget https://github.com/djcb/mu/releases/download/0.9.18/mu-0.9.18.tar.gz
@@ -277,7 +279,7 @@ fi
 ### SPACEMACS ###
 if [[ "$INSTALL_SPACEMACS" == true ]]; then
     echo "--> Installing spacemacs"
-    sudo apt install python-jedi libclang-3.8-dev
+    sudo apt install -y python-jedi libclang-3.8-dev
     echo "Cloning spacemacs"
     git clone https://github.com/dp12/spacemacs.git ~/.spacemacs.d
 
@@ -306,8 +308,8 @@ if [[ "$INSTALL_KAKOUNE" == true ]]; then
     echo "--> Installing kakoune"
     cd
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    sudo apt update && sudo apt install gcc-8 g++-8
-    sudo apt install libncursesw5-dev pkg-config
+    sudo apt update && sudo apt install -y gcc-8 g++-8
+    sudo apt install -y libncursesw5-dev pkg-config
     git clone https://github.com/mawww/kakoune.git && cd kakoune/src
     CC="gcc-8" CXX="g++-8" make
     PREFIX=/usr/local/bin sudo make install
@@ -328,14 +330,14 @@ fi
 ### SSH ACCESS ###
 if [[ "$INSTALL_SSH_ACCESS" == true ]]; then
     echo "--> Installing openssh-server and allowing port 22 access"
-    sudo apt install openssh-server
+    sudo apt install -y openssh-server
     sudo ufw allow 22
 fi
 
 ### WALLPAPER ###
 if [[ "$INSTALL_WALLPAPER" == true ]]; then
     echo "--> Installing feh and wallpaper crontab"
-    sudo apt install feh
+    sudo apt install -y feh
     (crontab -l ; echo '*/1 * * * * DISPLAY=:0.0 feh --bg-max "$(find ~/.wallpaper/|shuf -n1)"') | sort - | uniq - | crontab -
 fi
 
@@ -364,7 +366,7 @@ fi
 ### CTF ###
 if [[ "$INSTALL_CTF" == true ]]; then
     echo "--> Installing packages"
-    sudo apt install nasm binutils-aarch64-linux-gnu qemu-system
+    sudo apt install -y nasm binutils-aarch64-linux-gnu qemu-system
 
     echo "--> Installing gef"
     sh -c "$(wget https://tinyurl.com/gef-install -O -)"
@@ -377,7 +379,7 @@ if [[ "$INSTALL_CTF" == true ]]; then
 
     echo "--> Installing pwntools"
     cd
-    sudo apt install python3 python3-pip python3-dev libssl-dev libffi-dev build-essential
+    sudo apt install -y python3 python3-pip python3-dev libssl-dev libffi-dev build-essential
     python3 -m pip install --upgrade pip
     python3 -m pip install --upgrade pwntools
     python -m pip install --upgrade pwntools
@@ -386,15 +388,18 @@ if [[ "$INSTALL_CTF" == true ]]; then
     cd
     sudo add-apt-repository ppa:openjdk-r/ppa
     sudo apt update
-    sudo apt install openjdk-11-jdk
-    sudo apt install openjdk-11-jre-headless
+    sudo apt install -y openjdk-11-jdk
+    sudo apt install -y openjdk-11-jre-headless
     wget https://ghidra-sre.org/ghidra_9.2_PUBLIC_20201113.zip
     unzip ghidra_9.2_PUBLIC_20201113.zip
     sudo ln -s ~/ghidra_9.2_PUBLIC/ghidraRun /usr/local/bin/ghidra
 
     echo "--> Installing pwninit"
-    sudo apt install elfutils
+    sudo apt install -y elfutils cargo
     cargo install pwninit
+
+    echo "--> Install binwalk"
+    sudo apt install -y binwalk
 fi
 
 ### MANUAL STEPS ###
