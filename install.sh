@@ -147,17 +147,18 @@ fi
 ### BSPWM ###
 if [[ "$INSTALL_BSPWM" == true ]]; then
     cd
-    echo "--> Cloning bspwm"
-    git clone https://github.com/baskerville/bspwm.git
-    echo "Cloning sxhkd"
-    git clone https://github.com/baskerville/sxhkd.git
-    sudo apt-get install xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev
-    echo "Building bspwm"
-    cd bspwm && make && sudo make install
-    sudo cp contrib/freedesktop/bspwm.desktop /usr/share/xsessions/
-    sudo cp ~/dotfiles/bspwm/.config/bspwm/custom_bspwm_badge.png /usr/share/unity-greeter/custom_bspwm_badge.png
-    echo "Building sxhkd"
-    cd ../sxhkd && make && sudo make install
+    sudo apt install -y bspwm
+    #echo "--> Cloning bspwm"
+    #git clone https://github.com/baskerville/bspwm.git
+    #echo "Cloning sxhkd"
+    #git clone https://github.com/baskerville/sxhkd.git
+    #sudo apt-get install xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev make
+    #echo "Building bspwm"
+    #cd bspwm && make && sudo make install
+    #sudo cp contrib/freedesktop/bspwm.desktop /usr/share/xsessions/
+    #sudo cp ~/dotfiles/bspwm/.config/bspwm/custom_bspwm_badge.png /usr/share/unity-greeter/custom_bspwm_badge.png
+    #echo "Building sxhkd"
+    #cd ../sxhkd && make && sudo make install
     echo "Installing i3lock"
     sudo apt install i3lock
     pip install i3-py
@@ -176,15 +177,19 @@ fi
 ### POLYBAR ###
 if [[ "$INSTALL_POLYBAR" == true ]]; then
     echo "--> Installing polybar"
-    sudo apt install libcairo2-dev xcb-proto libxcb-util-dev libxcb-xkb-dev libxcb-image0-dev python-xcbgen libxcb-composite0-dev cmake
+    sudo apt install -y cmake g++ libcairo2-dev xcb-proto libxcb-util-dev libxcb-xkb-dev libxcb-image0-dev libxcb-composite0-dev
+    sudo apt install -y python3-xcbgen
     cd
     echo "Cloning polybar"
     wget https://github.com/jaagr/polybar/releases/download/3.4.3/polybar-3.4.3.tar
     tar xvf polybar-3.4.3.tar
     #git clone --branch 3.0.5 --recursive https://github.com/jaagr/polybar
-    mkdir polybar/build
-    cd polybar/build
-    cmake ..
+    cd polybar
+    ./build.sh
+    #mkdir polybar/build
+    #cd polybar/build
+    #cmake ..
+    cd build
     sudo make install
 fi
 
@@ -200,9 +205,9 @@ fi
 if [[ "$INSTALL_EMACS" == true ]]; then
     echo "--> Installing emacs"
     cd
-    sudo apt install make gcc libgtk-3-dev libxpm-dev libjpeg-dev libgif-dev libtiff-dev libncurses-dev xorg-dev texinfo
-    sudo apt install libgnutls-dev
-    sudo apt install libgnutls28-dev
+    sudo apt install -y make gcc autoconf libgtk-3-dev libxpm-dev libjpeg-dev libgif-dev libtiff-dev libncurses-dev xorg-dev texinfo libxml2-dev
+    sudo apt install -y libgnutls-dev
+    sudo apt install -y libgnutls28-dev
     git clone -b master git://git.sv.gnu.org/emacs.git
     cd emacs
     #wget https://ftp.gnu.org/gnu/emacs/emacs-26.1.tar.gz
@@ -215,11 +220,10 @@ if [[ "$INSTALL_EMACS" == true ]]; then
         sudo apt update -y
         sudo apt install -y gcc-10 libgccjit0 libgccjit-10-dev
         sudo apt install -y libjansson4 libjansson-dev
-        git clone -b feature/native-comp git://git.savannah.gnu.org/emacs.git
-        cd emacs
+        git checkout feature/native-comp
         export CC=/usr/bin/gcc-10 CXX=/usr/bin/gcc-10
         ./autogen.sh
-        ./configure --with-nativecomp --with-json CFLAGS="-O3 -mtune=native -march=native -fomit-frame-pointer"
+        ./configure --with-native-compilation --with-json CFLAGS="-O3 -mtune=native -march=native -fomit-frame-pointer"
         make && sudo make install
     fi
     if [[ "$INSTALL_MU4E" == true ]]; then
