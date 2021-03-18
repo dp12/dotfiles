@@ -158,26 +158,26 @@ ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-default = 
 
-; label-focused = [%name%]
-label-focused = %icon%
+label-focused = [%name%]
+; label-focused = %icon%
 label-focused-background = ${colors.dp12-up-green}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 label-focused-foreground = ${colors.background-alt}
 
-; label-occupied = %name%
-label-occupied = %icon%
+label-occupied = %name%
+; label-occupied = %icon%
 label-occupied-padding = 2
 ; label-occupied-foreground = ${colors.dp12-temp-orange}
 label-occupied-foreground = ${colors.dp12-up-green}
 
-; label-urgent = >%name%<
-label-urgent = %icon%
+label-urgent = >%name%<
+; label-urgent = %icon%
 label-urgent-foreground = ${colors.dp12-down-red}
 label-urgent-padding = 2
 
-; label-empty = %name%
-label-empty = %icon%
+label-empty = %name%
+; label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 ; label-empty-foreground = ${colors.dp12-down-red}
 label-empty-padding = 2
