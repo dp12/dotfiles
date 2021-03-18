@@ -264,6 +264,7 @@ alias gitup='cd $(git rev-parse --show-toplevel)'
 # Misc
 alias p?='echo $PATH'
 alias kc="keychain id_rsa && . ~/.keychain/`uname -n`-sh"
+alias c.s="cd ~/.ssh"
 alias sgrep="grep -rnI -C3 --color=always"
 alias shdwn="systemctl poweroff"
 alias logout="pkill -u ${USER}"
