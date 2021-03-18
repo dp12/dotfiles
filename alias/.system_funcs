@@ -376,14 +376,6 @@ dkrmg() {
   fi
 }
 
-h2d() {
-  echo "ibase=16; $@"|bc
-}
-
-d2h() {
-  echo "obase=16; $@"|bc
-}
-
 bkp() {
     cp "$1"{,.bkp}
 }
