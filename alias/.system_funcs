@@ -70,7 +70,7 @@ fx() {
 fyr() {
   # file=$(find "$SEARCH_DIR" -type f -wholename \*$1\* -not -path '*/.*/*' -not -path "*/mason*/*" | fzy)
   # file=$(fd . "$SEARCH_DIR" | fzy)
-  file=$(fd . | fzy)
+  file="$(fd . | fzy)"
   cd "$(dirname "${file}")"
 }
 
