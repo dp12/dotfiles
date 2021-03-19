@@ -71,6 +71,7 @@ alias kghid='ps ax | grep GhidraRun | grep -v grep | cut -d" " -f2 | xargs kill 
 alias nv="nvim"
 alias py="python"
 alias pyv="python --version"
+alias pylint?="pylint --help-msg"
 alias dk="docker"
 alias lzd="lazydocker"
 alias pc="peco"
