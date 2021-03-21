@@ -74,6 +74,31 @@ bsh () {
     echorun "strings -tx $1 | grep /bin/sh"
 }
 
+
+# Extract region from binary file
+# Sample usage:
+#     crunch humbug.bin 0x1200 0x1400
+#
+# e.g. Get region 0x1200 to 0x1400 from file
+#      tail -c +4609 file | head -c
+crunch() {
+    local file="$1"
+    local start_addr="$2"
+    local end_addr="$3"
+    local difference="$(($end_addr - $start_addr))"
+    echorun_conf "tail -c +$(($start_addr+1)) $file | head -c $difference > ${file}_out"
+}
+
+munch() {
+    local op="$1"
+    local file="$2"
+    local offset="$3"
+    case "$op" in
+        "head") echorun_conf "head -c $((offset)) $file > ${file}_out" ;;
+        "tail") echorun_conf "tail -c +$((offset+1)) $file > ${file}_out" ;;
+    esac
+}
+
 quickrop () {
     cat gadgets | grep ': pop rdi ; ret$'
     cat gadgets | grep ': pop rsi ; ret$'
