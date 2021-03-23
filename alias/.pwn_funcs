@@ -31,15 +31,12 @@ pwndock () {
 }
 
 dkgcp() {
-    if [ "$#" -ne 1 ]; then
-        echo "usage: dkgcp <container id>"
-    else
-        docker cp ~/.gdbinit "$1":/root
-        docker cp ~/.gdb_history "$1":/root
-        docker cp ~/dotfiles/alias/.gdb_pwn_funcs "$1":/root
-        docker cp ~/dotfiles/tmux/.tmux.conf "$1":/root
-        docker cp ~/dotfiles/alias/.pwn_funcs "$1":/root
-    fi
+    local container=${1:-$(docker ps -aql)}
+    echorun "docker cp ~/.gdbinit $container:/root"
+    echorun "docker cp ~/.gdb_history $container:/root"
+    echorun "docker cp ~/dotfiles/alias/.gdb_pwn_funcs $container:/root"
+    echorun "docker cp ~/dotfiles/tmux/.tmux.conf $container:/root"
+    echorun "docker cp ~/dotfiles/alias/.pwn_funcs $container:/root"
 }
 
 dkex() {
