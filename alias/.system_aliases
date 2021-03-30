@@ -64,6 +64,8 @@ alias dae="emacs --daemon"
 alias ec="emacsclient -ca emacs $1 >/dev/null 2>&1"
 alias em="ec"
 alias emnw="emacsclient -nw"
+alias fze="fzf -m | xargs emacsclient -ca emacs"
+
 alias vimp="vim -R"
 alias kakr="kak -ro"
 alias kee="pkill emacs; pkill emacs"
