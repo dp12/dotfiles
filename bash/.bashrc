@@ -17,6 +17,7 @@ alias gdbtui="gdb -tui"
 setxkbmap -option ctrl:ralt_rctrl
 source ~/.system_aliases
 source ~/.system_funcs
+source ~/.pwn_funcs
 if [ -f ~/.personal_aliases ]; then
 source ~/.personal_aliases
 fi
