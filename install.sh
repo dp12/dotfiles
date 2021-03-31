@@ -400,6 +400,9 @@ if [[ "$INSTALL_CTF" == true ]]; then
 
     echo "--> Install binwalk"
     sudo apt install -y binwalk
+
+    echo "--> Install binwalk"
+    sudo gem install one_gadget
 fi
 
 ### MANUAL STEPS ###
