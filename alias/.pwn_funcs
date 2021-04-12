@@ -79,21 +79,33 @@ bsh () {
 # e.g. Get region 0x1200 to 0x1400 from file
 #      tail -c +4609 file | head -c
 crunch() {
-    local file="$1"
-    local start_addr="$2"
-    local end_addr="$3"
-    local difference="$(($end_addr - $start_addr))"
-    echorun_conf "tail -c +$(($start_addr+1)) $file | head -c $difference > ${file}_out"
+    if [ "$#" -ne 3 ]; then
+        echo "usage: crunch <file.bin> <start address> <end address>"
+        echo ""
+        echo "example: crunch myfile.bin 0x1000 0x2000"
+    else
+        local file="$1"
+        local start_addr="$2"
+        local end_addr="$3"
+        local difference="$(($end_addr - $start_addr))"
+        echorun_conf "tail -c +$(($start_addr+1)) $file | head -c $difference > ${file}_out"
+    fi
 }
 
 munch() {
-    local op="$1"
-    local file="$2"
-    local offset="$3"
-    case "$op" in
-        "head") echorun_conf "head -c $((offset)) $file > ${file}_out" ;;
-        "tail") echorun_conf "tail -c +$((offset+1)) $file > ${file}_out" ;;
-    esac
+    if [ "$#" -ne 3 ]; then
+        echo "usage: munch <(head|tail)> <file.bin> <offset>"
+        echo ""
+        echo "example: munch head myfile.bin 0x100"
+    else
+        local op="$1"
+        local file="$2"
+        local offset="$3"
+        case "$op" in
+            "head") echorun_conf "head -c $((offset)) $file > ${file}_out" ;;
+            "tail") echorun_conf "tail -c +$((offset+1)) $file > ${file}_out" ;;
+        esac
+    fi
 }
 
 quickrop () {
