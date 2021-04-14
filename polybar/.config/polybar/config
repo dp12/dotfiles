@@ -34,7 +34,8 @@ content-background = ${colors.black}
 
 [module/wtitle]
 type = internal/xwindow
-label = "%title% "
+; label = "%title% "
+label = "[%title:0:10:...%] "
 label-empty = "Desktop "
 label-maxlen = 40
 
