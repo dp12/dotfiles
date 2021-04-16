@@ -25,7 +25,10 @@ border-color = ${colors.black}
 height = 20
 modules-left = bspwm
 ; modules-right = wtitle s music s network s bat s vol s date s time
-modules-right = wtitle s cpu s memory s bat s filesystem s date s time
+; modules-right = wtitle s cpu s memory s bat s filesystem s date s time
+; modules-center = wtitle s cpu s memory s bat s filesystem s date s time
+modules-center = wtitle s cpu s memory s filesystem s date s time
+modules-right = powermenu ubuntu
 
 [module/s]
 type = custom/text
@@ -35,7 +38,7 @@ content-background = ${colors.black}
 [module/wtitle]
 type = internal/xwindow
 ; label = "%title% "
-label = "[%title:0:10:...%] "
+label = "[%title:0:4:...%] "
 label-empty = "Desktop "
 label-maxlen = 40
 
@@ -166,3 +169,41 @@ format-background = ${colors.yellow}
 ; date = "  %H:%M "
 time = "  %I:%M%P "
 label = %time%
+
+[module/ubuntu]
+type = custom/script
+exec = lsb_release -d | cut -f 2 | tr '[:upper:]' '[:lower:]'
+; 
+label =  [%output%]
+interval = 1000
+format-background = ${colors.yellow}
+format-foreground = ${colors.black}
+format-padding = 1
+
+[module/powermenu]
+type = custom/menu
+
+; label-open =  PWR
+label-open = "  PWR  "
+label-open-foreground = ${colors.red}
+label-close = 臘 cancel
+label-close-foreground = ${colors.red}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = shutdown
+menu-0-1-exec = menu-open-2
+menu-0-2 = logoff
+menu-0-2-exec = pkill -u $USER
+
+menu-1-0 = reboot
+menu-1-0-exec = systemctl reboot
+menu-1-1 = cancel
+menu-1-1-exec = menu-open-0
+
+menu-2-0 = shutdown
+menu-2-0-exec = systemctl poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
