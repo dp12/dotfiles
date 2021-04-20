@@ -184,10 +184,16 @@ gdb.execute(gdb_cmd)
 end
 end
 
+define g223
+    dir "~/HeapLAB/.glibc/glibc_2.23/malloc"
+    context
+end
+
 define g227
     dir "~/HeapLAB/.glibc/glibc_2.27/malloc"
     context
 end
+
 
 ################
 # GDB SETTINGS #
