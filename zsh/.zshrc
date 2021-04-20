@@ -275,6 +275,7 @@ alias msd='tmuxinator start dev'
 # Newest directory/file, from http://zzapper.co.uk/zshtips.html
 alias -g ND='*(/om[1])'
 alias -g NF='*(.om[1])'
+alias -g NL="/dev/null"
 
 # Pipe to grep
 alias -g G='| grep '
