@@ -95,7 +95,7 @@ alias gex="gdb --batch -ex"
 # xclip, e.g. "pwd | c", and "cd `v`"
 alias c="xclip -sel clip"
 alias v="xclip -o"
-alias rebar="pkill polybar; nohup polybar bar1 &"
+alias rebar="pkill polybar; nohup polybar bar1 | tee &"
 alias zat="zathura"
 
 # Docker
