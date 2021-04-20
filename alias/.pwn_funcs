@@ -37,6 +37,7 @@ dkgcp() {
     echorun "docker cp ~/dotfiles/alias/.gdb_pwn_funcs $container:/root"
     echorun "docker cp ~/dotfiles/tmux/.tmux.conf $container:/root"
     echorun "docker cp ~/dotfiles/alias/.pwn_funcs $container:/root"
+    echorun "docker cp ~/HeapLAB/.glibc $container:/root/HeapLAB/.glibc"
 }
 
 dkex() {
@@ -78,6 +79,10 @@ bsh () {
 #
 # e.g. Get region 0x1200 to 0x1400 from file
 #      tail -c +4609 file | head -c
+
+# Extract region from binary file
+# Sample usage:
+#     crunch crash.bin 0x1200 0x1400
 crunch() {
     if [ "$#" -ne 3 ]; then
         echo "usage: crunch <file.bin> <start address> <end address>"
@@ -92,6 +97,12 @@ crunch() {
     fi
 }
 
+# Sample usage:
+# Get the first 0x200 bytes
+# munch head crash.bin 0x200
+
+# Get everything from 0x200 onwards
+# munch tail crash.bin 0x200
 munch() {
     if [ "$#" -ne 3 ]; then
         echo "usage: munch <(head|tail)> <file.bin> <offset>"
