@@ -139,6 +139,7 @@ alias dot="cd ~/dotfiles"
 alias sp="cd ~/.spacemacs.d"
 
 # Edit files in kakoune
+alias kper="kak ~/.personal_aliases"
 alias kprof="kak ~/.profile"
 alias kpoly="kak ~/.config/polybar/config"
 alias kbsp="kak ~/.config/bspwm/bspwmrc"
