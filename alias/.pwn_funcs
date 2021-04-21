@@ -131,6 +131,28 @@ quickrop () {
     echo ""
     cat gadgets | grep ": mov dword ptr \[e..\], e.. ; ret"
     cat gadgets | grep ": mov qword ptr \[r..\], r.. ; ret"
+
+python - << EOF
+import subprocess
+def make_py_assignment(output, sub_dict):
+    lvalue = b""
+    for key in sub_dict:
+        if key in output:
+            lvalue = sub_dict[key]
+            break
+    print(lvalue + b" = " + output.replace(b":", b"#"))
+
+d = {
+    "pop rdi":"pop_rdi",
+    "pop rsi":"pop_rsi",
+    "pop rdx":"pop_rdx",
+    "mov":"write_mem",
+}
+
+print("Hello from python!")
+make_py_assignment(subprocess.check_output("cat gadgets | grep ': pop rdi ; ret$'", shell=True), d)
+
+EOF
 }
 
 1g () {
