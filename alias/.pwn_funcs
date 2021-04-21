@@ -126,7 +126,11 @@ quickrop () {
     cat gadgets | grep ': pop rax ; ret$'
     cat gadgets | grep ': ret$'
     cat gadgets | grep ': syscall$'
-    # cat gadgets | grep ": mov dword ptr \[" | grep ret
+
+    # Write memory gadgets
+    echo ""
+    cat gadgets | grep ": mov dword ptr \[e..\], e.. ; ret"
+    cat gadgets | grep ": mov qword ptr \[r..\], r.. ; ret"
 }
 
 1g () {
