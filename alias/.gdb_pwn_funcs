@@ -215,7 +215,7 @@ gdb.execute("source" + os.environ['HOME'] + '/.gdbinit-gef.py')
 end
 end
 
-define pwn
+define pwnn
 # Use python to access $HOME and do the following:
 # source $HOME/pwndbg/gdbinit.py
 python
