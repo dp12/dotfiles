@@ -134,13 +134,14 @@ quickrop () {
 
 python - << EOF
 import subprocess
-def make_py_assignment(output, sub_dict):
-    lvalue = b""
+def make_pycode(output, sub_dict):
+    lvalue = ""
+    output = str(output).lstrip("b'")[:-3]
     for key in sub_dict:
         if key in output:
             lvalue = sub_dict[key]
             break
-    print(lvalue + b" = " + output.replace(b":", b"#"))
+    print(lvalue + " = " + output.replace(":", "#"))
 
 d = {
     "pop rdi":"pop_rdi",
@@ -148,10 +149,7 @@ d = {
     "pop rdx":"pop_rdx",
     "mov":"write_mem",
 }
-
-print("Hello from python!")
-make_py_assignment(subprocess.check_output("cat gadgets | grep ': pop rdi ; ret$'", shell=True), d)
-
+make_pycode(subprocess.check_output("cat gadgets | grep ': pop rdi ; ret$'", shell=True), d)
 EOF
 }
 
