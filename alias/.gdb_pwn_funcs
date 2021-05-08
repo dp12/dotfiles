@@ -90,6 +90,8 @@ define reb
 end
 
 # *Really* rebase for PIE binaries
+# NOTE: need to wait for ELF to actually load before running this
+# use offset from binary base, e.g. 0x4009d2 --> rreb 0x9d2
 define rreb
 set $addr_offset = $arg0
 
