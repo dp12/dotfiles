@@ -27,6 +27,13 @@ root: ~/
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t dev
 
+# Emojis
+# ʕ•ᴥ•ʔ
+# ฅ^•ﻌ•^ฅ
+# ༼ つ ◕_◕ ༽つ
+# ¯\_(ツ)_/¯
+# ಠ_ಠ
+
 startup_window: 2
 
 windows:
