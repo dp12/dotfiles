@@ -9,6 +9,20 @@ alias nkaa="echorun 'python nkp.py GDB_ATTACH NOASLR'"
 alias nkna="echorun 'python nkp.py NOASLR'"
 alias nkr="echorun 'python nkp.py REMOTE'"
 alias snk="echorun 'strace -f -e execve python nkp.py'"
+alias pdock="cd ~/ubuntu-pwndocker"
+
+
+# TODO: tool to convert to string and do rev
+# __template[4] = 0x58585858;
+# *__template = 0x706d742f;
+# __template[1] = 0x6e6f732f;
+# __template[2] = 0x69665f67;
+# __template[3] = 0x582d656c;
+
+# push    0x67616c66 => galf
+# push    0x2f77726f => /wro
+# push    0x2f656d6f => /emo
+# push    0x682f2f2f => h///
 
 echorun () {
   echo "$@"; eval "$@"
@@ -46,6 +60,10 @@ dkex() {
     else
         echorun "docker exec -it $1 /bin/bash"
     fi
+}
+
+ropg () {
+    echorun "ROPgadget --binary $1 > gadgets"
 }
 
 # Run checks on the pwn binary
@@ -115,6 +133,10 @@ munch() {
         case "$op" in
             "head") echorun_conf "head -c $((offset)) $file > ${file}_out" ;;
             "tail") echorun_conf "tail -c +$((offset+1)) $file > ${file}_out" ;;
+            *)
+            echo "usage: munch <(head|tail)> <file.bin> <offset>"
+            echo ""
+            echo "example: munch head myfile.bin 0x100" ;;
         esac
     fi
 }
