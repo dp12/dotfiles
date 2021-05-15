@@ -11,6 +11,9 @@ alias nkr="echorun 'python nkp.py REMOTE'"
 alias snk="echorun 'strace -f -e execve python nkp.py'"
 alias pdock="cd ~/ubuntu-pwndocker"
 
+alias mkflag="echo 'FLAGE!' > flag"
+alias mkflagt="echo 'FLAGE!' > flag.txt"
+
 
 # TODO: tool to convert to string and do rev
 # __template[4] = 0x58585858;
