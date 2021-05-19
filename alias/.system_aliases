@@ -97,6 +97,7 @@ alias gex="gdb --batch -ex"
 alias c="xclip -sel clip"
 alias v="xclip -o"
 alias rebar="pkill polybar; nohup polybar bar1 | tee &"
+alias fehh='feh --bg-max "$(find ~/.wallpaper/|shuf -n1)"'
 alias zat="zathura"
 
 # Docker
