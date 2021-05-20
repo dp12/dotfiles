@@ -40,7 +40,7 @@ alias pwdcp='pwd | sed "s|^$HOME||" | sed "s|^/||" | xclip -sel clip'
 alias pwdcpp="pwd | xclip -sel clip"
 alias mcm="make clean && make"
 alias sus="sudo -sE"
-alias lcu="echorun 'sudo updatedb; locate'"
+alias lcu="echorun sudo updatedb; locate"
 alias c4="chmod 664"
 alias str="strings"
 alias grpwn="sudo chgrp $USER -R * && sudo chown $USER -R *"
@@ -101,18 +101,18 @@ alias fehh='feh --bg-max "$(find ~/.wallpaper/|shuf -n1)"'
 alias zat="zathura"
 
 # Docker
-alias dp="echorun 'docker ps'"
-alias dpa="echorun 'docker ps -a'"
+alias dp="echorun docker ps"
+alias dpa="echorun docker ps -a"
 alias dim="docker image"
 
 # ripgrep/fd all, no exceptions
-alias rga="rg --no-ignore --hidden -a"
-alias fda="fd -HI"
+alias rga="echorun rg --no-ignore --hidden -a"
+alias fda="echorun fd -HI"
 
 # Hashing
-alias m5="md5sum"
-alias s2="sha256sum"
-alias s5="sha512sum"
+alias m5="echorun md5sum"
+alias s2="echorun sha256sum"
+alias s5="echorun sha512sum"
 
 # radare2
 alias rx="rax2"
@@ -157,12 +157,12 @@ alias emc="em main.c"
 # alias mcm="make clean && make"
 
 # Package management
-alias aup="sudo apt update"
-alias aupg="sudo apt upgrade"
-alias ain="sudo apt install"
-alias acs="sudo apt search"
-alias agr="sudo apt --purge remove"
-alias agl="dpkg --get-selections | grep -v deinstall"
+alias aup="echorun sudo apt update"
+alias aupg="echorun sudo apt upgrade"
+alias ain="echorun sudo apt install"
+alias acs="echorun sudo apt search"
+alias agr="echorun sudo apt --purge remove"
+alias agl="echorun dpkg --get-selections | grep -v deinstall"
 
 # Svn aliases
 alias svnstash="svn diff > "
