@@ -139,6 +139,7 @@ alias sx+="pkill -USR1 -x sxhkd"
 alias emd="cd ~/.emacs.d"
 alias dot="cd ~/dotfiles"
 alias sp="cd ~/.spacemacs.d"
+alias lst.='sed -ie "s|alias lst=.*$|alias lst=\"cd $(pwd | sed "s|^$HOME|~|")\"|g" ~/.personal_aliases'
 
 # Edit files in kakoune
 alias kper="kak ~/.personal_aliases"
