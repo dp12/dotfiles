@@ -157,9 +157,9 @@ alias emc="em main.c"
 # alias mcm="make clean && make"
 
 # Package management
-alias agu="sudo apt update"
-alias agup="sudo apt upgrade"
-alias agi="sudo apt install"
+alias aup="sudo apt update"
+alias aupg="sudo apt upgrade"
+alias ain="sudo apt install"
 alias acs="sudo apt search"
 alias agr="sudo apt --purge remove"
 alias agl="dpkg --get-selections | grep -v deinstall"
