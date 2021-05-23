@@ -89,6 +89,12 @@ define reb
   b *$rebase($arg0)
 end
 
+# Static breakpoint (assuming GDB NOASLR)
+define stb
+    printf "b *0x555555554000+$arg0\n"
+    b *0x555555554000+$arg0
+end
+
 # *Really* rebase for PIE binaries
 # NOTE: need to wait for ELF to actually load before running this
 # use offset from binary base, e.g. 0x4009d2 --> rreb 0x9d2
@@ -128,6 +134,7 @@ import subprocess
 import re
 
 # Get the name of the binary
+# NOTE: this may fail if there are multiple elfs in the same directory
 elf_cmd = "file * | grep ELF | cut -d':' -f1 | grep -vE 'ld|libc' | head -1"
 elf_name = subprocess.check_output(elf_cmd, shell=True).rstrip().decode("utf-8")
 
