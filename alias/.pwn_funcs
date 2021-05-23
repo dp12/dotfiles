@@ -145,6 +145,7 @@ munch() {
 }
 
 quickrop () {
+    # TODO: allow for 32-bit gagdets
     cat gadgets | grep ': pop rdi ; ret$'
     cat gadgets | grep ': pop rsi ; ret$'
     cat gadgets | grep ': pop rdx ; ret$'
