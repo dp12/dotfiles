@@ -139,7 +139,11 @@ alias sx+="pkill -USR1 -x sxhkd"
 alias emd="cd ~/.emacs.d"
 alias dot="cd ~/dotfiles"
 alias sp="cd ~/.spacemacs.d"
-alias lst.='sed -ie "s|alias lst=.*$|alias lst=\"cd $(pwd | sed "s|^$HOME|~|")\"|g" ~/.personal_aliases && source ~/.personal_aliases'
+alias d1.='sed -ie "s|alias d1=.*$|alias d1=\"cd $(pwd | sed "s|^$HOME|~|")\"|g" ~/.personal_aliases && source ~/.personal_aliases'
+alias d2.='sed -ie "s|alias d2=.*$|alias d2=\"cd $(pwd | sed "s|^$HOME|~|")\"|g" ~/.personal_aliases && source ~/.personal_aliases'
+alias d3.='sed -ie "s|alias d3=.*$|alias d3=\"cd $(pwd | sed "s|^$HOME|~|")\"|g" ~/.personal_aliases && source ~/.personal_aliases'
+alias f1='cat ~/fastactions.txt | grep "f1 = " | cut -d"=" -f 2 | while read cmd; do echorun "$cmd"; done'
+alias d?='cat ~/.personal_aliases | grep "alias d[0-9]"'
 
 # Edit files in kakoune
 alias kper="kak ~/.personal_aliases"
