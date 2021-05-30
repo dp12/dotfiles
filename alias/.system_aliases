@@ -149,6 +149,7 @@ alias d?='cat ~/fastdirs | grep "d[0-9]"'
 alias f1='cat ~/fastactions | grep "f1 = " | cut -d"=" -f 2 | while read cmd; do echorun "$cmd"; done'
 alias f2='cat ~/fastactions | grep "f2 = " | cut -d"=" -f 2 | while read cmd; do echorun "$cmd"; done'
 alias f3='cat ~/fastactions | grep "f3 = " | cut -d"=" -f 2 | while read cmd; do echorun "$cmd"; done'
+# When using f1.-f3., use single quotes to wrap the whole command
 alias f1.='python ~/dotfiles/fastactions.py f1'
 alias f2.='python ~/dotfiles/fastactions.py f2'
 alias f3.='python ~/dotfiles/fastactions.py f3'
