@@ -230,6 +230,9 @@ source ~/.pwn_funcs
 if [ -f ~/.personal_aliases ]; then
     source ~/.personal_aliases
 fi
+if [ -f ~/fastdirs ]; then
+    source ~/fastdirs
+fi
 
 # Setup for fasd (broken on my system)
 # eval "$(fasd --init posix-alias zsh-hook)"

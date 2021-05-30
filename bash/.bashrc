@@ -22,6 +22,9 @@ if [ -f ~/.personal_aliases ]; then
 source ~/.personal_aliases
 fi
 eval "$(fasd --init auto)"
+if [ -f ~/fastdirs ]; then
+    source ~/fastdirs
+fi
 
 export HARCH=`echo $(uname -m) | sed "s/i./x/g"`
 export PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
