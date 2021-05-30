@@ -51,16 +51,17 @@ windows:
   #       - voltron view bt
   #       - voltron view reg -v
   #       - soh
-  - "[-.-] dbg":
+  # "[-.-] dbg":
+  - "ʕ•ᴥ•ʔ dbg":
       layout: d777,191x55,0,0{95x55,0,0,0,95x55,96,0,3}
       panes:
-        - lst && clear
-        - lst && clear
+        - d1 && clear
+        - d1 && clear
   - "[^^] 2buf":
       layout: d777,191x55,0,0{95x55,0,0,0,95x55,96,0,3}
       panes:
-        - lst && clear
-        - lst && clear
+        - d1 && clear
+        - d1 && clear
   - "[-_-] sys":
       layout: 9df6,191x55,0,0[191x33,0,0{88x33,0,0,3,102x33,89,0,9},191x21,0,34{88x21,0,34,10,102x21,89,34,11}]
       panes:
