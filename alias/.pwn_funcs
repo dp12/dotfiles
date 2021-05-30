@@ -14,6 +14,8 @@ alias pdock="cd ~/ubuntu-pwndocker"
 alias mkflag="echo 'FLAGE!' > flag"
 alias mkflagt="echo 'FLAGE!' > flag.txt"
 
+alias psum="python ~/dotfiles/python-scripts/pwn-summary.py"
+
 
 # TODO: tool to convert to string and do rev
 # __template[4] = 0x58585858;
