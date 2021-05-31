@@ -139,16 +139,16 @@ alias sx+="pkill -USR1 -x sxhkd"
 alias emd="cd ~/.emacs.d"
 alias dot="cd ~/dotfiles"
 alias sp="cd ~/.spacemacs.d"
-alias d1='echorun cd $(cat ~/fastdirs | grep "d1 = " | cut -d"=" -f 2)'
-alias d2='echorun cd $(cat ~/fastdirs | grep "d2 = " | cut -d"=" -f 2)'
-alias d3='echorun cd $(cat ~/fastdirs | grep "d3 = " | cut -d"=" -f 2)'
+alias d1='echorun cd $(cat ~/fastdirs | grep "d1 = " | cut -d"=" -f 2-)'
+alias d2='echorun cd $(cat ~/fastdirs | grep "d2 = " | cut -d"=" -f 2-)'
+alias d3='echorun cd $(cat ~/fastdirs | grep "d3 = " | cut -d"=" -f 2-)'
 alias d1.='sed -ie "s|d1 =.*$|d1 = $(pwd | sed "s|^$HOME|~|")|g" ~/fastdirs'
 alias d2.='sed -ie "s|d2 =.*$|d2 = $(pwd | sed "s|^$HOME|~|")|g" ~/fastdirs'
 alias d3.='sed -ie "s|d3 =.*$|d3 = $(pwd | sed "s|^$HOME|~|")|g" ~/fastdirs'
 alias d?='cat ~/fastdirs | grep "d[0-9]"'
-alias f1='cat ~/fastactions | grep "f1 = " | cut -d"=" -f 2 | while read cmd; do echorun "$cmd"; done'
-alias f2='cat ~/fastactions | grep "f2 = " | cut -d"=" -f 2 | while read cmd; do echorun "$cmd"; done'
-alias f3='cat ~/fastactions | grep "f3 = " | cut -d"=" -f 2 | while read cmd; do echorun "$cmd"; done'
+alias f1='cat ~/fastactions | grep "f1 = " | cut -d"=" -f 2- | while read cmd; do echorun "$cmd"; done'
+alias f2='cat ~/fastactions | grep "f2 = " | cut -d"=" -f 2- | while read cmd; do echorun "$cmd"; done'
+alias f3='cat ~/fastactions | grep "f3 = " | cut -d"=" -f 2- | while read cmd; do echorun "$cmd"; done'
 # When using f1.-f3., use single quotes to wrap the whole command
 alias f1.='python ~/dotfiles/fastactions.py f1'
 alias f2.='python ~/dotfiles/fastactions.py f2'
