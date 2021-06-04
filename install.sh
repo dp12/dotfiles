@@ -174,6 +174,12 @@ if [[ "$INSTALL_BSPWM" == true ]]; then
     sudo bash -c "echo \"background='$BACKGROUND_FILE'\" >> $OVERRIDE_BACKGROUND_FILE"
     sudo glib-compile-schemas /usr/share/glib-2.0/schemas
     sudo service lightdm restart
+
+    echo "--> Installing bsp-layout"
+    cd
+    git clone https://github.com/phenax/bsp-layout.git
+    cd bsp-layout
+    sudo make install
 fi
 
 ### POLYBAR ###
