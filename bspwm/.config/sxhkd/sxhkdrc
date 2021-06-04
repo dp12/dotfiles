@@ -214,9 +214,11 @@ super + alt + shift + {h,j,k,l}
   bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # move a floating window
-# super + {Left,Down,Up,Right}
-# bspc node -v {-20 0,0 20,0 -20,20 0}
+super + alt + {Left,Down,Up,Right}
+  bspc node -v {-20 0,0 20,0 -20,20 0}
 
+super + alt + shift + {y,u}
+  bsp-layout set tall -- --master-size {0.8, 0.5}
 
 #
 #--- mouse ---#
