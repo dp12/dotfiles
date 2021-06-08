@@ -217,14 +217,18 @@ super + alt + shift + {h,j,k,l}
 super + alt + {Left,Down,Up,Right}
   bspc node -v {-20 0,0 20,0 -20,20 0}
 
-super + alt + shift + {y,u}
-  bsp-layout set tall -- --master-size {0.8, 0.5}
+super + alt + shift + u
+  bsp-layout set {tall,rtall,wide,rwide,even,tiled}
 
 super + alt + shift + i
   bsp-layout set tall -- --master-size {0.5, 0.6, 0.7, 0.8, 0.9}
 
+# launch org-roam window
 super + alt + shift + o
-  bsp-layout set {tall,rtall,wide,rwide,even,tiled}
+  bspc rule -r Firefox desktop=^6; firefox "localhost:8080" &; \
+  bsp-layout set tall -- --master-size 0.8; \
+  sleep 2; bspc rule -a Firefox desktop=^6;
+
 
 #
 #--- mouse ---#
