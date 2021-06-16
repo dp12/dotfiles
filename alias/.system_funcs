@@ -386,6 +386,10 @@ bkp() {
     cp "$1"{,.bkp}
 }
 
+unbkp() {
+    echorun_conf mv "$1" "${1%.bkp*}"
+}
+
 bkpo() {
     cp "$1"{,-orig}
 }
