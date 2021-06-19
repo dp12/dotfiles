@@ -83,6 +83,8 @@ pck () {
     echorun "ldd $1"
     echo ""
     lver
+
+    python ~/dotfiles/python-scripts/pwn-summary.py "$1" 1>/dev/null 2>&1
 }
 
 # Get libc version
