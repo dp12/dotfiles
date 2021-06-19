@@ -21,7 +21,7 @@ elif b"i386" in output:
 else:
     summary += "unknown executable\n"
 
-output = subprocess.check_output("pwn checksec " + sys.argv[1], shell=True)
+output = subprocess.check_output("pwn checksec " + sys.argv[1], shell=True, stderr=subprocess.STDOUT)
 vuln = ""
 secure = ""
 if b"Partial RELRO" in output:
