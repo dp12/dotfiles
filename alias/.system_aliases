@@ -149,7 +149,7 @@ alias d2.='sed -i "s|d2 =.*$|d2 = $(pwd | sed "s|^$HOME|~|")|g" ~/fastdirs'
 alias d3.='sed -i "s|d3 =.*$|d3 = $(pwd | sed "s|^$HOME|~|")|g" ~/fastdirs'
 alias d4.='sed -i "s|d4 =.*$|d4 = $(pwd | sed "s|^$HOME|~|")|g" ~/fastdirs'
 alias d5.='sed -i "s|d5 =.*$|d5 = $(pwd | sed "s|^$HOME|~|")|g" ~/fastdirs'
-alias d?='cat ~/fastdirs | grep "d[0-9]"'
+alias d='cat ~/fastdirs | grep "d[0-9]"'
 alias f1='cat ~/fastactions | grep "f1 = " | cut -d"=" -f 2- | while read cmd; do echorun "$cmd"; done'
 alias f2='cat ~/fastactions | grep "f2 = " | cut -d"=" -f 2- | while read cmd; do echorun "$cmd"; done'
 alias f3='cat ~/fastactions | grep "f3 = " | cut -d"=" -f 2- | while read cmd; do echorun "$cmd"; done'
@@ -161,7 +161,7 @@ alias f2.='python ~/dotfiles/fastactions.py f2'
 alias f3.='python ~/dotfiles/fastactions.py f3'
 alias f4.='python ~/dotfiles/fastactions.py f4'
 alias f5.='python ~/dotfiles/fastactions.py f5'
-alias f?='cat ~/fastactions | grep "f[0-9]"'
+alias f='cat ~/fastactions | grep "f[0-9]"'
 
 # Edit files in kakoune
 alias kper="kak ~/.personal_aliases"
