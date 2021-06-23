@@ -16,6 +16,8 @@ alias mkflag="echo 'FLAGE!' > flag"
 alias mkflagt="echo 'FLAGE!' > flag.txt"
 
 alias psum="python ~/dotfiles/python-scripts/pwn-summary.py"
+alias rgb="python ~/dotfiles/python-scripts/rgb.py"
+alias rgbl="python ~/dotfiles/python-scripts/rgbl.py"
 
 
 # TODO: tool to convert to string and do rev
