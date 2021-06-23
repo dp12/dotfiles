@@ -22,6 +22,10 @@ else:
     summary += "unknown executable\n"
 
 output = subprocess.check_output("pwn checksec " + sys.argv[1], shell=True, stderr=subprocess.STDOUT)
+if output == b"":
+    print("error: pwn checksec failed with no output")
+    sys.exit()
+
 vuln = ""
 secure = ""
 if b"Partial RELRO" in output:
