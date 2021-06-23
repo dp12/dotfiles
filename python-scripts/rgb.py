@@ -5,6 +5,7 @@ import sys
 
 if len(sys.argv) < 2:
     print("usage: rgb <hexstring>")
+    sys.exit()
 
 hexstring = sys.argv[1]
 extra_args = ' '.join(sys.argv[2:])
