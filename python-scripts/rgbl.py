@@ -14,4 +14,5 @@ for i in range(0, len(hexstring), 2):
     search_string += "\\x" + hexstring[i:i+2]
 search_string += "\""
 cmd = rg_cmd + " " + search_string + " " + extra_args
+print(cmd)
 os.system(cmd)
