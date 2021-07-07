@@ -107,6 +107,9 @@ alias dim="docker image"
 
 # ripgrep/fd all, no exceptions
 alias rga="echorun rg --no-ignore --hidden -a"
+alias rgbl="rgb -l"
+alias rgbx="rgb -x"
+alias rgblx="rgb -lx"
 alias fda="echorun fd -HI"
 
 # Hashing
