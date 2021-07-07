@@ -36,8 +36,12 @@ search_string += "\""
 cmd = rg_cmd + " " + search_string + " " + extra_args
 print(cmd)
 os.system(cmd)
-ret = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT).decode('utf-8', 'ignore')
 
-if args.hex_offset:
-    for line in ret.splitlines():
-        print("%s 0x%x " % (line, int(line.replace(":", "").replace("\x00", ""))))
+try:
+    ret = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT).decode('utf-8', 'ignore')
+    if args.hex_offset:
+        for line in ret.splitlines():
+            print("%s 0x%x " % (line, int(line.replace(":", "").replace("\x00", ""))))
+except:
+    pass
+
