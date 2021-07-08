@@ -38,6 +38,9 @@ print(cmd)
 os.system(cmd)
 
 if args.hex_offset:
-    ret = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT).decode('utf-8', 'ignore')
-    for line in ret.splitlines():
-        print("%s 0x%x " % (line, int(line.split(":")[0].replace("\x00", ""))))
+    try:
+        ret = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT).decode('utf-8', 'ignore')
+        for line in ret.splitlines():
+            print("%s 0x%x " % (line, int(line.split(":")[0].replace("\x00", ""))))
+    except subprocess.CalledProcessError:
+        pass
