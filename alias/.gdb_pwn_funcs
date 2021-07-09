@@ -228,7 +228,7 @@ elif "i386" in ret:
 elif "aarch64" in ret:
     gdb.execute("x/10gx $sp")
 elif "arm" in ret:
-    gdb.execute("x/10wx $sp")
+    gdb.execute("x/10gx $sp")
 end
 end
 
