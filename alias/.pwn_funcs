@@ -1,7 +1,7 @@
 alias .p="source ~/.pwn_funcs"
 
 alias gdbpwn='gdb -x $(ls -Art /tmp/pwn*.gdb | tail -n 1)'
-alias gmul='echorun "gdb-multiarch -ex \"target remote localhost:1234\""'
+alias gmul='echorun "gdb-multiarch -ex \"target remote localhost:1234\" -ex pwn"'
 alias nk="echorun 'python nkp.py'"
 alias nkg="echorun 'python nkp.py GDB'"
 alias nkga="echorun 'python nkp.py GDB_ATTACH'"
@@ -12,6 +12,7 @@ alias nkr="echorun 'python nkp.py REMOTE'"
 alias snk="echorun 'strace -f -e execve python nkp.py'"
 alias pdock="cd ~/ubuntu-pwndocker"
 
+alias nocore='echorun rm *.core'
 alias mkflag="echo 'FLAGE!' > flag"
 alias mkflagt="echo 'FLAGE!' > flag.txt"
 
@@ -170,19 +171,29 @@ import subprocess
 def make_pycode(output, sub_dict):
     lvalue = ""
     output = str(output).lstrip("b'")[:-3]
-    for key in sub_dict:
-        if key in output:
-            lvalue = sub_dict[key]
-            break
-    print(lvalue + " = " + output.replace(":", "#"))
+    for line in output.split("\\n"):
+        # print("line is ", line)
+        for key in sub_dict:
+            if key in line:
+                lvalue = sub_dict[key]
+                break
+        print(lvalue + " = " + line.replace(":", "#"))
 
 d = {
     "pop rdi":"pop_rdi",
     "pop rsi":"pop_rsi",
     "pop rdx":"pop_rdx",
     "mov":"write_mem",
+    "ret":"ret",
+    "syscall":"syscall",
 }
 make_pycode(subprocess.check_output("cat gadgets | grep ': pop rdi ; ret$'", shell=True), d)
+make_pycode(subprocess.check_output("cat gadgets | grep ': pop rsi ; ret$'", shell=True), d)
+make_pycode(subprocess.check_output("cat gadgets | grep ': pop rdx ; ret$'", shell=True), d)
+make_pycode(subprocess.check_output("cat gadgets | grep ': pop rax ; ret$'", shell=True), d)
+make_pycode(subprocess.check_output("cat gadgets | grep ': ret$'", shell=True), d)
+make_pycode(subprocess.check_output("cat gadgets | grep ': syscall$'", shell=True), d)
+make_pycode(subprocess.check_output("cat gadgets | grep ': mov qword ptr \[r..\], r.. ; ret'", shell=True), d)
 EOF
 }
 
