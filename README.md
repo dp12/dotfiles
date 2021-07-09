@@ -1,6 +1,6 @@
 # dotfiles
 
-Configs for zsh/bash/fish, git, tmux, bspwm, i3, polybar, and vim, plus some deadly aliases.
+Configs for zsh/bash/fish, git, tmux, bspwm, i3, polybar, and vim, plus some "mental" aliases.
 
 ## Installation
 An install.sh script is provided to allow the user to choose what to install and automate the installation. Ubuntu 16.04 is assumed.
@@ -59,7 +59,7 @@ Keybinding            | Description
 <kbd>mod4+Right</kbd> | Move to workspace on the right.
 
 ## Zsh
-My zsh configuration uses [antigen](https://github.com/zsh-users/antigen) for package management and [agnoster](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster) as the prompt, which requires a powerline-patched font. Install the former to a `~/.antigen` folder. Completion functions are provided through zprezto modules, and zaw is included for helm-like history search with `C-r`. Clone the [zaw](https://github.com/zsh-users/zaw) repo to `~/.zaw`.
+My zsh configuration uses [antibody](https://github.com/getantibody/antibody) for package management and [powerlevel10k](https://github.com/romkatv/powerlevel10k) as the prompt. Completion functions are provided through zprezto modules, and zaw is included for helm-like history search with `C-r`. Clone the [zaw](https://github.com/zsh-users/zaw) repo to `~/.zaw`.
 
 ## Miscellaneous Thoughts
 * After trying xmonad and awesome, I found that while I enjoyed the power of tiling window managers, I had no earthly idea what to do when they broke, which they did often and horribly. The amount of time spent fixing them was just not commensurate to the amount of functionality I was gaining. Then I found i3, a tiling window manager configurable in plain English, which instantly prints out the location of any errors when you load it. It's probably one of the best tiling window managers out there in terms of readability. Most recently, I switched to bspwm, which is more terse, but simple to configure as well.
