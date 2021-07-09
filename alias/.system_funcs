@@ -33,6 +33,15 @@ mkdirc() {
   mkdir "$1" && cd "$1"
 }
 
+d() {
+  cat ~/fastdirs
+  echo -n "> "
+  reply=$(bash -c "read -n 1 c; echo \$c")
+  echo ""
+  local cmd="d${reply}"
+  eval $cmd
+}
+
 # cd into directory of file name
 cdir() {
   cd "$(dirname $1)"
