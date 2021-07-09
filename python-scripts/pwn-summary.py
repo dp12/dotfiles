@@ -14,7 +14,7 @@ if len(sys.argv) < 2:
 
 summary = ""
 output = subprocess.check_output("file " + sys.argv[1], shell=True)
-if b"x86-64" in output:
+if b"x86-64" in output or b"aarch64" in output:
     summary += "64-bit executable\n"
 elif b"i386" in output:
     summary += "32-bit executable\n"
