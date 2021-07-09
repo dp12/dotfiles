@@ -218,6 +218,19 @@ elif "arm" in ret:
 end
 end
 
+define stk
+python
+ret = gdb.execute("show arch", to_string=True)
+if "x86-64" in ret:
+    gdb.execute("x/10gx $rsp")
+elif "i386" in ret:
+    gdb.execute("x/10wx $esp")
+elif "aarch64" in ret:
+    gdb.execute("x/10gx $sp")
+elif "arm" in ret:
+    gdb.execute("x/10wx $sp")
+end
+end
 
 ################
 # GDB SETTINGS #
