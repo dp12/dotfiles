@@ -203,6 +203,21 @@ define g227
     context
 end
 
+# Register arguments
+define rarg
+python
+ret = gdb.execute("show arch", to_string=True)
+if "x86-64" in ret:
+    gdb.execute("i r rdi rsi rdx rcx r8 r9")
+elif "i386" in ret:
+    gdb.execute("x/10wx $esp")
+elif "aarch64" in ret:
+    gdb.execute("i r x0 x1 x2 x3 x4 x5 x6 x7")
+elif "arm" in ret:
+    gdb.execute("i r r0 r1 r2 r3")
+end
+end
+
 
 ################
 # GDB SETTINGS #
