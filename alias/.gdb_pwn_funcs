@@ -155,6 +155,18 @@ base_addr = int(addr_line.strip().split(" ")[0], 16)
 print("base address: 0x%x" % base_addr)
 end
 
+define procb
+set $breakpoint_offset = $arg0
+python
+import subprocess
+offset = gdb.convenience_variable("breakpoint_offset")
+ret = subprocess.check_output("cat /proc/$(pidof qemu-aarch64)/maps | grep vuln/vuln | head -n1 | cut -d '-' -f1", shell=True).decode().strip()
+cmd = "b *0x{}+0x{:x}".format(ret, int(offset))
+print(cmd)
+gdb.execute(cmd)
+end
+end
+
 ###############
 # GDB HISTORY #
 ###############
