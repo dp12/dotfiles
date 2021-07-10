@@ -235,16 +235,26 @@ end
 end
 
 define stk
+if $argc >= 1
+    set $dump_size = $arg0
+else
+    set $dump_size = 10
+end
 python
+def gex(cmd):
+    print(cmd)
+    gdb.execute(cmd)
+
+dump_size = gdb.convenience_variable("dump_size")
 ret = gdb.execute("show arch", to_string=True)
 if "x86-64" in ret:
-    gdb.execute("x/10gx $rsp")
+    gex("x/{}gx $rsp".format(dump_size))
 elif "i386" in ret:
-    gdb.execute("x/10wx $esp")
+    gex("x/{}wx $esp".format(dump_size))
 elif "aarch64" in ret:
-    gdb.execute("x/10gx $sp")
+    gex("x/{}gx $sp".format(dump_size))
 elif "arm" in ret:
-    gdb.execute("x/10gx $sp")
+    gex("x/{}gx $sp".format(dump_size))
 end
 end
 
