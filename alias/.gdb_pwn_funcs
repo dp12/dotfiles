@@ -117,7 +117,11 @@ ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 vmmap_output = ansi_escape.sub('', vmmap_output)
 
 # Get base address of binary
-addr_line = next(line for line in vmmap_output.split("\n") if line.endswith(elf_name))
+try:
+    addr_line = next(line for line in vmmap_output.split("\n") if line.endswith(elf_name))
+except:
+    print(f"{elf_name=}")
+
 base_addr = int(addr_line.strip().split(" ")[0], 16)
 print("base address: 0x%x" % base_addr)
 
@@ -232,6 +236,10 @@ elif "arm" in ret:
 end
 end
 
+define vml
+    vmmap libc
+end
+
 ################
 # GDB SETTINGS #
 ################
@@ -262,4 +270,5 @@ end
 
 # Load pwngdb-specific aliases after pwngdb is initialized
 alias vm = vmmap
+
 end
