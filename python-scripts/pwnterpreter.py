@@ -53,8 +53,50 @@ if function == "mmap":
 
     flags = str_to_num(args[3])
     flags_str = ""
+    # /usr/include/linux/mman.h
+    # /usr/include/asm-generic/mman.h
+    # /usr/include/asm-generic/mman-common.h
+    # /usr/include/x86_64-linux-gnu/asm/mman.h
+    if flags & 0x1:
+        flags_str = update_flags(flags_str, "MAP_SHARED")
+    if flags & 0x2:
+        flags_str = update_flags(flags_str, "MAP_PRIVATE")
     if flags & 0x10:
         flags_str = update_flags(flags_str, "MAP_FIXED")
+    if flags & 0x20:
+        flags_str = update_flags(flags_str, "MAP_ANONYMOUS")
+    if flags & 0x40:
+        flags_str = update_flags(flags_str, "MAP_32BIT")
+    if flags & 0x100:
+        # /* stack-like segment */
+        flags_str = update_flags(flags_str, "MAP_GROWSDOWN")
+    if flags & 0x800:
+        # /* ETXTBSY */
+        flags_str = update_flags(flags_str, "MAP_DENYWRITE")
+    if flags & 0x1000:
+        # /* mark it as an executable */
+        flags_str = update_flags(flags_str, "MAP_EXECUTABLE")
+    if flags & 0x2000:
+        # /* pages are locked */
+        flags_str = update_flags(flags_str, "MAP_LOCKED")
+    if flags & 0x4000:
+        # /* don't check for reservations */
+        flags_str = update_flags(flags_str, "MAP_NORESERVE")
+    if flags & 0x8000:
+        flags_str = update_flags(flags_str, "MAP_POPULATE")
+    if flags & 0x10000:
+        flags_str = update_flags(flags_str, "MAP_NONBLOCK")
+    if flags & 0x20000:
+        flags_str = update_flags(flags_str, "MAP_STACK")
+    if flags & 0x40000:
+        flags_str = update_flags(flags_str, "MAP_HUGETLB")
+    if flags & 0x80000:
+        flags_str = update_flags(flags_str, "MAP_SYNC")
+    if flags & 0x100000:
+        flags_str = update_flags(flags_str, "MAP_FIXED_NOREPLACE")
+    if flags & 0x4000000:
+        flags_str = update_flags(flags_str, "MAP_UNINITIALIZED")
+    print("flags (0x%x): %s" % (flags, flags_str))
 
 elif function == "mprotect":
     print("mprotect")
