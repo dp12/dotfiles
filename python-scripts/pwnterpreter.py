@@ -22,7 +22,7 @@ def update_flags(cur_str, new_str):
 if len(sys.argv) < 2:
     print("usage: pwnterpreter.py <function call>")
 
-func_call = ''.join(sys.argv[1:])
+func_call = ''.join(sys.argv[1:]).replace("(void *)", "")
 print(func_call)
 
 # TODO: handle something like:
@@ -35,7 +35,7 @@ for i in args:
 
 if function == "mmap":
     print("void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);")
-    prot = str_to_num(args[2])
+    prot = str_to_num(args[2].strip())
     print("prot: 0x%x" % prot)
     prot_str = ""
     # From /usr/include/asm-generic/mman-common.h
@@ -51,7 +51,7 @@ if function == "mmap":
         prot_str = update_flags(prot_str, "PROT_SEM")
     print("prot (0x%x): %s" % (prot, prot_str))
 
-    flags = str_to_num(args[3])
+    flags = str_to_num(args[3].strip())
     flags_str = ""
     # /usr/include/linux/mman.h
     # /usr/include/asm-generic/mman.h
@@ -100,7 +100,7 @@ if function == "mmap":
 
 elif function == "mprotect":
     print("int mprotect(void *addr, size_t len, int prot);")
-    prot = str_to_num(args[2])
+    prot = str_to_num(args[2].strip())
     prot_str = ""
     # From /usr/include/asm-generic/mman-common.h
     if prot == 0:
@@ -122,7 +122,7 @@ elif function == "prctl":
     if "PR" in args[0]:
         option = args[0]
     else:
-        option = str_to_num(args[0])
+        option = str_to_num(args[0].strip())
 
     if option == "PR_SET_PDEATHSIG" or option == 1:
         print("option (0x%x): %s" % (1, "PR_SET_PDEATHSIG"))
@@ -166,7 +166,7 @@ elif function == "prctl":
         print("option (0x%x): %s" % (22, "PR_SET_SECCOMP"))
         # /usr/src/linux-hwe-5.8-headers-5.8.0-59/include/uapi/linux/seccomp.h
         seccomp_mode = ""
-        seccomp_num = str_to_num(args[1])
+        seccomp_num = str_to_num(args[1].strip())
         if seccomp_num == 0:
             seccomp_mode = "SECCOMP_MODE_DISABLED"
         elif seccomp_num == 1:
@@ -249,7 +249,7 @@ elif function == "socket":
         domain = str_to_num(args[0])
     except:
         domain = args[0]
-    if domain == ""
+    # if domain == "":
        # /usr/src/linux-hwe-5.8-headers-5.8.0-55/include/linux/socket.h
        # AF_UNIX
        # AF_LOCAL
