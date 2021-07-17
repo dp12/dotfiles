@@ -38,7 +38,14 @@ d() {
   echo -n "> "
   reply=$(bash -c "read -n 1 c; echo \$c")
   echo ""
-  local cmd="d${reply}"
+  local cmd=""
+  if [ $reply == "." ]; then
+    echo -n "Set cwd to: "
+    reply=$(bash -c "read -n 1 c; echo \$c")
+    cmd="d${reply}."
+  else
+    cmd="d${reply}"
+  fi
   eval $cmd
 }
 
