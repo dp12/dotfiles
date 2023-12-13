@@ -1,0 +1,359 @@
+# Aliases
+# To load, put "source ~/.system_aliases" in your .bashrc, .zshrc, or config.fish
+# Works (supposedly) with bash, zsh, and fish
+if command -v exa &> /dev/null; then
+    LS_EXE=exa
+else
+    LS_EXE=ls
+fi
+alias a="alias"
+alias ag="alias | grep"
+alias w="which"
+alias l="$LS_EXE"
+alias la="$LS_EXE -a"
+alias ll="$LS_EXE -lh"
+alias llg="$LS_EXE -lh --git"
+alias lt="$LS_EXE -lTh"
+alias lla="$LS_EXE -lah"
+alias lld="date; $LS_EXE -l"
+alias lal="lla"
+alias lah="ls -lah"
+alias l.="ls -d .*"
+alias lf="ls *(.)"
+alias ld="ls *(/)"
+alias lsh="ls .*"
+alias lsd="ls -d *(/)"
+alias lsy="ls | fzf"
+alias l1="ls -1"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
+alias cd-="cd -"
+alias cpr="cp -r"
+alias rmrf="rm -rf"
+alias rmd="rm -rf"
+alias rmdd="rm -rf */"
+alias mkdirp="mkdir -p"
+alias pwdcp="pwd | xargs echo -n | xclip -sel clip"
+alias .cp="pwdcp"
+alias pwdcp-='pwd | xargs echo -n | sed "s|^$HOME/||" | xclip -sel clip'
+alias pwdcpp='pwd | xargs echo -n | sed "s|^$HOME|~|" | xclip -sel clip'
+alias le="less"
+alias tf="tail -F"
+alias cr="cargo run"
+alias mc="make clean"
+alias mcm="make clean && make"
+alias mj='echorun make -j$(nproc)'
+alias mana='man -k'
+alias sus="sudo -sE"
+alias lcu="echorun sudo updatedb; locate"
+alias c4="chmod 664"
+alias str="strings"
+alias grpwn="sudo chgrp $USER -R * && sudo chown $USER -R *"
+alias sx+="pkill -USR1 -x sxhkd"
+alias k9="kill -9"
+alias k15="kill -15"
+alias chux="chmod u+x"
+alias mine="echorun sudo chown -R $USER:$USER"
+alias lmk="notify-send 'ALERT!'"
+alias x.x="xrdb ~/.Xresources"
+alias s#="sha256sum"
+alias 2buf= "tmux new-window -n '[^^] 2buf'"
+alias tdbg="tmux new-window -n 'ʕ•ᴥ•ʔ dbg'"
+
+# Programs
+alias doom="emacs --with-profile doom"
+alias c.d="cd ~/.doom.d"
+alias d+="~/.config/emacs/bin/doom sync"
+alias d+upd="~/.config/emacs/bin/doom update"
+alias d+upg="~/.config/emacs/bin/doom upgrade"
+alias doom?="~/.config/emacs/bin/doom doctor"
+alias dbd="~/.config/emacs/bin/doom"
+alias dmd="cd ~/.config/emacs"
+alias dae="emacs --daemon"
+alias ec="emacsclient -ca emacs $1 >/dev/null 2>&1"
+alias em="ec"
+alias emnw="emacsclient -nw"
+alias fze="fzf -m | xargs emacsclient -ca emacs"
+
+alias vimp="vim -R"
+alias kakr="kak -ro"
+alias kee="pkill emacs; pkill emacs"
+alias kghid='ps ax | grep GhidraRun | grep -v grep | cut -d" " -f2 | xargs kill -9'
+alias glast="sed -i '/LastOpenedProject/d' ~/.ghidra/.ghidra_myver_PUBLIC/preferences"
+alias ghis="cd ~/ghidra_scripts"
+alias nv="nvim"
+alias py="python"
+alias p3="python3"
+alias pyv="python --version"
+alias pyr='python3 -ic "while True: print(hex(eval(input(\"> \"))))"'
+alias pyp='python3 -ic "from pwn import *"'
+alias pylint?="pylint --help-msg"
+alias dk="docker"
+alias lzd="lazydocker"
+alias pc="peco"
+alias dush="du -sh"
+alias recfind="find . -type f -printf '%TY-%Tm-%Td %TT %p\n' | sort"
+alias pat="patool extract"
+alias psg="ps -ax | grep"
+alias psy="ps -ax | fzf"
+alias pu="pushd"
+alias po="popd"
+alias t="tar xvfz "
+alias h="history"
+alias hh="history 1"
+alias apr="apropos"
+alias hg="cat ~/.zhistory | grep"
+alias gdbtui="gdb -tui"
+#alias gdb="gdb -ex pwn -ex gep"
+alias gdbn="/usr/local/bin/gdb"
+alias gex="gdb --batch -ex"
+# xclip, e.g. "pwd | c", and "cd `v`"
+alias c="xclip -sel clip"
+alias v="xclip -o"
+alias rebar="pkill polybar; nohup polybar bar1 | tee &"
+alias fehh='feh --bg-max "$(find ~/.wallpaper/|shuf -n1)"'
+alias zat="zathura"
+
+# Vim for common files
+alias vib="vim ~/.bashrc"
+alias viz="vim ~/.zshrc"
+alias vip="vim ~/.personal_aliases"
+alias vis="vim ~/.system_aliases"
+alias vif="vim ~/.system_funcs"
+alias vfa="vim ~/.fastdiract/fastactions"
+alias vfd="vim ~/.fastdiract/fastdirs"
+alias viv="vim ~/.vimrc"
+
+# Conda
+alias caz='conda activate $(conda env list | tail -n+3 | cut -f1 -d" " | fzf); conda env list'
+alias cel='conda env list'
+alias c38='conda activate python38'
+alias cpypy='conda activate pypy39'
+
+# Docker
+alias dp="echorun docker ps"
+alias dpa="echorun docker ps -a"
+alias dcp-="echorun docker container prune -f"
+alias ndi='docker ps -qal'
+alias qal='docker ps -qal'
+alias dsq='docker start -ai $(qal)'
+alias dim="docker image"
+alias dip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
+
+# ripgrep/fd all, no exceptions
+alias rga="echorun rg --no-ignore --hidden -a"
+alias rgbl="rgb -l"
+alias rgbx="rgb -x"
+alias rgblx="rgb -lx"
+alias fda="echorun fd -HI"
+
+# Hashing
+alias m5="echorun md5sum"
+alias s2="echorun sha256sum"
+alias s5="echorun sha512sum"
+
+# radare2
+alias rx="rax2"
+alias rk="rax2 -k"
+alias rs="rax2 -s"
+alias rS="rax2 -S"
+
+# Static analyzers
+alias sck="shellcheck"
+alias mcc="pmccabe -v"
+
+# Dotfiles
+alias brc="em ~/.bashrc"
+alias zrc="em ~/.zshrc"
+alias vib="vim ~/.bashrc"
+alias viz="vim ~/.zshrc"
+alias va="vim ~/.fastdiract/fastactions"
+alias vd="vim ~/.fastdiract/fastdirs"
+alias emb="em ~/.bashrc"
+alias emz="em ~/.zshrc"
+alias .b="source ~/.bashrc"
+alias .z='source ~/.zshrc'
+alias .s="source ~/.system_aliases && source ~/.system_funcs"
+alias .x="xrdb ~/.Xresources"
+alias sx+="pkill -USR1 -x sxhkd"
+#alias emd= "cd ~/.emacs.d"
+alias emd="cd ~/.config/emacs"
+alias dot="cd ~/dotfiles"
+alias dop="cd ~/dotfiles/python-scripts"
+alias sp="cd ~/.spacemacs.d"
+
+# Edit files in kakoune
+alias kper="kak ~/.personal_aliases"
+alias kprof="kak ~/.profile"
+alias kpoly="kak ~/.config/polybar/config"
+alias kbsp="kak ~/.config/bspwm/bspwmrc"
+alias ksxh="kak ~/.config/sxhkd/sxhkdrc"
+alias kzsh="kak ~/.zshrc"
+alias kbsh="kak ~/.bashrc"
+alias ksys="kak ~/.system_aliases"
+alias ksysf="kak ~/.system_funcs"
+
+alias emm="em Makefile"
+alias emc="em main.c"
+# && makes fish unhappy
+# alias mcm="make clean && make"
+
+alias r?='cat README*'
+
+# Package management
+alias aup="echorun sudo apt update"
+alias aupg="echorun sudo apt upgrade"
+alias ain="echorun sudo apt update && sudo apt install"
+alias ainn="echorun sudo apt install"
+alias acs="echorun sudo apt search"
+alias agr="echorun sudo apt --purge remove"
+alias agl="echorun dpkg --get-selections | grep -v deinstall"
+
+# Python utility scripts
+alias ghd="python ~/dotfiles/python-scripts/github_downloader.py"
+
+# Svn aliases
+alias svnstash="svn diff > "
+alias svnapply="patch -p0 < "
+
+# Git aliases
+##  Aliases specific to the .gitconfig include:
+##  co = checkout
+##  ci = commit
+##  st = status
+##  br = branch
+##  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+##  type = cat-file -t
+##  dump = cat-file -p
+##  dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+
+alias g+="git clone"
+alias gs="git status -uno"
+alias gds="git --no-pager diff --stat"
+alias gdsc="git --no-pager diff --stat --cached"
+alias gl="git log"
+alias glpf="git log --pretty=fuller"
+alias glp="git log -p"
+alias gln="git log --name-only"
+alias gls="git log --stat"
+alias glSp="git log -p -S"
+alias glS="git log --stat -S"
+alias gl.="git log ."
+alias glg="git log -G"
+alias gl-="git log @{-1}"
+alias gl-2="git log @{-2}"
+alias gl-3="git log @{-3}"
+alias glph="git log --graph --all --decorate --stat --date=iso"
+alias gsh="git show"
+alias gh="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias ghp="git hist | peco"
+alias gb="git --no-pager branch"
+alias gbb="git for-each-ref --sort='authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
+alias gbc="git branch --contains"
+alias gbD="git branch -D"
+alias gbcp="git rev-parse --abbrev-ref HEAD | xclip -sel clip"
+alias gbcpz='git branch --sort="-authordate" | fzf | xclip -sel clip'
+alias gbh="git for-each-ref --sort='-authordate:iso8601' --count 20 --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
+alias grevperm="git diff -p -R --no-color | grep -E '^(diff|(old|new) mode)' --color=never | git apply"
+alias g#cp="git rev-parse HEAD | cut -c1-15 | xclip -sel clip"
+alias g##cp="git rev-parse HEAD | xclip -sel clip"
+alias ga="git add"
+alias gau="git add -u"
+alias gad="git add"
+alias gca="git commit --amend"
+alias gut="git commit --amend --date=now --no-edit"
+alias gron="git rebase --onto"
+alias grc="git rebase --continue"
+alias gras="git rebase -i --autosquash"
+alias gutc="gut && grc"
+alias gupdate="gut"
+alias gd="git diff"
+alias gdF="git dsf"
+alias gdfc="git dsf --cached"
+alias gdf~="git dsf HEAD~..HEAD"
+alias gd~="git diff HEAD~..HEAD"
+alias gd~~="git diff HEAD~~..HEAD"
+alias gd~3="git diff HEAD~3..HEAD"
+alias gdom="git diff origin/master..HEAD"
+alias gdc="git diff --cached"
+alias gf="git fetch"
+alias gfl="git reflog --relative-date"
+alias gc="git checkout"
+alias gco="git checkout"
+alias gcoom="git checkout origin/master"
+alias gc--="git checkout -"
+alias gc~="git checkout HEAD~"
+alias gc~~="git checkout HEAD~~"
+alias gcb="git checkout -b"
+# alias glz='git log $(git branch --sort=-authordate | fzf)'
+alias flz='fl $(git branch --sort="-authordate" | fzf --reverse)'
+# alias gcz='git checkout $(git branch --sort="-authordate" | fzy)'
+alias gczr='git checkout $(git branch -r --sort="-authordate" | fzf)'
+alias gci="git commit"
+alias gcv="git cherry -v"
+alias gcp="git cherry-pick"
+alias gcpx="git cherry-pick -x"
+alias gcpz='git cherry-pick $(git branch --sort="-authordate" | fzf)'
+alias gcp-="git cherry-pick @{-1}"
+alias gcp-2="git cherry-pick @{-2}"
+alias gcp-3="git cherry-pick @{-3}"
+alias gt="git tag"
+alias gpr="git pull --rebase"
+alias gprb='git pull --rebase origin $(git rev-parse --abbrev-ref HEAD)'
+alias gcom="git checkout master"
+alias gpom="git pull origin master"
+alias gprom="git pull --rebase origin master"
+alias gPk="git push keybase"
+alias gPom="git push origin master"
+alias gPb='git push origin $(git rev-parse --abbrev-ref HEAD)'
+alias gDP='git push origin $(git rev-parse --abbrev-ref HEAD) --delete && git push origin $(git rev-parse --abbrev-ref HEAD)'
+alias gp?='git log origin/master..master'
+alias gsl='git stash list'
+# alias gsa="git stash apply"
+# alias gsp="git stash show -p"
+alias gsP="git stash pop"
+alias gss="git stash save"
+alias grH="git reset HEAD --hard"
+alias grM="git reset HEAD --mixed"
+alias grS="git reset HEAD --soft"
+alias grMER="git reset --merge ORIG_HEAD"
+alias grh="git reset HEAD"
+alias gr~="git reset HEAD~"
+alias grH~="git reset HEAD~ --hard"
+alias gfp="git format-patch --stdout >"
+alias gfpm="git format-patch --stdout origin/master >"
+alias gfps="git format-patch -1"
+alias gsu="git submodule update --init --recursive"
+alias gsu1="git submodule update --init --recursive --depth 1"
+alias gbi="git bisect"
+alias gbist="git bisect start"
+alias gbisp="git bisect stop"
+alias gmb="git merge-base"
+alias gcan="git commit --amend --no-edit"
+alias gcanfp="git commit --amend --no-edit && git push origin master -f"
+alias gsr="gspr"
+alias gsrp="gsr; gPb"
+alias gup='cd $(git rev-parse --show-toplevel)'
+alias gno='git --no-pager'
+alias g^='cd $(git rev-parse --show-toplevel)'
+alias gzl='git --no-pager stash list'
+
+# Misc
+alias p?='echo $PATH'
+alias kc="keychain id_rsa && . ~/.keychain/`uname -n`-sh"
+alias c.s="cd ~/.ssh"
+alias nd='cd "$(\ls -1dt ./*/ | head -n1)"'
+alias esag='eval $(ssh-agent -s)'
+alias nosag='pkill -f ssh-agent'
+alias nog='pkill -9 -f ./gdb'
+alias sgrep="grep -rnI -C3 --color=always"
+alias ytdl4="echorun youtube-dl --recode-video mp4"
+alias ytdl3="echorun youtube-dl -x --audio-format mp3"
+alias shdwn="systemctl poweroff"
+alias logout="pkill -u ${USER}"
+
+source ~/fastdiract/definitions

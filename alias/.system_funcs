@@ -1,0 +1,640 @@
+# To make this work, uncomment the line below and replace myprojectdir with your desired search directory
+# export SEARCH_DIR=myprojectdir
+
+cd () {
+    if [ "$#" -eq 0 ]; then
+        chdir
+    elif [ "$1" == "-" ]; then
+        chdir -
+    elif [ -d "$1" ]; then
+        chdir "$1"
+    elif [ -f "$1" ]; then
+        chdir "$(dirname $1)"
+    else
+        echo "no such file or directory: $1"
+        return 1
+    fi
+}
+
+echorun () {
+  echo "$@"; eval "$@"
+}
+
+# echorun with confirmation
+echorun_conf() {
+  echo "$@"
+  echo -n "Execute [y/n]? "
+  read reply
+  echo
+  if [ "$reply" != "${reply#[Yy]}" ]; then
+    eval "$@"
+  fi
+}
+
+2sh() {
+  mv "$1" /media/sf_Shared
+}
+
+2down() {
+  mv "$1" ~/Downloads
+}
+
+c2() {
+  echorun cp -r "$1" "$(bash -ic "($2; pwd)")"
+}
+
+m2() {
+  echorun mv "$1" "$(bash -ic "($2; pwd)")"
+}
+
+mvr() {
+  cd /media/sf_Shared
+  local newest_file="$(pwd)/$(ls NF)"
+  cd - > /dev/null
+  local cmd="mv \"$newest_file\" ."
+  echo -n "Execute \"$cmd\" [y/n]? "
+  reply=$(bash -c "read -n 1 c; echo \$c")
+  echo
+  if [ "$reply" != "${reply#[Yy]}" ]; then
+    eval "$cmd"
+    echo 0
+  else
+    echo 1
+  fi
+}
+
+mvR() {
+  cd /media/sf_Shared
+  local newest_dir="$(pwd)/$(ls -1dt ./*/ | head -n1)"
+  cd - > /dev/null
+  local cmd="mv \"$newest_dir\" ."
+  echo -n "Execute \"$cmd\" [y/n]? "
+  reply=$(bash -c "read -n 1 c; echo \$c")
+  echo
+  if [ "$reply" != "${reply#[Yy]}" ]; then
+    eval "$cmd"
+    echo 0
+  else
+    echo 1
+  fi
+}
+
+# mv substitute
+mvs() {
+  if [ "$#" -eq 3 ]; then
+    echorun_conf "mv $1 ${1/${2}/${3}}"
+  else
+    echo "usage: mvs <file> <old> <new>"
+  fi
+}
+
+manf() {
+  local target="$1"
+  local num=""
+  if [ "$#" -eq 0 ]; then
+    target=$(man -k "" | fzf -q"^" --tiebreak=begin)
+    num=$(echo $target | sed -E 's/.*\(([0-9])\).*/\1/')
+    target=$(echo $target | cut -d' ' -f1)
+  else
+    num=$(man -k "$target" | fzf -q"^$1" --tiebreak=begin | sed -E 's/.*\(([0-9])\).*/\1/')
+  fi
+  echorun "man $num $target"
+}
+
+# From https://news.ycombinator.com/item?id=29014279
+et() {
+  exa -alT --git -I'.git|node_modules|.mypy_cache|.pytest_cache|.venv' --color=always "$@"
+}
+
+# tmux pwd
+tp() {
+  pane=$(tmux list-panes | grep active | cut -d':' -f1)
+  if [ $pane -eq 1 ]; then
+    tmux send-keys -t 0 'pwdcp' Enter
+  else # [ $pane -eq 0 ]; then
+    tmux send-keys -t 1 'pwdcp' Enter
+  fi
+}
+
+tpcd() {
+  pane=$(tmux list-panes | grep active | cut -d':' -f1)
+  local TMPFILE=$(mktemp /tmp/tmux-tpcd-XXX)
+  if [ $pane -eq 1 ]; then
+    tmux send-keys -t 0 'echo $(pwd) > '"$TMPFILE" Enter
+  else
+    tmux send-keys -t 1 'echo $(pwd) > '"$TMPFILE" Enter
+  fi
+  sync
+  sleep 0.2
+  cd "$(cat $TMPFILE)"
+}
+
+mkdirc() {
+  mkdir "$1" && cd "$1"
+}
+
+# d() {
+#   cat ~/fastdirs
+#   echo -n "> "
+#   reply=$(bash -c "read -n 1 c; echo \$c")
+#   echo ""
+#   local cmd=""
+#   if [ $reply == "." ]; then
+#     echo -n "Set cwd to: "
+#     reply=$(bash -c "read -n 1 c; echo \$c")
+#     cmd="d${reply}."
+#     eval $cmd
+#   elif [[ $reply =~ [0-9] ]]; then
+#     cmd="d${reply}"
+#     eval $cmd
+#   else
+#     echo "invalid cmd \"$reply\""
+#   fi
+# }
+
+# dx() {
+#   echo "Swap directories:"
+#   echo -n "> "
+#   dirnum1=$(bash -c "read -n 1 c; echo \$c")
+#   echo ""
+#   if [[ $dirnum1 =~ [0-9] ]]; then
+#     echo -n "> "
+#     dirnum2=$(bash -c "read -n 1 c; echo \$c")
+#     echo ""
+#     if [[ $dirnum2 =~ [0-9] ]]; then
+#       dir1="$(cat ~/fastdirs | grep 'd'${dirnum1}' = ' | cut -d'=' -f 2- | xargs)"
+#       dir2="$(cat ~/fastdirs | grep 'd'${dirnum2}' = ' | cut -d'=' -f 2- | xargs)"
+#       sed -i "s|d${dirnum1} =.*$|d${dirnum1} = $dir2|g" ~/fastdirs
+#       sed -i "s|d${dirnum2} =.*$|d${dirnum2} = $dir1|g" ~/fastdirs
+#       d?
+#     fi
+#   fi
+# }
+
+# cd into directory of file name
+cdir() {
+  cd "$(dirname $1)"
+}
+
+# filepath copy
+fpcp() {
+  local file_path=${PWD/#$HOME/'~'}"/$1"
+  echo $file_path | tee >(xclip -sel clip)
+}
+
+# locate cd
+lcd() {
+  if [ "$#" -gt 0 ]; then
+    found="$(locate $1 | fzf)"
+    if [[ -f $found ]]; then
+        cd "$(dirname ${found})"
+    else
+        cd "${found}"
+    fi
+  else
+    echo "Usage: lcd <filename>"
+  fi
+}
+alias lcdu="sudo updatedb; lcd"
+
+symbin() {
+  local link_dir="${2:-/usr/local/bin}"
+  local target_path=${PWD/#$HOME/'~'}"/$1"
+  cmd="sudo ln -s $target_path $link_dir/$1"
+  echorun_conf "$cmd"
+}
+
+fxx() {
+  file=$(find "$SEARCH_DIR" -type f -wholename \*$1\* -not -path './.*/*' | peco)
+  echo "Enter a command..."; read command
+  eval "$command $file"
+}
+
+fyr() {
+  # file=$(find "$SEARCH_DIR" -type f -wholename \*$1\* -not -path '*/.*/*' -not -path "*/mason*/*" | fzy)
+  # file=$(fd . "$SEARCH_DIR" | fzy)
+  file="$(fd . | fzy)"
+  cd "$(dirname "${file}")"
+}
+
+kz() {
+  local pid
+  if [ "$UID" != "0" ]; then
+    pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
+  else
+    pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+  fi
+
+  if [ "x$pid" != "x" ]; then
+    echo $pid | xargs kill -${1:-9}
+  fi
+}
+
+zv() {
+ file=$(find "$SEARCH_DIR" -type f -wholename \*"$1"\* -not -path '*/.*/*' -not -path "*/mason*/*" | fzy)
+ vim "${file}"
+}
+
+fk() {
+ # file=$(find "$SEARCH_DIR" -type f -wholename \*"$1"\* -not -path '*/.*/*' -not -path "*/mason*/*" | fzy)
+ file=$(fd . "$SEARCH_DIR" -E "*.got" -E "*.pgm" | fzy)
+ kak "${file}"
+}
+
+tmr() {
+  local seconds="${1:-60}"
+  for i in {0..$seconds}; do echo -n "$i "; sleep 1; done
+  notify-send "Timer done!"
+}
+
+dism() {
+  func=$(arm-none-eabi-objdump -t "$1" | cut -f2 | cut -d ' ' -f2 | fzy)
+  arm-none-eabi-gdb "$1" -batch -ex "disas /m $func" | less
+}
+
+dwget() {
+  rm -rf "$(basename "$1")" && wget "$1"
+}
+
+
+rmex() {
+  if [ "$#" -eq 1 ]; then
+    echorun "find ! -iname '$1'"
+    echorun_conf "find ! -iname '$1' -delete"
+  else
+    echo "usage: rmex <glob pattern>"
+  fi
+}
+
+# Git shallow clone
+gshcl() {
+  if [ "$#" -eq 3 ]; then
+    local dirname="$1"
+    local repourl="$2"
+    local commit="$3"
+    mkdir "$dirname"
+    cd "$dirname"
+
+    git init
+    git remote add origin "$repourl"
+    git fetch origin "$commit" --depth 1
+    git reset --hard FETCH_HEAD
+  else
+    echo "usage: gshcl <dirname> <repourl> <commit>"
+  fi
+}
+
+gsa() {
+  stashnum="${1:-0}"
+  cmd="git stash apply stash@{$stashnum}"
+  printf "$cmd\n\n"; eval "$cmd"
+}
+
+gzp() {
+  stashnum="${1:-0}"
+  cmd="git stash show -p stash@{$stashnum}"
+  printf "$cmd\n\n"; eval "$cmd"
+}
+
+gla() {
+  if [ "$#" -eq 0 ]; then
+    cmd="git log --author=$(whoami)"
+  elif echo "$1" | grep -q "^-"; then
+    cmd="git log --author=$(whoami) $@"
+  else
+    cmd="git log --author=$@"
+  fi
+  echorun "$cmd"
+  # printf "$cmd\n\n"; eval "$cmd"
+}
+
+fla() {
+  if [ "$#" -eq 0 ]; then
+    cmd="fl --author=$(whoami)"
+  elif echo "$1" | grep -q "^-"; then
+    cmd="fl --author=$(whoami) $@"
+  else
+    cmd="fl --author=$@"
+  fi
+  echorun "$cmd"
+  # printf "$cmd\n\n"; eval "$cmd"
+}
+
+alias gcm > /dev/null && unalias gcm
+gcm() {
+  git commit -m "$(echo $@)"
+}
+
+alias gcam > /dev/null && unalias gcam
+gcam() {
+  git commit --amend -m "$(echo $@)"
+}
+
+gul() {
+  cd $(git rev-parse --show-toplevel)
+  rm .git/index.lock 2>/dev/null && echo "Removed .git/index.lock"
+  rm .git/refs/heads/master.lock 2>/dev/null && echo "Removed .git/refs/heads/master.lock"
+  rm .git/HEAD.lock 2>/dev/null && echo "Removed .git/HEAD.lock"
+}
+
+glSa() {
+  cmd="git log -S $1 --stat --author=${2:-$(whoami)}"
+  printf "$cmd\n\n"; eval "$cmd"
+}
+
+git-retag() {
+  cmd="git tag -d $1 && git push origin $1 --delete && git tag $1 && git push origin $1"
+  echo -n "Exec '$cmd' [y/n]? "
+  read reply
+  echo
+  if [ "$reply" != "${reply#[Yy]}" ]; then
+    eval "$cmd"
+  fi
+}
+
+gshf() {
+  if [ "$#" -eq 2 ]; then
+    cd "$(git rev-parse --show-toplevel)"
+    local file=$(git ls-tree -r "$1" --name-only | rg "$2" | rg '\.c$|\.h$|\.cpp$|\.hpp$|\.py' | fzy)
+    local cmd="git show $1:./${file}"
+    echo "$cmd" && eval "$cmd"
+  else
+    echo "Usage: gshf <hash> <filename>"
+  fi
+}
+
+gcfu() {
+  if [ "$#" -eq 2 ]; then
+    cmd1="git config --local user.name \"$1\""
+    cmd2="git config --local user.email \"$2\""
+    echo -n "Exec \n$cmd1\n$cmd2 [y/n]? "
+    read reply
+    if [ $reply != "${reply#[Yy]}" ]; then
+      eval "$cmd1"
+      eval "$cmd2"
+      printf "\ngit config --local [user] is now:"
+      git config --local --get-regexp user
+    fi
+  else
+    echo "Usage: gcfu <username> <email>"
+  fi
+}
+
+gDb() {
+  local lcmd="git branch -D $(git rev-parse --abbrev-ref HEAD)"
+  local rcmd="git push origin $(git rev-parse --abbrev-ref HEAD) --delete"
+  if [[ "$#" -gt 1 ]]; then
+     echo "Usage: gDb (r|l|lr|rl)"
+  fi
+  case "${1:-r}" in
+      l) echo "$lcmd" && eval "$lcmd" ;;
+      r) echo "$rcmd" && eval "$rcmd" ;;
+      lr|rl)
+         echo "$lcmd\n$rcmd" && eval "$lcmd" && eval "$rcmd" ;;
+  esac
+}
+
+gdmergedb() {
+  # TODO: if no args, print usage
+  # 1st option: --merged or -r or nothing
+  # 2nd option: local|remote|both (default to local)
+  local current_branch=$(git rev-parse --abbrev-ref HEAD)
+  for branch in $(git branch --merged | cut -c3-)
+  do
+    echo "Branch $branch is already merged into $current_branch."
+    echo "Would you like to delete it? [Y]es/[N]o "
+    read REPLY
+    if [[ $REPLY =~ ^[Yy] ]]; then
+      git branch -d $branch
+    fi
+  done
+}
+
+gdlocalb() {
+  local current_branch=$(git rev-parse --abbrev-ref HEAD)
+  for branch in $(git branch | cut -c3-)
+  do
+  echo "Would you like to delete $branch? [Y]es/[N]o "
+  read REPLY
+  if [[ $REPLY =~ ^[Yy] ]]; then
+    git branch -D $branch
+  fi
+  done
+}
+
+gspr() {
+  if ! git diff-index --quiet HEAD --; then
+    echo "git stash save; git pull --rebase; git stash pop"
+    git stash save; git pull --rebase; git stash pop
+  else
+    echo "git pull --rebase"
+    git pull --rebase
+  fi
+}
+
+grrauth() {
+  if [ "$#" -gt 0 ]; then
+    export OLD_EMAIL="${1:-$(git config user.email)}"
+    export CORRECT_EMAIL="${2:-$(git config user.email)}"
+    export CORRECT_NAME="${3:-$(git config user.name)}"
+    echo "Set commits with email \"$OLD_EMAIL\" to author/committer:"
+    echo "\"$CORRECT_NAME <$CORRECT_EMAIL>\"? [Y]es/[N]o"
+    read REPLY
+    if [[ $REPLY =~ ^[Yy] ]]; then
+      git filter-branch -f --env-filter \
+      'if [ "$GIT_COMMITTER_EMAIL" = "${OLD_EMAIL}" ]
+      then
+          export GIT_COMMITTER_NAME="${CORRECT_NAME}"
+          export GIT_COMMITTER_EMAIL="${CORRECT_EMAIL}"
+      fi
+      if [ "$GIT_AUTHOR_EMAIL" = "${OLD_EMAIL}" ]
+      then
+          export GIT_AUTHOR_NAME="${CORRECT_NAME}"
+          export GIT_AUTHOR_EMAIL="${CORRECT_EMAIL}"
+      fi' --tag-name-filter cat -- --branches --tags
+    fi
+  else
+    echo "Usage: grrauth <old email>"
+    echo "       grrauth <old email> <new email> <new name>"
+  fi
+}
+
+gcz() {
+  local branch=$(git branch --sort="-authordate" | fzf | xargs)
+  echorun "git checkout $branch"
+}
+
+glz() {
+  local branch=$(git branch --sort="-authordate" | fzf | xargs)
+  echorun "git log $branch"
+}
+
+gcrz() {
+  local branch="$(git branch -r | fzy)"
+  # Remove "origin/" and whitespace
+  branch="${branch/origin\//}"
+  branch="${branch/bare\//}"
+  branch="${branch//[[:space:]]/}"
+  cmd="git checkout $branch"
+  echo "$cmd" && eval "$cmd"
+}
+
+gct() {
+  echorun "git checkout $(git tag | fzf)"
+}
+
+gfi() {
+  local did_stash=0
+  echorun "git commit --fixup=$1"
+  if ! git --no-pager diff --quiet; then
+    git stash save
+    did_stash=1
+  fi
+  echorun "EDITOR=true git rebase -i --autosquash --no-edit $1~1"
+  if [ $did_stash -eq 1 ]; then
+    git stash pop
+  fi
+}
+
+# Taken from https://github.com/junegunn/fzf/wiki/Examples#git and modified
+alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
+_gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+_viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always --stat -p %'"
+
+# fl - fzf log (git commit browser with previews)
+fl() {
+  glNoGraph |
+    fzf --no-sort --reverse --tiebreak=index --no-multi \
+        --ansi --preview="$_viewGitLogLine" \
+        --header "enter to view, alt-w to copy hash" \
+        --bind "enter:execute:$_viewGitLogLine   | less -R" \
+        --bind "alt-w:execute:$_gitLogLineToHash | xclip -sel clip" \
+        --bind "ctrl-u:preview-up,ctrl-b:preview-page-up,ctrl-f:preview-page-down,ctrl-d:preview-down"
+}
+
+#gpg2+() {
+#  echorun "gpg2 --output $1.gpg --symmetric $1"
+#}
+
+tcd () {
+  pwd0="$(tmux display-message -p -F '#{pane_current_path}' -t 0)"
+  pwd1="$(tmux display-message -p -F '#{pane_current_path}' -t 1)"
+  if [ "$pwd0" = "$PWD" ]; then
+    cd "$pwd1"
+  else
+    cd "$pwd0"
+  fi
+}
+
+fzf-clipboard() { echo -n "$(greenclip print | fzf -e -i)" | xclip -selection clipboard ;}
+reload-greenclip() { killall greenclip ; nohup greenclip daemon > /dev/null 2>&1 & }
+
+# See .p_reload.sh and .p_hidden.sh in ~/dotfiles/alias
+p() {
+# Probe; cd into the first directory
+  local depth=0
+  if [ "$#" -gt 0 ]; then
+      depth="$1"
+  fi
+  echo "$depth" > ~/.p_depth
+  rm -f ~/.p_hidden
+
+  local num_dirs="$(ls -l | grep '^d' | wc -l)"
+  case $num_dirs in
+    0) echo "no directories"; ;;
+    1) cd "$(ls -d ./*/)"; ;;
+    *) cd "$(find ./*/ -maxdepth $depth -type d -not -path '*/\.*' | fzf --bind 'ctrl-f:reload(~/.p_reload.sh $(pwd))' --bind 'ctrl-h:reload(~/.p_hidden.sh $(pwd))')"; ;;
+  esac
+  "$LS_EXE"
+
+  # OLD WAY
+  # cd "$(ls -d ./*/ | fzf)"
+}
+
+alias pp="p 1"
+alias ppp="p 2"
+
+dkrmg() {
+  echo "Remove the following containers? [y/n]"
+  docker ps -a | grep "$1"
+
+  # docker rmi $(docker images |grep 'imagename')
+  read reply
+  if [ $reply != "${reply#[Yy]}" ]; then
+    docker ps -a | grep "$1" | cut -d' ' -f1 | xargs docker rm
+  fi
+}
+
+dkget() {
+    docker cp $(qal):"${1}" .
+}
+
+bkp() {
+  cp -r "$1"{,.bkp}
+}
+
+bkpm() {
+  mv "$1"{,.bkp}
+}
+
+unbkp() {
+  echorun_conf mv "$1" "${1%.bkp*}"
+}
+
+bkpo() {
+  cp -r "$1"{,-orig}
+}
+
+bkpom() {
+  mv "$1"{,-orig}
+}
+
+# Number the newest file
+nf#() {
+  local newest_file=$(ls -Art | tail -n 1)
+  if [[ $newest_file =~ [0-9]+__.* ]]; then
+    echo "Newest file already numbered"
+  else
+    local i=1
+    while [ -e ${i}__* ]; do
+        i=$(($i+1))
+    done
+    echorun mv "$newest_file" "${i}__${newest_file}"
+    echo "${i}__${newest_file}" | xclip -sel clip
+  fi
+}
+alias mvn='mvr && nf#'
+
+prand() {
+  # Return a random number from 1..n
+  for arg in "$@"; do
+    # python3 -c "import random; print(random.randint(1,$arg))"
+    echo $((($RANDOM % $arg) + 1))
+  done
+}
+
+randiix() {
+  DIIGO_SEARCH_TAG="$1" python ~/dotfiles/python-scripts/diigo_fetcher.py
+}
+
+# for threads, use the middle id in the message link
+dce() {
+  local orig_dir=$(pwd)
+  cd $DCE_HOME
+  dotnet DiscordChatExporter.Cli.dll export -t $DISCORD_TOKEN --media -c "$1" -o $orig_dir
+  cd $orig_dir
+}
+
+vls() {
+  vim $(ls -1 *"${1}"* | head -n1)
+}
+
+# Whisper view
+wv() {
+  cat "$1" | sed '/-->/d' | less
+}
+
+aocmk() {
+  mkdir aoc${1} && cd aoc${1}
+  aocd $1 2022 > input.txt
+}

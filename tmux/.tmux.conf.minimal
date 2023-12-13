@@ -1,0 +1,72 @@
+
+### Tmux Configuration ###
+            #
+            #
+            #
+            #
+            #
+            #
+            #
+            #
+
+
+# Load reset file
+# source-file ~/.tmux.reset.conf
+#
+
+set -g history-limit 50000
+set-window-option -g allow-rename off
+set-window-option -g automatic-rename off
+
+# tmux 1.8
+set -g window-status-current-bg=red
+set -g window-status-bg=green
+# tmux > 2.1
+# set -g window-status-current-style bg=red
+# set -g window-status-style bg=green
+
+# Remap prefix key to C-t
+unbind C-b
+set -g prefix C-t
+bind C-t send-prefix
+
+bind | split-window -h
+bind - split-window -v
+bind = split-window -v
+
+# Session management
+bind e set -g synchronize-panes
+bind K kill-session
+bind r source-file ~/.tmux.conf
+
+set-option -g mouse on
+
+# tmux 1.8
+setw -g mode-keys vi
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy V select-line
+bind-key -t vi-copy y copy-pipe 'xclip -in -selection clipboard'
+# tmux > 2.1
+# set-window-option -g mode-keys vi
+# bind-key -T copy-mode-vi v send-keys -X begin-selection
+# bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+# bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+
+# Window switching
+bind -n S-up    new-window
+bind -n S-down  confirm-before -p "kill-window #W? (y/n)" kill-window
+bind -n S-left  prev
+bind -n S-right next
+
+# Pane switching
+bind -n C-left  select-pane -L
+bind -n C-right select-pane -R
+bind -n C-down  select-pane -D
+bind -n C-up    select-pane -U
+
+# Pane special operations
+bind -n C-M-up    respawn-pane -k
+bind -n C-M-down  kill-pane
+bind -n C-M-o resize-pane -Z
+bind -n C-M-k clear-history
+bind h clear-history

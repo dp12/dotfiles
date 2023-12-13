@@ -1,0 +1,3 @@
+# [submodule "vim/.vim"]
+	# path = vim/.vim
+	# url = https://github.com/redguardtoo/vimrc.git

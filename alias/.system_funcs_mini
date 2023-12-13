@@ -1,0 +1,33 @@
+# Poor man's rg and fd
+# rg() {
+#   grep -rni --color=always "$1"
+# }
+#
+# fd() {
+#   find . -iname "*$1*"
+# }
+
+vls() {
+  vim $(ls -1 *"${1}"* | head -n1)
+}
+
+dtw() {
+  sed -i 's/[[:space:]]*$//g' "$1"
+}
+
+echorun () {
+  echo "$@"; eval "$@"
+}
+
+gcm() {
+  git commit -m "$(echo $@)"
+}
+
+bkp() {
+  cp -r "$1"{,.bkp}
+}
+
+bkpm() {
+  mv "$1"{,.bkp}
+}
+

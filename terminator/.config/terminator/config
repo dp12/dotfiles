@@ -1,0 +1,172 @@
+[global_config]
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
+[keybindings]
+[profiles]
+  [[default-old]]
+    icon_bell = False
+    background_darkness = 0.74
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#00ff00"
+    font = Roboto Mono Medium for Powerline Medium 14
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#8ae234:#657b83:#729fcf:#6c71c4:#93a1a1:#fdf6e3"
+    use_system_font = False
+    background_image = None
+  [[doom]]
+    background_color = "#282c35"
+    background_darkness = 0.68
+    cursor_blink = False
+    cursor_color = "#51aeee"
+    font = Roboto Mono for Powerline 14
+    foreground_color = "#d1d4e0"
+    show_titlebar = False
+    palette = "#282c35:#e25a60:#8cc574:#da70d7:#0085b2:#ae9fdf:#00b8c1:#ae9fdf:#555753:#f56367:#99d881:#f7bc73:#00b0ee:#da70d7:#00b8c1:#da70d7"
+    use_system_font = False
+    background_image = None
+  [[theone]]
+    background_color = "#272b33"
+    cursor_color = "#abb2c0"
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#abb2c0"
+    palette = "#272B33:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#abb2c0:#272B33:#e5c07b:#5c6370:#828997:#abb2bf:#c678dd:#abb2bf:#abb2c0"
+    use_system_font = False
+    background_image = None
+  [[AtelierSulphurpool]]
+    background_color = "#202746"
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#979db4"
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#979db4"
+    show_titlebar = False
+    palette = "#202746:#c94922:#ac9739:#c08b30:#3d8fd1:#6679cc:#22a2c9:#979db4:#6b7394:#c76b29:#293256:#5e6687:#898ea4:#dfe2f1:#9c637a:#f5f7ff"
+    use_system_font = False
+    background_image = None
+  [[default]]
+    # Material-Palenight
+    background_color = "#292d3e"
+    cursor_blink = False
+    cursor_color = "#ffcc00"
+    cursor_color_fg = False
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#a6accd"
+    show_titlebar = False
+    palette = "#2e3436:#ff5370:#c3e88d:#ffcb6b:#82aaff:#c792ea:#89ddff:#d3d7cf:#555753:#f07178:#c3e88d:#f78c6c:#729fcf:#bb80b3:#89ddff:#eeeeec"
+    use_system_font = False
+    background_image = None
+  [[tokyonight-storm]]
+    icon_bell = False
+    background_color = "#24283b"
+    background_darkness = 0.74
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#c0caf5"
+    cursor_color_fg = False
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#c0caf5"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#1d202f:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#a9b1d6:#414868:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#c0caf5"
+    use_system_font = False
+    background_image = None
+  [[Vaughn]]
+    icon_bell = False
+    background_color = "#25234f"
+    background_darkness = 0.74
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#ff5555"
+    cursor_color_fg = False
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#dcdccc"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#25234f:#705050:#60b48a:#dfaf8f:#5555ff:#f08cc3:#8cd0d3:#709080:#709080:#dca3a3:#60b48a:#f0dfaf:#5555ff:#ec93d3:#93e0e3:#ffffff"
+    use_system_font = False
+    background_image = None
+  [[Solarized Dark - Patched]]
+    icon_bell = False
+    background_color = "#001e27"
+    background_darkness = 0.74
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#708284"
+    cursor_color_fg = False
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#708284"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#002831:#d11c24:#738a05:#a57706:#2176c7:#c61c6f:#259286:#eae3cb:#475b62:#bd3613:#475b62:#536870:#708284:#5956ba:#819090:#fcf4dc"
+    use_system_font = False
+    background_image = None
+  [[Monokai Soda]]
+    icon_bell = False
+    background_color = "#1a1a1a"
+    background_darkness = 0.74
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#f6f7ec"
+    cursor_color_fg = False
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#c4c5b5"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#1a1a1a:#f4005f:#98e024:#fa8419:#9d65ff:#f4005f:#58d1eb:#c4c5b5:#625e4c:#f4005f:#98e024:#e0d561:#9d65ff:#f4005f:#58d1eb:#f6f6ef"
+    use_system_font = False
+    background_image = None
+  [[Catppuccin_Frappe]]
+    icon_bell = False
+    background_color = "#303446"
+    background_darkness = 0.74
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#f2d5cf"
+    cursor_color_fg = False
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#c6d0f5"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#51576d:#e78284:#a6d189:#e5c890:#8caaee:#f4b8e4:#81c8be:#b5bfe2:#626880:#e78284:#a6d189:#e5c890:#8caaee:#f4b8e4:#81c8be:#a5adce"
+    use_system_font = False
+    background_image = None
+  [[Catppuccin_Macchiato]]
+    icon_bell = False
+    background_color = "#24273a"
+    background_darkness = 0.74
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#f4dbd6"
+    cursor_color_fg = False
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#cad3f5"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#494d64:#ed8796:#a6da95:#eed49f:#8aadf4:#f5bde6:#8bd5ca:#b8c0e0:#5b6078:#ed8796:#a6da95:#eed49f:#8aadf4:#f5bde6:#8bd5ca:#a5adcb"
+    use_system_font = False
+    background_image = None
+  [[Catppuccin_Mocha]]
+    icon_bell = False
+    background_color = "#1e1e2e"
+    background_darkness = 0.74
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#f5e0dc"
+    cursor_color_fg = False
+    font = Roboto Mono Medium for Powerline Medium 14
+    foreground_color = "#cdd6f4"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#45475a:#f38ba8:#a6e3a1:#f9e2af:#89b4fa:#f5c2e7:#94e2d5:#bac2de:#585b70:#f38ba8:#a6e3a1:#f9e2af:#89b4fa:#f5c2e7:#94e2d5:#a6adc8"
+    use_system_font = False
+    background_image = None
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]

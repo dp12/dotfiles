@@ -1,0 +1,83 @@
+alias vib="vim ~/.bashrc"
+alias .b="source ~/.bashrc"
+alias viv="vim ~/.vimrc"
+
+alias a="alias"
+alias ag="alias | grep"
+
+# Shell Utils
+alias l="ls"
+alias ll="ls -lh"
+alias lla="ls -lah"
+alias lal="lla"
+alias lah="ls -lah"
+alias l.="ls -d .*"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias cd-="cd -"
+alias cpr="cp -r"
+alias rmrf="rm -rf"
+alias rmd="rm -rf"
+alias rmdd="rm -rf */"
+alias le="less"
+alias s#="sha256sum"
+alias m5="md5sum"
+
+alias h="history"
+alias hg="history | grep"
+alias psg="ps -ax | grep"
+alias k9="kill -9"
+
+alias mine="echorun sudo chown -R $USER:$USER"
+
+# programs
+alias p2="python2"
+alias p3="python3"
+alias py="python3"
+
+# git log/status/diff
+alias gl="git log"
+alias glp="git log -p"
+alias gln="git log --name-only"
+alias gls="git log --stat"
+alias gl.="git log ."
+alias gs="git status -uno"
+alias gd="git diff"
+alias gd~="git diff HEAD~..HEAD"
+alias gd~~="git diff HEAD~~..HEAD"
+alias gdc="git diff --cached"
+
+# git branch/checkout
+alias gb="git branch"
+alias gc="git checkout"
+alias gcb="git checkout -b"
+alias gcom="git checkout master"
+alias gcOm="git checkout origin/master"
+
+# git add
+alias ga="git add"
+alias gau="git add -u"
+alias gad="git add"
+
+# git commit/rebase
+alias gcan="git commit --amend --no-edit"
+alias gut="git commit --amend --date=now --no-edit"
+alias grc="git rebase --continue"
+alias gutc="gut && grc"
+
+alias gf="git fetch"
+alias gfl="git reflog --relative-date"
+
+alias gcp="git cherry-pick"
+alias gcpx="git cherry-pick -x"
+alias gt="git tag"
+alias gpom="git pull origin master"
+alias gprom="git pull --rebase origin master"
+alias gpr="git pull --rebase"
+alias grh="git reset HEAD"
+alias gr~="git reset HEAD~"
+alias grH~="git reset HEAD~ --hard"
+alias gsr="git stash save && git pull --rebase && git stash pop"
+alias gsur="git submodule update --init --recursive"

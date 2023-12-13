@@ -1,0 +1,188 @@
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
+
+! hard contrast: *background: #1d2021
+! *background: #282828
+! *background: #2b2222
+! soft contrast: *background: #32302f
+! *foreground: #ebdbb2
+*foreground: #111111
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
+
+
+
+! URxvt settings
+
+! General
+!urxvt*termName:  rxvt-256color
+urxvt*loginShell:         true
+urxvt*scrollBar:         false
+urxvt*secondaryScroll:    true
+urxvt*saveLines:         65535
+urxvt*cursorBlink:       false
+urxvt*urgentOnBell:       true
+!urxvt*override-redirect:false
+!urxvt*borderLess:       false
+!urxvt*internalBorder:       0
+!urxvt*externalBorder:       0
+
+! Extensions
+urxvt*perl-lib:        /usr/lib/urxvt/perl/
+urxvt*perl-ext-common: default,matcher,searchable-scrollback,clipboard,keyboard-select
+urxvt*urlLauncher:     /usr/bin/firefox
+urxvt*matcher.button:  1
+!  - catch ugly URLs
+urxvt.keysym.M-Escape: perl:keyboard-select:activate
+urxvt.keysym.M-c:   perl:clipboard:copy
+urxvt.keysym.C-v:   perl:clipboard:paste
+urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+urxvt.clipboard.copycmd:  xsel -ib
+urxvt.clipboard.pastecmd: xsel -ob
+
+
+URxvt*font: xft:Hermit:medium:size=12:antialiasing=true
+URxvt*boldFont: xft:Hermit:bold:size=12:antialiasing=true:style=medium
+URxvt*italicFont: xft:Hermit:medium:size=12:antialiasing=true:style=medium
+URxvt*boldItalicFont: xft:Hermit:bold:size=12:antialiasing=true:style=medium
+URxvt*loginShell:        true
+URxvt*scrollBar:         false 
+
+
+! -----------------------------------------------------------------------------
+! File: gruvbox-urxvt256.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 13 Dec 2013
+! -----------------------------------------------------------------------------
+
+URxvt*background: #282828
+URxvt*foreground: #ebdbb2
+
+URxvt.color24:  #076678
+URxvt.color66:  #427b58
+URxvt.color88:  #9d0006
+URxvt.color96:  #8f3f71
+URxvt.color100: #79740e
+URxvt.color108: #8ec07c
+URxvt.color109: #83a598
+URxvt.color130: #af3a03
+URxvt.color136: #b57614
+URxvt.color142: #b8bb26
+URxvt.color167: #fb4934
+URxvt.color175: #d3869b
+URxvt.color208: #fe8019
+URxvt.color214: #fabd2f
+URxvt.color223: #ebdbb2
+URxvt.color228: #f2e5bc
+URxvt.color229: #fbf1c7
+URxvt.color230: #f9f5d7
+URxvt.color234: #1d2021
+URxvt.color235: #282828
+URxvt.color236: #32302f
+URxvt.color237: #3c3836
+URxvt.color239: #504945
+URxvt.color241: #665c54
+URxvt.color243: #7c6f64
+URxvt.color244: #928374
+URxvt.color245: #928374
+URxvt.color246: #a89984
+URxvt.color248: #bdae93
+URxvt.color250: #d5c4a1
+
+! Xft font configuration
+Xft.antialias:  1
+Xft.hinting:    1
+Xft.hintstyle:  hintfull
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+
+! Rofi colors setup
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+
+! Use extended color scheme
+rofi.color-enabled:                  true
+
+! Retro Term Theme
+! Color scheme for normal row
+rofi.color-normal:                   argb:00000000,  #FFB515 , argb:00000000,  #51afef ,  #251A11
+! Color scheme for urgent row
+rofi.color-urgent:                   argb:00000000,  #51afef , argb:00000000,  #51afef ,  #251A11
+! Color scheme for active row
+rofi.color-active:                   argb:00000000,  #6699CC , argb:00000000,  #6699CC ,  #251A11
+! Color scheme window
+rofi.color-window:                   argb:ee222222,  #FFB515 ,  #FFB515
+
+
+! DOOM Theme
+! Color scheme for normal row
+! rofi.color-normal:                   argb:00000000,  #D8DEE9 , argb:00000000,  #51afef ,  #1B2B34
+! Color scheme for urgent row
+! rofi.color-urgent:                   argb:00000000,  #51afef , argb:00000000,  #51afef ,  #1B2B34
+! Color scheme for active row
+! rofi.color-active:                   argb:00000000,  #6699CC , argb:00000000,  #6699CC ,  #1B2B34
+! Color scheme window
+! rofi.color-window:                   argb:ee222222,  #a9a1e1 ,  #a9a1e1
+
+! GREEN-ORANGE Theme
+! Color scheme for normal row
+! rofi.color-normal:                   argb:00000000,  #D8DEE9 , argb:00000000,  #FFAF00 ,  #1B2B34
+! Color scheme for urgent row
+! rofi.color-urgent:                   argb:00000000,  #F99157 , argb:00000000,  #F99157 ,  #1B2B34
+! Color scheme for active row
+! rofi.color-active:                   argb:00000000,  #6699CC , argb:00000000,  #6699CC ,  #1B2B34
+! Color scheme window
+! rofi.color-window:                   argb:ee222222,  #91E22E ,  #91E22E
+
+
+! Separator style (none, dash, solid)
+rofi.separator-style: none
+! rofi.opacity: 85
+! rofi.width: 1924
+rofi.lines: 7
+rofi.columns: 4
+rofi.font: Hermit 11
+! Whether to have border around rofi window
+rofi.bw: 3
+! rofi.location: 6
+rofi.location: 0
+rofi.padding: 2
+
+! Keybindings
+rofi.key-window: mod4+Tab
+rofi.key-run: mod4+p
+rofi.key-ssh: mod1+F3
+rofi.kb-move-char-back: Control+b
+rofi.kb-move-char-forward: Control+f
+rofi.kb-row-left: Left
+rofi.kb-row-right: Right

@@ -1,0 +1,208 @@
+;; Based on https://gist.github.com/ghifarit53/dd3916f838a8a00237910f6e051e73cb
+[colors]
+black = #1A1D45
+bblack = #2c3073
+white = #D7B7BB
+red = #FF4EA5
+green = #7EB564
+yellow = #F5B569
+blue = #7A89EC
+magenta = #B66CDC
+cyan = #6CAC99
+
+[bar/bar1]
+monitor = "VGA-1"
+background = ${colors.black}
+foreground = ${colors.white}
+font-0 = JetBrains Mono Nerd Font:size=12;3
+font-1 = Font Awesome 5 Free Solid:size=8;3
+font-2 = Font Awesome 5 Brands:size=8;3
+font-3 = Sans:size=5;3
+wm-restack = bspwm
+border-size = 5
+border-color = ${colors.black}
+height = 20
+modules-left = bspwm
+; modules-right = wtitle s music s network s bat s vol s date s time
+; modules-right = wtitle s cpu s memory s bat s filesystem s date s time
+; modules-center = wtitle s cpu s memory s bat s filesystem s date s time
+modules-center = wtitle s cpu s memory s filesystem s date s time
+modules-right = powermenu ubuntu
+
+[module/s]
+type = custom/text
+content = "%{T4}  %{T-}"
+content-background = ${colors.black}
+
+[module/wtitle]
+type = internal/xwindow
+; label = "%title% "
+label = "[%title:0:4:%] "
+label-empty = "Desktop "
+label-maxlen = 40
+
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state>
+label-occupied-foreground = ${colors.white}
+label-focused-foreground = ${colors.black}
+label-empty-foreground = ${colors.bblack}
+label-occupied-background = ${colors.bblack}
+label-focused-background = ${colors.white}
+label-focused = "%icon% %name%"
+label-occupied = "%icon% %name%"
+label-empty = "%icon% %name%"
+label-focused-padding = 1
+label-occupied-padding = 1
+label-empty-padding = 1
+label-separator = "%{T4}  %{T-}"
+;    
+; 櫓  理
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;ﳳ
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+
+; [module/music]
+; type = internal/mpd
+; host = 127.0.0.1
+; port = 6600
+; format-online = <label-song>
+; format-playing = ${self.format-online}
+; format-paused = ${self.format-online}
+; format-stopped = ${self.format-online}
+; format-offline = ${self.label-offline}
+; label-song = "  %artist% - %title% "
+; label-offline = "  Offline "
+; label-song-foreground = ${colors.black}
+; label-song-background = ${colors.green}
+; format-offline-foreground = ${colors.black}
+; format-offline-background = ${colors.green}
+;
+[module/cpu]
+type = internal/cpu
+interval = 2
+;   
+; 爐櫓
+label = " 礪 %percentage%% "
+format = <label>
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+label-foreground = ${colors.black}
+label-background = ${colors.green}
+
+; [module/vol]
+; type = internal/pulseaudio
+; sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+; format-volume = <label-volume>
+; format-muted = <label-muted>
+; label-muted = "  Muted "
+; label-volume = "  %percentage%% "
+; format-volume-background = ${colors.blue}
+; format-volume-foreground = ${colors.black}
+; format-muted-background = ${colors.blue}
+; format-muted-foreground = ${colors.black}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+; 歷囹
+label-mounted = " ﵁ %percentage_used%% of %total% "
+label-unmounted = "  %mountpoint%: not mounted "
+format-mounted-background = ${colors.blue}
+format-mounted-foreground = ${colors.black}
+format-unmounted-background = ${colors.blue}
+format-unmounted-foreground = ${colors.black}
+
+[module/bat]
+type = internal/battery
+bat = BAT0
+adapter = ADP0
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+label-discharging = "  %percentage%% "
+label-charging = "  %percentage%% "
+label-discharging-background = ${colors.magenta}
+label-charging-foreground = ${colors.black}
+label-charging-background = ${colors.magenta}
+label-discharging-foreground = ${colors.black}
+
+; [module/network]
+; type = internal/network
+; interface = wlp2s0
+; label-disconnected = "  No wifi "
+; label-connected = "  %essid% "
+; label-connected-foreground = ${colors.black}
+; label-connected-background = ${colors.red}
+; label-disconnected-foreground = ${colors.black}
+; label-disconnected-background = ${colors.red}
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = "  %percentage_used%% "
+label-foreground = ${colors.black}
+label-background = ${colors.red}
+
+[module/date]
+type = internal/date
+format-foreground = ${colors.black}
+format-background = ${colors.cyan}
+date = "  %a, %b %d "
+
+[module/time]
+type = internal/date
+interval = 5
+format-foreground = ${colors.black}
+format-background = ${colors.yellow}
+; date = "  %H:%M "
+time = "  %I:%M%P "
+label = %time%
+
+[module/ubuntu]
+type = custom/script
+exec = lsb_release -d | cut -f 2 | tr '[:upper:]' '[:lower:]'
+; 
+label =  [%output%]
+interval = 1000
+format-background = ${colors.yellow}
+format-foreground = ${colors.black}
+format-padding = 1
+
+[module/powermenu]
+type = custom/menu
+
+; label-open =  PWR
+label-open = "  PWR  "
+label-open-foreground = ${colors.red}
+label-close = 臘 cancel
+label-close-foreground = ${colors.red}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = shutdown
+menu-0-1-exec = menu-open-2
+menu-0-2 = logoff
+menu-0-2-exec = pkill -u $USER
+
+menu-1-0 = reboot
+menu-1-0-exec = systemctl reboot
+menu-1-1 = cancel
+menu-1-1-exec = menu-open-0
+
+menu-2-0 = shutdown
+menu-2-0-exec = systemctl poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
